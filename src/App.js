@@ -27,8 +27,8 @@ const Posts = () => {
 
   return (
     <>
-        {data.post.map( ({ text }) => (
-          <h3>{text}</h3>
+        {data.post.map( ({ text, id }) => (
+          <h3 key={id}>{text}</h3>
         ))}
     </>
   );
