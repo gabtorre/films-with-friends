@@ -1,6 +1,23 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const MainContainer = styled.div`
+    background-color: #221F1F;
+    color: #F5F5F1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+`
+// Home
+export const HomeWrapper = styled.div`
+    height: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+`
+
+// Auth Pages
+
+export const AuthContainer = styled.div`
     height: 100%;
     width: 100%;
     position: fixed;

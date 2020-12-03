@@ -59,9 +59,9 @@ const Signin = () => {
     const { email, password} = formData
 
     const handleSubmit = () => {
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
-            toast.success(`Signin Sucessfully! Welcome back!`);
+            toast.success(`Welcome to our community!`);
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -83,10 +83,10 @@ const Signin = () => {
                     </FormContent> */}
                     <FormContent>
                         <Form onSubmit={handleSubmit}>
-                            <TitleWrapper>Welcome Back!</TitleWrapper>
+                            <TitleWrapper>Create an account</TitleWrapper>
                             <FormInput type='email' name='email' placeholder='Email Address' onChange={handleChange('email')} required/>
                             <FormInput type='password' name='password' placeholder='Password' onChange={handleChange('password')} required />
-                            <FormButton type='submit' style={{backgroundColor: '#E50914'}}>Sign In</FormButton>
+                            <FormButton type='submit' style={{backgroundColor: '#E50914'}}>Sign up</FormButton>
                             <Text> Or Sign in / Sign up with Google </Text>
                             <FormButton onClick={signInWithGoogle} style={{backgroundColor: '#B81D24'}}>Google</FormButton>
                             <small>By signing up, you agree to our <NavLink to='#'> Terms and Conditions</NavLink>.</small>
