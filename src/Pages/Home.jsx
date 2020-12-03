@@ -1,9 +1,9 @@
-
 import '../App.css';
 import ApolloClient from 'apollo-boost';
 import { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks'
 import Menu from '../Components/Menu'
+import {MainContainer, HomeWrapper} from '../Components/StyledComponents'
 
 const client = new ApolloClient({
   uri: 'https://workers-graphql-server.gabtorres.workers.dev/',
@@ -84,10 +84,14 @@ function Home() {
   return (
       <>
       <Menu/>
-    <ApolloProvider client={client}>
-      <Posts/>
-      <AddPost/>
-    </ApolloProvider>
+      <MainContainer>
+          <HomeWrapper>
+            <ApolloProvider client={client}>
+                <Posts/>
+                <AddPost/>
+            </ApolloProvider>
+          </HomeWrapper>
+      </MainContainer>
     </>
   );
 }
