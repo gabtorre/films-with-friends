@@ -1,0 +1,12 @@
+/* Menu - Navbar */
+
+.darknav{
+    background-color: black;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    padding: 20px 50px;
+  }
+
+.menubtns{
+    margin: auto 10px;
+}
