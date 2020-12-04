@@ -2,7 +2,6 @@ import {firestore} from '../firebase.js'
 import { useState, useEffect } from 'react';
 import Post from '../Components/Post'
 
-
 const Posts = () => {
 
     const [posts, getPost] = useState(null);
