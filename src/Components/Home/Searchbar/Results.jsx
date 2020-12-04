@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import {CardWrapper, MovieCardWrapper} from '../../StyledComponents'
+import ShareMovie from '../ShareMovie';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -47,6 +48,11 @@ function ResultCard(props) {
                 <MovieCardWrapper>
                     <div>
                         <img src={imgurl} style={{width: '300px', padding: '1%'}}/>
+                        <Button variant="danger" style={{width: '300px'}}>+ watchlist</Button>
+                        <ShareMovie  
+                            poster={props.data.poster_path}
+                            title={props.data.original_title}
+                        />
                         <Form onClick={handleSubmit}><Button type="submit" variant="danger" style={{width: '300px'}}>+ watchlist</Button></Form>
                     </div>
                     <div style={{padding: '1%', textAlign: 'left'}}>

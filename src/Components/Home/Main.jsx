@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import Searchbar from './Searchbar/Searchbar'
 import Results from './Searchbar/Results'
-import PostList from './Posts'
 import Card from 'react-bootstrap/Card'
 import {CardWrapper} from '../StyledComponents'
+import Posts from '../../Pages/Posts'
 
 export default class Main extends Component {
     state = {
@@ -57,8 +57,7 @@ export default class Main extends Component {
                     <h1>Friends Activity</h1>
               </CardWrapper>
             </Card>
-
-            <PostList />
+            <Posts />
           </>
         )
     }
