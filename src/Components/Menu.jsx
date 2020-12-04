@@ -51,8 +51,8 @@ export default function Menu() {
                 </>
                 :
                 <>
-                    <Button variant="outline-danger" className="menubtns">Signup</Button>
-                    <Button variant="danger" className="menubtns">Signin</Button>
+                    <Button variant="outline-danger" className="menubtns"  href="/signup" >Signup</Button>
+                    <Button variant="danger" className="menubtns" href="/signin">Signin</Button>
                 </>
                 }
 
