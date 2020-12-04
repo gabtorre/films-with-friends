@@ -33,6 +33,7 @@ function ResultCard(props) {
             title: props.data.original_title,
             date: props.data.release_date,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            poster: imgurl,
             uid,
         });
 
