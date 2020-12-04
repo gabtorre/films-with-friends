@@ -2,11 +2,8 @@ import React, {useState} from 'react'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Menu from '../Components/Menu'
 import { NavLink } from 'react-router-dom';
 import { AuthContainer, FormWrap, FormContent, FormLeft, Form, FormInput, FormButton, Text, TitleWrapper } from '../Components/StyledComponents'
-import Button from 'react-bootstrap/Button'
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
 if(!firebase.apps.length){
