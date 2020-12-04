@@ -47,19 +47,6 @@ const Posts = () => {
 function PostList() {
     return (
     <>
-        <Search/>
-        <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-            <CardWrapper>
-                    <h1>Movie Details</h1>
-            </CardWrapper>
-        </Card>
-
-        <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-            <CardWrapper>
-                    <h1>Friends Activity</h1>
-            </CardWrapper>
-        </Card>
-
         <ApolloProvider client={client}>
             <Posts/>
         </ApolloProvider>

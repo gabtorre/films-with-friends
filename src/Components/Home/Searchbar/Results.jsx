@@ -12,16 +12,17 @@ function Results (props) {
 }
 
 function ResultCard(props) {
-    console.log(props)
+    const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`
     return (
-        <p>{props.data.id}: {props.data.original_title} - {props.data.release_date}</p>
-        // <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-        //     <CardWrapper>
-        //             <h4>{props.data.id}: {props.data.original_title} - {props.data.release_date}</h4>
-        //             <p>{props.data.overview}</p>
-        //             <p>{props.data.vote_average}</p>
-        //     </CardWrapper>
-        // </Card>
+        // <p>{props.data.id}: {props.data.original_title} - {props.data.release_date}</p>
+        <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
+            <CardWrapper>
+                    <img src={imgurl} />
+                    <h4>{props.data.id}: {props.data.original_title} - {props.data.release_date}</h4>
+                    <p>Overview: {props.data.overview}</p>
+                    <p>Rating: {props.data.vote_average}</p>
+            </CardWrapper>
+        </Card>
     )
 }
 
