@@ -18,7 +18,7 @@ const Post = (props) => {
                 getComments(posts)
                 console.log(posts)
             })
-            
+
             // .get();
             // const comments = snapshot.docs.map(doc => Object.assign(doc.data(), { id: doc.id }))
             // getComments(comments)
@@ -26,7 +26,7 @@ const Post = (props) => {
         fetchData();
     }, [])
 
-    
+
 
     return (
         <>
@@ -38,5 +38,5 @@ const Post = (props) => {
         </>
     );
 }
- 
+
 export default Post;
