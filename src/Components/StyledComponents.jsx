@@ -186,3 +186,20 @@ export const Text = styled.span`
     color: white;
     font-size: 15px;
 `
+
+export const CommentDiv = styled.div`
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 0 0 0.75rem;
+`
+
+export const CommentForm = styled.form`
+    display: flex;
+    border: 0;
+`
+
+export const CommentInput = styled.input `
+    border: 0;
+    padding: 0.75rem 1.25rem;
+    flex-basis: 100%;
+    background-color: #E7EAF1;
+`

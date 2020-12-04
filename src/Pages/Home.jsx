@@ -4,6 +4,7 @@ import {BlackContainer, HomeContainer, HomeWrapper, PostWrapper} from '../Compon
 import Main from '../Components/Home/Main'
 import WatchList from '../Components/Home/Watchlist'
 import AddPost from '../Components/Home/AddPost'
+import Posts from '../Pages/Posts'
 
 function Home() {
     return (

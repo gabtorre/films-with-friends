@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { firestore } from '../firebase.js';
 import Comment from '../Components/Comment';
 import AddComment from '../Components/AddComment';
+import {CardWrapper} from '../Components/StyledComponents'
+import {Card} from 'react-bootstrap'
 
 const Post = (props) => {
 
@@ -9,7 +11,7 @@ const Post = (props) => {
 
     useEffect( () => {
         async function fetchData() {
-            await firestore.collection('comments').where('post', '==', props.id)
+            await firestore.collection('comments').where('post', '==', props.id).orderBy('timestamp')
             .onSnapshot(snapshot => {
                 const posts = snapshot.docs
                 .map(doc => {
@@ -18,7 +20,6 @@ const Post = (props) => {
                 getComments(posts)
                 console.log(posts)
             })
-
             // .get();
             // const comments = snapshot.docs.map(doc => Object.assign(doc.data(), { id: doc.id }))
             // getComments(comments)
@@ -30,11 +31,15 @@ const Post = (props) => {
 
     return (
         <>
-        <h1>{props.text}</h1>
-        {comments && comments.map(comment =>
-        <Comment key={comment.id} id={comment.id} content={comment.content} />
-        )}
-        <AddComment id={props.id} />
+        <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
+        <CardWrapper>
+            <Card.Text><h1>{props.text}</h1></Card.Text>
+            {comments && comments.map(comment =>
+            <Comment key={comment.id} id={comment.id} content={comment.content} />
+            )}
+            <AddComment id={props.id} />
+        </CardWrapper>
+        </Card>
         </>
     );
 }
