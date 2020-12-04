@@ -1,7 +1,8 @@
 /* Menu - Navbar */
 
 .darknav{
-    background-color: #1A1D20;
+    /* background-color: #1A1D20; */
+    background-color: black;
     color: #F5F5F1;
     font-family: 'Inter', sans-serif;
     padding: 20px 50px;
