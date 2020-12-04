@@ -13,7 +13,7 @@ function Home() {
             <HomeContainer>
                 <HomeWrapper><WatchList/></HomeWrapper>
                 <PostWrapper><Main/></PostWrapper>
-                <HomeWrapper><AddPost/></HomeWrapper>
+                {/* <HomeWrapper><AddPost/></HomeWrapper> */}
             </HomeContainer>
         </BlackContainer>
         </>

@@ -26,7 +26,7 @@ const ShareMovie = (props) => {
         shareMovie()
     }
 
-    return (  
+    return (
         <CommentDiv>
         <CommentForm onSubmit={handleCommentSubmission}>
             <CommentInput
@@ -36,10 +36,10 @@ const ShareMovie = (props) => {
                 value={text}
                 onChange={(e) => setContent(e.target.value)}
             />
-            <Button variant="link" type="submit">Share</Button>
+            <Button variant="danger" type="submit">Share</Button>
         </CommentForm>
         </CommentDiv>
     );
 }
- 
+
 export default ShareMovie;
