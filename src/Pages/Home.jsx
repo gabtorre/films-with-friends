@@ -4,6 +4,7 @@ import {BlackContainer, HomeContainer, HomeWrapper, PostWrapper} from '../Compon
 import PostList from '../Components/Home/Posts'
 import WatchList from '../Components/Home/Watchlist'
 import AddPost from '../Components/Home/AddPost'
+import Posts from '../Pages/Posts'
 
 function Home() {
     return (
@@ -12,7 +13,8 @@ function Home() {
         <BlackContainer>
             <HomeContainer>
                 <HomeWrapper><WatchList/><WatchList/></HomeWrapper>
-                <PostWrapper><PostList/></PostWrapper>
+                <PostWrapper><Posts/></PostWrapper>
+                {/* <PostWrapper><PostList/></PostWrapper> */}
                 <HomeWrapper><AddPost/></HomeWrapper>
             </HomeContainer>
         </BlackContainer>

@@ -1,5 +1,7 @@
 import { firestore } from '../firebase.js';
 import { useState } from 'react';
+import { CommentDiv, CommentForm, CommentInput } from '../Components/StyledComponents';
+import { Button } from 'react-bootstrap';
 
 const AddComment = (props) => {
 
@@ -12,6 +14,7 @@ const AddComment = (props) => {
             let newComment = {
                 content: comment,
                 post: props.id,
+                timestamp: Date.now(),
             }
             await firestore.collection('comments')
             .add(newComment)
@@ -24,20 +27,18 @@ const AddComment = (props) => {
     }
 
     return (  
-        <>
-        <form onSubmit={handleCommentSubmission}>
-            <input
+        <CommentDiv>
+        <CommentForm onSubmit={handleCommentSubmission}>
+            <CommentInput
                 id="comment"
                 label="Add Comment"
                 name="name"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
             />
-            <button
-                type="submit"
-            > Add Comment</button>
-        </form>
-        </>
+            <Button variant="link" type="submit">Add Comment</Button>
+        </CommentForm>
+        </CommentDiv>
     );
 }
  

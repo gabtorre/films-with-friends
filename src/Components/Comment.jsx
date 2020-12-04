@@ -1,7 +1,7 @@
 const Comment = (props) => {
     return ( 
         <> 
-            <h4>{props.content}</h4>
+            <p>{props.content}</p>
         </>
     );
 }
