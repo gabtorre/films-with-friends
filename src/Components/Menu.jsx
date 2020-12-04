@@ -26,8 +26,6 @@ export default function Menu() {
 
     const [user] = useAuthState(auth);
 
-    // const { uid, photoURL } = auth.currentUser;
-
     return (
         <Navbar className="darknav" variant="dark" expand="lg">
             <Navbar.Brand href="#home">
@@ -45,8 +43,8 @@ export default function Menu() {
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     </Form>
 
-                    {/* <Avatar src={photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> */}
-                    <Avatar onClick={() => auth.signOut()} src={"https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} />
+                    <Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} />
+                    {/* <Avatar onClick={() => auth.signOut()} src={"https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> */}
                     {/* <Button variant="danger" className="menubtns">Post</Button> */}
                 </>
                 :
