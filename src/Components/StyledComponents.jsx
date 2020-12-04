@@ -7,12 +7,24 @@ export const MainContainer = styled.div`
     width: 100%;
     position: fixed;
 `
-export const BlackContainer = styled.div`
+
+export const LandingContainer = styled.div`
     background-color: black;
     color: #F5F5F1;
     height: 100%;
     width: 100%;
     position: fixed;
+`
+
+export const BlackContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: #F5F5F1;
+    height: 100%;
+    width: 100%;
+    // position: fixed;
 `
 
 //Landing
@@ -75,14 +87,15 @@ export const HomeContainer = styled.div`
     text-align: center;
     flex-direction: row;
     margin: 5%;
-
 `
 export const HomeWrapper = styled.div`
     height: 100%;
     flex: 1;
     text-align: center;
     flex-direction: column;
-    margin: auto 2%;
+    justify-content: flex-start
+    margin-right: 5%;
+    padding: 0 3% 0 0;
 `
 
 export const PostWrapper = styled.div`
