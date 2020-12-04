@@ -33,6 +33,8 @@ const Post = (props) => {
         <CardWrapper>
             <Card.Text><h1>{props.text}</h1></Card.Text>
             <Card.Text><h1>{props.title}</h1></Card.Text>
+            <Card.Text><h1>{props.release}</h1></Card.Text>
+            <Card.Text><h1>{props.synopsis}</h1></Card.Text>
             <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} />
             {comments && comments.map(comment =>
             <Comment key={comment.id} id={comment.id} content={comment.content} />
