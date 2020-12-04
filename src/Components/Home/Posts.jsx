@@ -3,6 +3,8 @@ import { gql } from 'apollo-boost';
 import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks'
 import {MainContainer, HomeWrapper, CardWrapper} from '../StyledComponents'
 import Card from 'react-bootstrap/Card'
+import Search from './Search'
+
 const client = new ApolloClient({
   uri: 'https://workers-graphql-server.gabtorres.workers.dev/',
 })
@@ -45,18 +47,6 @@ const Posts = () => {
 function PostList() {
     return (
     <>
-        <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-            <CardWrapper>
-                    <h1>Movie Details</h1>
-            </CardWrapper>
-        </Card>
-
-        <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-            <CardWrapper>
-                    <h1>Friends Activity</h1>
-            </CardWrapper>
-        </Card>
-
         <ApolloProvider client={client}>
             <Posts/>
         </ApolloProvider>

@@ -27,11 +27,11 @@ const Post = (props) => {
         fetchData();
     }, [])
 
-    
+
 
     return (
         <>
-        <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">    
+        <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
             <Card.Text><h1>{props.text}</h1></Card.Text>
             {comments && comments.map(comment =>
@@ -43,5 +43,5 @@ const Post = (props) => {
         </>
     );
 }
- 
+
 export default Post;
