@@ -6,6 +6,7 @@ import WatchList from '../Components/Home/Watchlist'
 import AddPost from '../Components/Home/AddPost'
 
 function Home() {
+
     return (
         <>
         <Menu/>
