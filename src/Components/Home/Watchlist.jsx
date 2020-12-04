@@ -7,14 +7,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 function WatchList() {
-  const auth = firebase.auth();
-  const [user] = useAuthState(auth)
-  const firestore = firebase.firestore();
-  const watchlistdata = firestore.collection('watchlist')
-  const query = watchlistdata.orderBy('createdAt', 'desc');
-  const [ userwatchlist ] = useCollectionData(query, {idField: 'uid'});
 
-  const snapshot = watchlistdata.where('uid', '==', auth.currentUser.uid).get();
+  const auth = firebase.auth();
+  const firestore = firebase.firestore();
+  const uid = auth.currentUser.uid
+  const list = firestore.collection('watchlist').where('uid', '==', uid)
+  const [ userwatchlist ] = useCollectionData(list, {idField: 'uid'});
+
+  // const query = list.orderBy('createdAt', 'desc')
 
   return (
 
@@ -31,17 +31,6 @@ function WatchList() {
         </CardWrapper>
     </Card>
   );
-
-  // return (
-  //   <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
-  //       <CardWrapper>
-  //           <Card.Title>Watchlist</Card.Title>
-  //           {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-  //           <Card.Text>1</Card.Text>
-  //           <Card.Text>2</Card.Text>
-  //       </CardWrapper>
-  //   </Card>
-  // );
 
 }
 
