@@ -2,6 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import {CardWrapper, MovieCardWrapper} from '../../StyledComponents'
+import ShareMovie from '../ShareMovie';
 
 function Results (props) {
 
@@ -22,6 +23,10 @@ function ResultCard(props) {
                     <div>
                         <img src={imgurl} style={{width: '300px', padding: '1%'}}/>
                         <Button variant="danger" style={{width: '300px'}}>+ watchlist</Button>
+                        <ShareMovie  
+                            poster={props.data.poster_path}
+                            title={props.data.original_title}
+                        />
                     </div>
                     <div style={{padding: '1%', textAlign: 'left'}}>
                         <h4>{props.data.original_title}</h4>
