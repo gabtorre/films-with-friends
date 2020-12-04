@@ -7,22 +7,27 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 function WatchList() {
-
   const auth = firebase.auth();
+  const [user] = useAuthState(auth)
   const firestore = firebase.firestore();
-  const watchlistdata = firestore.collection('watchlist');
+  const watchlistdata = firestore.collection('watchlist')
   const query = watchlistdata.orderBy('createdAt', 'desc');
   const [ userwatchlist ] = useCollectionData(query, {idField: 'uid'});
 
+  const snapshot = watchlistdata.where('uid', '==', auth.currentUser.uid).get();
+
   return (
+
     <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
             <Card.Title>Watchlist</Card.Title>
             {userwatchlist && userwatchlist.map(movie =>
-            <>
-              <Card.Img variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover'}}/>
-              <Card.Text key={movie.id}>{movie.title}</Card.Text>
-            </>)}
+             <>
+                <Card.Img variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover'}}/>
+                <Card.Text key={movie.id}>{movie.title}</Card.Text>
+              </>
+
+            )}
         </CardWrapper>
     </Card>
   );
