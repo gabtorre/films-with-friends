@@ -47,7 +47,7 @@ export default function Menu() {
 
                     {/* <Avatar src={photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> */}
                     <Avatar onClick={() => auth.signOut()} src={"https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} />
-                    <Button variant="danger" className="menubtns">Post</Button>
+                    {/* <Button variant="danger" className="menubtns">Post</Button> */}
                 </>
                 :
                 <>
