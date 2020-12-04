@@ -1,38 +1,24 @@
-import firebase from 'firebase/app';
+import {firestore} from '../firebase.js'
 import { useState, useEffect } from 'react';
+import Post from '../Components/Post'
 
-if(!firebase.apps.length){
-    firebase.initializeApp({
-        apiKey: process.env.REACT_APP_FB_APIKey,
-        authDomain: process.env.REACT_APP_FB_AUTHD,
-        projectId: process.env.REACT_APP_FB_PID,
-        storageBucket: process.env.REACT_APP_FB_SB,
-        messagingSenderId: process.env.REACT_APP_FB_MSID,
-        appId: process.env.REACT_APP_FB_APPID,
-    })
-}
 
 const Posts = () => {
 
     const [posts, getPost] = useState(null);
 
-    useEffect(() => {
-        const cleanUp = firestore
-          .doc(`post`)
-          .collection("post")
-          .onSnapshot(snapshot => {
-            const posts = snapshot.docs.map(doc => {
-              return { id: doc.id, ...doc.data() }
-            })
-            getPost(posts)
-          })
-        return () => cleanUp()
-      }, [])
+    useEffect( () => {
+        async function fetchData() {
+            const snapshot = await firestore.collection('post').get()
+            const post = snapshot.docs.map(doc => Object.assign(doc.data(), { id: doc.id }))
+            getPost(post)
+        }
+        fetchData();
+    }, [])
 
     return (  
         <>
-        {posts ? <h1>posts</h1> : <h1>Loading</h1>}
-        <h1>Hello</h1>
+        {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text}/>)}
         </>
     );
 }
