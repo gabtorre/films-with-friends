@@ -34,6 +34,7 @@ function ResultCard(props) {
             title: props.data.original_title,
             date: props.data.release_date,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            poster: imgurl,
             uid,
         });
 
@@ -47,11 +48,6 @@ function ResultCard(props) {
                 <MovieCardWrapper>
                     <div>
                         <img src={imgurl} style={{width: '300px', padding: '1%'}}/>
-                        <Button variant="danger" style={{width: '300px'}}>+ watchlist</Button>
-                        <ShareMovie  
-                            poster={props.data.poster_path}
-                            title={props.data.original_title}
-                        />
                         <Form onClick={handleSubmit}><Button type="submit" variant="danger" style={{width: '300px'}}>+ watchlist</Button></Form>
                     </div>
                     <div style={{padding: '1%', textAlign: 'left'}}>
@@ -59,6 +55,10 @@ function ResultCard(props) {
                         <h6>{props.data.release_date}</h6>
                         <p>Overview: {props.data.overview}</p>
                         <p>Rating: {props.data.vote_average}</p>
+                        <ShareMovie
+                            poster={props.data.poster_path}
+                            title={props.data.original_title}
+                        />
                     </div>
                 </MovieCardWrapper>
             </CardWrapper>
