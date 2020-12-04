@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { AuthContainer, FormWrap, FormContent, FormLeft, Form, FormInput, FormButton, Text, TitleWrapper } from '../Components/StyledComponents'
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -18,6 +18,8 @@ if(!firebase.apps.length){
 }
 
 const Signin = () => {
+
+    const history = useHistory();
 
     const auth = firebase.auth();
 
@@ -58,7 +60,8 @@ const Signin = () => {
     const handleSubmit = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
-            toast.success(`Welcome to our community!`);
+            toast.success(`Welcome to our Movie community!`);
+            history.push('/')
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -69,6 +72,7 @@ const Signin = () => {
 
     return (
         <>
+            {user ? <Redirect to='/' /> : null }
             <AuthContainer>
                 <ToastContainer />
                 <FormWrap>
