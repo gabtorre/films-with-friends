@@ -12,7 +12,7 @@ function Home() {
         <Menu/>
         <BlackContainer>
             <HomeContainer>
-                <HomeWrapper><WatchList/><WatchList/></HomeWrapper>
+                <HomeWrapper><WatchList/></HomeWrapper>
                 <PostWrapper><Main/></PostWrapper>
                 <HomeWrapper><AddPost/></HomeWrapper>
             </HomeContainer>

@@ -102,6 +102,15 @@ export const CardWrapper = styled.div`
     padding: 5%
 `
 
+
+export const MovieCardWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    padding: 3%
+`
+
+
 // Auth Pages
 
 export const AuthContainer = styled.div`
