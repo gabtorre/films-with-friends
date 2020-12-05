@@ -27,21 +27,25 @@ const Post = (props) => {
         fetchData();
     }, [])
 
+    console.log(props)
+
     return (
         <>
         <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
             <MovieCardWrapper>
-            <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{height: '200px', width: '200px', objectFit: 'cover'}}/>
-            <div style={{padding: '5%'}}>
-                <Card.Text><h3>{props.text}</h3></Card.Text>
-                <Card.Text><h3>{props.title} - {props.release}</h3></Card.Text>
-            <Card.Text><p>{props.synopsis}</p></Card.Text>
-                {comments && comments.map(comment =>
-                <Comment key={comment.id} id={comment.id} content={comment.content} />
-                )}
-                <AddComment id={props.id} />
-            </div>
+                <div>
+                    <Card.Text><p>{props.title}</p></Card.Text>
+                    <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{height: '200px', width: '200px', objectFit: 'cover'}}/>
+                </div>
+                <div style={{padding: '2%', width: '100%', marginLeft: '2%'}}>
+                    <Card.Text><p>{props.text}</p></Card.Text>
+                    <Card.Text><p>{props.synopsis}</p></Card.Text>
+                    {comments && comments.map(comment =>
+                    <Comment key={comment.id} id={comment.id} content={comment.content} />
+                    )}
+                    <AddComment id={props.id} />
+                </div>
             </MovieCardWrapper>
         </CardWrapper>
         </Card>
