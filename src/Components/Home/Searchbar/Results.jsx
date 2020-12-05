@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import ReactStars from "react-rating-stars-component";
 
 function Results (props) {
 
@@ -23,6 +24,7 @@ function ResultCard(props) {
 
     const firestore = firebase.firestore();
     const watchlists = firestore.collection('watchlist');
+    const userratings = firestore.collection('userratings');
     const auth = firebase.auth();
     const [user] = useAuthState(auth);
     const uid = auth.currentUser.uid
@@ -37,9 +39,18 @@ function ResultCard(props) {
             poster: imgurl,
             uid,
         });
-
-
     }
+
+    const ratingChanged = (newRating) => {
+            userratings.add({
+            movieid: props.data.id,
+            title: props.data.original_title,
+            date: props.data.release_date,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            rating: newRating,
+            uid,
+        });
+      };
 
     return (
         // <p>{props.data.id}: {props.data.original_title} - {props.data.release_date}</p>
@@ -55,6 +66,13 @@ function ResultCard(props) {
                         <h6>{props.data.release_date}</h6>
                         <p>Overview: {props.data.overview}</p>
                         <p>Rating: {props.data.vote_average}</p>
+                        <ReactStars
+                        count={5}
+                        onChange={ratingChanged}
+                        size={25}
+                        // value={}
+                        isHalf={true}
+                        activeColor="#ffd700"/>
                         <ShareMovie
                             poster={props.data.poster_path}
                             title={props.data.original_title}
