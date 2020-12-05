@@ -76,6 +76,8 @@ function ResultCard(props) {
                         <ShareMovie
                             poster={props.data.poster_path}
                             title={props.data.original_title}
+                            release={props.data.release_date}
+                            synopsis={props.data.overview}
                         />
                     </div>
                 </MovieCardWrapper>

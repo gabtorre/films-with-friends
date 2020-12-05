@@ -15,6 +15,8 @@ const ShareMovie = (props) => {
                 text: text,
                 title: props.title,
                 poster: props.poster,
+                release: props.release,
+                synopsis: props.synopsis,
             }
             await firestore.collection('post')
             .add(newComment)
