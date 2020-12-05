@@ -31,19 +31,12 @@ const Post = (props) => {
         <>
         <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
-            <Card.Text><h1>{props.text}</h1></Card.Text>
-            <Card.Text><h1>{props.title}</h1></Card.Text>
-            <Card.Text><h1>{props.release}</h1></Card.Text>
-            <Card.Text><h1>{props.synopsis}</h1></Card.Text>
-            <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} />
-            {comments && comments.map(comment =>
-            <Comment key={comment.id} id={comment.id} content={comment.content} />
-            )}
-            <AddComment id={props.id} />
             <MovieCardWrapper>
             <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{height: '200px', width: '200px', objectFit: 'cover'}}/>
             <div style={{padding: '5%'}}>
-                <Card.Text><h3>{props.text} - {props.title}</h3></Card.Text>
+                <Card.Text><h3>{props.text}</h3></Card.Text>
+                <Card.Text><h3>{props.title} - {props.release}</h3></Card.Text>
+            <Card.Text><p>{props.synopsis}</p></Card.Text>
                 {comments && comments.map(comment =>
                 <Comment key={comment.id} id={comment.id} content={comment.content} />
                 )}

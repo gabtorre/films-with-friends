@@ -11,7 +11,8 @@ function WatchList() {
   const auth = firebase.auth();
   const firestore = firebase.firestore();
   const uid = auth.currentUser.uid
-  const list = firestore.collection('watchlist').where('uid', '==', uid)
+  const list = firestore.collection('watchlist')
+  .where('uid', '==', uid)
   const [ userwatchlist ] = useCollectionData(list, {idField: 'uid'});
 
   // const query = list.orderBy('createdAt', 'desc')
