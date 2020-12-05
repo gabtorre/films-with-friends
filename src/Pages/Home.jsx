@@ -3,7 +3,7 @@ import '../App.css';
 import Menu from '../Components/Menu'
 import {BlackContainer, HomeContainer, HomeWrapper, PostWrapper} from '../Components/StyledComponents'
 import Main from '../Components/Home/Main'
-import {WatchList} from '../Components/Home/Watchlist'
+import {WatchList, WatchedList} from '../Components/Home/Watchlist'
 import AddPost from '../Components/Home/AddPost'
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -35,7 +35,7 @@ class Home extends React.Component {
             <Menu/>
             <BlackContainer>
                 <HomeContainer>
-                    { this.state.uid ? <HomeWrapper><WatchList uid={this.state.uid}/></HomeWrapper> : <HomeWrapper><h3>loading...</h3></HomeWrapper>}
+                    { this.state.uid ? <HomeWrapper><WatchList uid={this.state.uid}/><WatchedList uid={this.state.uid}/></HomeWrapper> : <HomeWrapper><h3>loading...</h3></HomeWrapper>}
                     <PostWrapper><Main/></PostWrapper>
                     {/* <HomeWrapper><AddPost/></HomeWrapper> */}
                 </HomeContainer>
