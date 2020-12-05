@@ -6,19 +6,15 @@ import 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-function WatchList() {
+export const WatchList = (props) => {
 
-  const auth = firebase.auth();
   const firestore = firebase.firestore();
-  const uid = auth.currentUser.uid
-  const list = firestore.collection('watchlist')
-  .where('uid', '==', uid)
+  const list = firestore.collection('watchlist').where('uid', '==', props.uid)
   const [ userwatchlist ] = useCollectionData(list, {idField: 'uid'});
 
-  // const query = list.orderBy('createdAt', 'desc')
+  // const query = list.orderBy('createdAt', 'desc');
 
   return (
-
     <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
             <Card.Title>Watchlist</Card.Title>
@@ -35,4 +31,3 @@ function WatchList() {
 
 }
 
-export default WatchList;
