@@ -8,13 +8,13 @@ const Follow = (props) => {
     const auth = firebase.auth();
     const uid = auth.currentUser.uid
 
-    
+
     const snapshot = firestore.collection('friends').where('uid', '==', 'IqzKStC4rEUrrbwSViuA8Sx5cV73')
-    console.log(uid)
-    
+    // console.log(uid)
+
     const handleFollow = async (e) => {
         e.preventDefault();
-        
+
         function fetchData() {
             const citiesRef = firestore.collection('friends').doc(uid).update({
                 friends: firebase.firestore.FieldValue.arrayUnion(props.owner)
@@ -22,7 +22,7 @@ const Follow = (props) => {
         }
         fetchData();
 
-        console.log('added')
+        // console.log('added')
 
     }
 
@@ -32,5 +32,5 @@ const Follow = (props) => {
         </form>
     );
 }
- 
+
 export default Follow;
