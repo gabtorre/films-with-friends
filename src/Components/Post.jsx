@@ -19,7 +19,7 @@ const Post = (props) => {
                   return { id: doc.id, ...doc.data() }
                 })
                 getComments(posts)
-                console.log(posts)
+                // console.log(posts)
             })
             // .get();
             // const comments = snapshot.docs.map(doc => Object.assign(doc.data(), { id: doc.id }))
@@ -28,7 +28,7 @@ const Post = (props) => {
         fetchData();
     }, [])
 
-    console.log(props)
+    // console.log(props)
 
     return (
         <>

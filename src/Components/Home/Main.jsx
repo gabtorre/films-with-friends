@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import Searchbar from './Searchbar/Searchbar'
 import Results from './Searchbar/Results'
+import Suggestion from './Searchbar/Suggestion'
 import Card from 'react-bootstrap/Card'
 import {CardWrapper} from '../StyledComponents'
 import Posts from '../../Pages/Posts'
@@ -10,8 +11,9 @@ export default class Main extends Component {
     state = {
         query: '',
         submitted: false,
+        selected: false,
         result: null,
-        autofill: null,
+        suggestions: null,
     }
 
     handleInput = (e) => {
@@ -24,6 +26,14 @@ export default class Main extends Component {
         )
     }
 
+    handleResult = (e) =>{
+        console.log('hi')
+        this.setState({
+            selected: true,
+            result: ""
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         axios(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&language=en-US&query=${this.state.query}&page=1&include_adult=false`)
@@ -31,7 +41,7 @@ export default class Main extends Component {
             {
                 this.setState({
                     submitted: true,
-                    result: result.data.results
+                    suggestions: result.data.results
                 })
             }
         ).catch(error => { console.error(error); return Promise.reject(error); });
@@ -47,10 +57,14 @@ export default class Main extends Component {
                         query={this.state.query}
                         handleInput={this.handleInput}
                         handleSubmit={this.handleSubmit}/>
+                        { this.state.submitted ? <Suggestion data={this.state.suggestions} selected={this.state.selected} handleResult={this.handleResult} /> : null}
+                        {/* { this.state.submitted && !this.state.selected ? <Suggestion data={this.state.suggestions} handleResult={this.handleResult} /> : null}
+                        { this.state.submitted && this.state.selected ? <h1>HI</h1>: null} */}
                 </CardWrapper>
             </Card>
 
-            { this.state.submitted ? <Results data={this.state.result} /> : null}
+            {/* { this.state.selected ? <Results data={this.state.result} /> : null} */}
+
 
             <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
               <CardWrapper>
