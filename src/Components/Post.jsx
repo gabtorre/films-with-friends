@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { firestore } from '../firebase.js';
 import Comment from '../Components/Comment';
 import AddComment from '../Components/AddComment';
+import Follow from '../Components/Follow/Follow';
 import {CardWrapper, MovieCardWrapper} from '../Components/StyledComponents'
 import {Card} from 'react-bootstrap'
 
@@ -35,7 +36,9 @@ const Post = (props) => {
         <CardWrapper>
             <MovieCardWrapper>
                 <div>
-                    <Card.Text><p>{props.title}</p></Card.Text>
+                    <p>{props.uid} Shared a movie</p>
+                    <Follow owner={props.uid}/>
+                    <Card.Text>{props.title}</Card.Text>
                     <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{height: '200px', width: '200px', objectFit: 'cover'}}/>
                 </div>
                 <div style={{padding: '2%', width: '100%', marginLeft: '2%'}}>

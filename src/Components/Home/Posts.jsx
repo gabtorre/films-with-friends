@@ -1,4 +1,4 @@
-//NOT USED
+// NOT USED
 
 import ApolloClient from 'apollo-boost';
 import { gql } from 'apollo-boost';

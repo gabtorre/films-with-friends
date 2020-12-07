@@ -2,10 +2,14 @@ import { firestore } from '../../firebase.js';
 import { useState } from 'react';
 import { CommentDiv, CommentForm, CommentInput } from '../../Components/StyledComponents';
 import { Button } from 'react-bootstrap';
+import firebase from 'firebase/app';
 
 const ShareMovie = (props) => {
 
     const [text, setContent] = useState('');
+
+    const auth = firebase.auth();
+    const uid = auth.currentUser.uid
 
     const handleCommentSubmission = async (e) => {
         e.preventDefault();
@@ -17,6 +21,7 @@ const ShareMovie = (props) => {
                 poster: props.poster,
                 release: props.release,
                 synopsis: props.synopsis,
+                uid,
             }
             await firestore.collection('post')
             .add(newComment)

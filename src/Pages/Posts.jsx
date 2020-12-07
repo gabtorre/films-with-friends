@@ -18,7 +18,8 @@ const Posts = () => {
 
     return (  
         <>
-        {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release} />)}
+        {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
+        uid={post.uid} />)}
         </>
     );
 }
