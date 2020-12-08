@@ -5,9 +5,9 @@ import Results from './Searchbar/Results'
 import Suggestion from './Searchbar/Suggestion'
 import Card from 'react-bootstrap/Card'
 import {CardWrapper} from '../StyledComponents'
-import Posts from '../../Pages/Posts'
 
-export default class Main extends Component {
+
+export default class ProfileBar extends Component {
     state = {
         query: '',
         submitted: false,
@@ -51,12 +51,18 @@ export default class Main extends Component {
     render() {
         return (
           <>
-            <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
+            <CardWrapper>
+            <Searchbar
+            query={this.state.query}
+            handleInput={this.handleInput}
+            handleSubmit={this.handleSubmit}/>
+            { this.state.submitted ? <Suggestion data={this.state.suggestions} selected={this.state.selected} handleResult={this.handleResult} /> : null}
+            </CardWrapper>
+            {/* <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
               <CardWrapper>
                     <h1>Activity Feed </h1>
               </CardWrapper>
-            </Card>
-            <Posts />
+            </Card> */}
           </>
         )
     }

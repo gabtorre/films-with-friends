@@ -20,7 +20,7 @@ export const BlackContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #181D2F;
     color: #F5F5F1;
     height: 100%;
     width: 100%;
@@ -86,16 +86,17 @@ export const HomeContainer = styled.div`
     display: flex;
     text-align: center;
     flex-direction: row;
-    margin: 5%;
+    // margin: 5%;
 `
-export const HomeWrapper = styled.div`
+export const HomeLeftWrapper = styled.div`
     height: 100%;
     flex: 1;
     text-align: center;
     flex-direction: column;
     justify-content: flex-start
-    margin-right: 5%;
-    padding: 0 3% 0 0;
+    color: #F5F5F1;
+    // margin-right: 5%;
+    // padding: 0 3% 0 0;
 `
 
 export const PostWrapper = styled.div`
@@ -104,6 +105,17 @@ export const PostWrapper = styled.div`
     text-align: center;
     flex-direction: column;
 
+`
+
+export const HomeRightWrapper = styled.div`
+    height: 100%;
+    flex: 1;
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start
+    color: #F5F5F1;
+    // margin-left: 5%;
+    // padding: 0 0 0 3%;
 `
 
 export const CardWrapper = styled.div`
