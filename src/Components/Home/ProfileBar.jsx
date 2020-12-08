@@ -18,9 +18,9 @@ export default function ProfileBar () {
             <CardWrapper>Watch List</CardWrapper>
             <CardWrapper>Library</CardWrapper>
             <CardWrapper>
-                { user ? <Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> : null}
+                { user ? <div className="inBlock"><Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> <span>username</span><Button className="signoutbtn">Sign Out</Button></div>: null}
             </CardWrapper>
-            <CardWrapper><Button variant="outline-danger" className="menubtns">Sign Out</Button></CardWrapper>
+
 
         </>
     )

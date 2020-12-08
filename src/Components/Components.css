@@ -11,3 +11,14 @@
 .menubtns{
     margin: auto 10px;
 }
+
+.signoutbtn{
+  margin: 5%;
+  background-color: white;
+  color: red;
+  width: 50%
+}
+
+.inBlock{
+  display: inline
+}
