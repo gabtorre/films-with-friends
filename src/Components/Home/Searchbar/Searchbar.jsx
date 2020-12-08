@@ -16,7 +16,6 @@ class Search extends React.Component {
                     name ="query"/>
                     </Col>
                     <Col xs={1}>
-                    <Button type='submit'  variant="danger">Search</Button>
                     </Col>
                 </Form.Row>
             </Form>
