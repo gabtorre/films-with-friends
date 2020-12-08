@@ -112,14 +112,8 @@ export const HomeLeftWrapper = styled.div`
 
 export const PostWrapper = styled.div`
     height: 100%;
+    display: flex;
     flex: 3;
-    text-align: center;
-    flex-direction: column;
-
-`
-
-export const ActivityWrapper = styled.div`
-    height: 100%;
     text-align: center;
     flex-direction: column;
 
@@ -145,15 +139,36 @@ export const CardWrapper = styled.div`
     padding: 5%
 `
 
-export const ActivityCardWrapper = styled.div`
+export const ActivityWrapper = styled.div`
+    width: 100%;
     height: 100%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+`
+
+export const ActivityCardWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    background-color: #1A1D20;
+    padding: 5%;
+    border-radius: 8%
+`
+
+export const ActivityCardUserWrapper = styled.div`
+    display: flex;
+    text-align: left;
+    background-color: #1A1D20;
+    padding: 5%;
+    border-radius: 8%
+`
+
+export const ActivityMovieCardWrapper = styled.div`
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color: #1A1D20;
-    padding: 5%
+    padding: 3%
 `
-
 
 export const MovieCardWrapper = styled.div`
     display: flex;
@@ -161,6 +176,7 @@ export const MovieCardWrapper = styled.div`
     flex-direction: row;
     padding: 3%
 `
+
 
 
 // Auth Pages
@@ -251,6 +267,16 @@ export const Text = styled.span`
 export const CommentDiv = styled.div`
     background-color: rgba(0, 0, 0, 0.03);
     padding: 0 0 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const CommentWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    padding: 3%
 `
 
 export const CommentForm = styled.form`

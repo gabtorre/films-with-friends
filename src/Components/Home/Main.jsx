@@ -1,10 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import Searchbar from './Searchbar/Searchbar'
-import Results from './Searchbar/Results'
-import Suggestion from './Searchbar/Suggestion'
-import Card from 'react-bootstrap/Card'
-import {ActivityCardWrapper} from '../StyledComponents'
+import {ActivityCardWrapper, ActivityWrapper} from '../StyledComponents'
 import Posts from './Post/Posts'
 
 export default class Main extends Component {
@@ -51,12 +47,10 @@ export default class Main extends Component {
     render() {
         return (
           <>
-            <Card style={{ width: "auto", marginBottom: '5%'}} id="admin-card">
               <ActivityCardWrapper>
                     <h1>Activity Feed</h1>
               </ActivityCardWrapper>
-            </Card>
-            <Posts />
+                <Posts />
           </>
         )
     }

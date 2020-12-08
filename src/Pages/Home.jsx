@@ -34,7 +34,7 @@ class Home extends React.Component {
             <BlackContainer>
                 <HomeContainer>
                     { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
-                    <ActivityWrapper><Main/></ActivityWrapper>
+                    <Main/>
                     <MovieBar/>
                 </HomeContainer>
             </BlackContainer>

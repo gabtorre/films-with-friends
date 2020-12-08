@@ -1,7 +1,8 @@
 import { firestore } from '../../../firebase.js';
 import { useState } from 'react';
-import { CommentDiv, CommentForm, CommentInput } from '../../StyledComponents';
+import { CommentDiv, CommentForm, CommentInput, CommentWrapper } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
+import Avatar from "react-avatar";
 
 const AddComment = (props) => {
 
@@ -28,16 +29,19 @@ const AddComment = (props) => {
 
     return (
         <CommentDiv>
-        <CommentForm onSubmit={handleCommentSubmission}>
-            <CommentInput
-                id="comment"
-                label="Add Comment"
-                name="name"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-            />
-            <Button variant="link" type="submit">Add Comment</Button>
-        </CommentForm>
+            <CommentWrapper>
+                <Avatar name="Demo" round={true} size="30"/>
+                <CommentForm onSubmit={handleCommentSubmission}>
+                    <CommentInput
+                        id="comment"
+                        label="Add Comment"
+                        name="name"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    />
+                    <Button variant="danger" type="submit">Post</Button>
+                </CommentForm>
+            </CommentWrapper>
         </CommentDiv>
     );
 }
