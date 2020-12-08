@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { CommentDiv, CommentForm, CommentInput, CommentWrapper } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
 import Avatar from "react-avatar";
+import firebase from "firebase/app";
 
 const AddComment = (props) => {
 
     const [comment, setComment] = useState('');
+
+    const auth = firebase.auth();
 
     const handleCommentSubmission = async (e) => {
         e.preventDefault();
@@ -30,7 +33,9 @@ const AddComment = (props) => {
     return (
         <CommentDiv>
             <CommentWrapper>
-                <Avatar name="Demo" round={true} size="30"/>
+                <div style={{marginRight:"5%"}}>
+                    <Avatar src={auth.currentUser.photoURL} round={true} size="30"/>
+                </div>
                 <CommentForm onSubmit={handleCommentSubmission}>
                     <CommentInput
                         id="comment"

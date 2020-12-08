@@ -6,7 +6,9 @@ const Comment = (props) => {
     return (
         <CommentDiv>
             <CommentWrapper>
+            <div style={{marginRight:"5%"}}>
                 <Avatar name="Demo" round={true} size="30"/>
+            </div>
                 <p>{props.content}</p>
             </CommentWrapper>
         </CommentDiv>

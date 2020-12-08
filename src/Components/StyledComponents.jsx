@@ -95,9 +95,6 @@ export const HeaderTitleP = styled.p`
 export const HomeContainer = styled.div`
     height: 100%;
     display: flex;
-    text-align: center;
-    flex-direction: row;
-    // margin: 5%;
 `
 export const HomeLeftWrapper = styled.div`
     height: 100%;
@@ -140,26 +137,32 @@ export const CardWrapper = styled.div`
 `
 
 export const ActivityWrapper = styled.div`
-    width: 100%;
-    height: 100%;
     text-align: center;
     flex-direction: column;
     justify-content: space-between;
+`
+export const ActivityPostsWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 `
 
 export const ActivityCardWrapper = styled.div`
     display: flex;
     text-align: center;
-    background-color: #1A1D20;
-    padding: 5%;
-    border-radius: 8%
+    background-color: #0F121D;
+    padding: 2%;
+    border-radius: 25px;
+    max-width: 500px;
+    height: auto;
+    margin: 1%
 `
 
 export const ActivityCardUserWrapper = styled.div`
     display: flex;
     text-align: left;
-    background-color: #1A1D20;
-    padding: 5%;
+    background-color: #0F121D;
     border-radius: 8%
 `
 
@@ -167,14 +170,12 @@ export const ActivityMovieCardWrapper = styled.div`
     display: flex;
     text-align: center;
     flex-direction: column;
-    padding: 3%
 `
 
 export const MovieCardWrapper = styled.div`
     display: flex;
     text-align: center;
     flex-direction: row;
-    padding: 3%
 `
 
 
@@ -289,4 +290,63 @@ export const CommentInput = styled.input `
     padding: 0.75rem 1.25rem;
     flex-basis: 100%;
     background-color: #E7EAF1;
+`
+// Movie Sidebar
+
+export const MovieSideBarSuggestion = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #181D2F;
+    color: #F5F5F1;
+    margin: 5%;
+    border-radius: 5%;
+    width: 100%
+    flex-wrap: wrap;
+`
+
+export const MovieSideBarSuggestionCard = styled.div`
+    display: flex;
+    flex-direction: row;
+    color: #F5F5F1;
+    margin: 5%;
+    border-radius: 5%;
+    width: 100%
+    flex-wrap: wrap;
+`
+export const MovieSideBarSuggestionRight = styled.div`
+    display: flex;
+    background-color: #181D2F;
+    flex: 7;
+    flex-direction: column;
+    color: #F5F5F1;
+    flex-wrap: wrap;
+
+`
+export const MovieSideBarSuggestionImg = styled.div`
+    display: flex;
+    background-color: #181D2F;
+    flex: 3;
+    border-radius: 5%;
+`
+export const MovieSideBarRedBtn = styled.button`
+    background-color: red;
+    color: white;
+    margin: 2%;
+    border-radius: 20px;
+    padding: 2%;
+    border: none;
+    width: 100px;
+    font-size: 12px
+`
+
+export const MovieSideBarShareBtn = styled.button`
+    background-color: white;
+    color: red;
+    margin: 2%;
+    border-radius: 20px;
+    width: 80px;
+    padding: 2%;
+    border: none;
+    font-size: 12px
 `
