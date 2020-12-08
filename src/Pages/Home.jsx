@@ -1,10 +1,9 @@
 import React from "react";
 import '../App.css';
-import Menu from '../Components/Menu'
-import {BlackContainer, HomeContainer, HomeWrapper, PostWrapper} from '../Components/StyledComponents'
+import {BlackContainer, HomeContainer, HomeLeftWrapper, HomeRightWrapper, ActivityWrapper} from '../Components/StyledComponents'
 import Main from '../Components/Home/Main'
-import {WatchList, WatchedList} from '../Components/Home/Watchlist'
-import AddPost from '../Components/Home/AddPost'
+import ProfileBar from '../Components/Home/ProfileBar'
+import MovieBar from '../Components/Home/MovieBar'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -32,12 +31,11 @@ class Home extends React.Component {
     render(){
         return (
             <>
-            <Menu/>
             <BlackContainer>
                 <HomeContainer>
-                    { this.state.uid ? <HomeWrapper><WatchList uid={this.state.uid}/><WatchedList uid={this.state.uid}/></HomeWrapper> : <HomeWrapper><h3>loading...</h3></HomeWrapper>}
-                    <PostWrapper><Main/></PostWrapper>
-                    {/* <HomeWrapper><AddPost/></HomeWrapper> */}
+                    { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
+                    <Main/>
+                    <MovieBar/>
                 </HomeContainer>
             </BlackContainer>
             </>

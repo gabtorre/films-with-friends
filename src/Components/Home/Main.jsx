@@ -1,11 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import Searchbar from './Searchbar/Searchbar'
-import Results from './Searchbar/Results'
-import Suggestion from './Searchbar/Suggestion'
-import Card from 'react-bootstrap/Card'
-import {CardWrapper} from '../StyledComponents'
-import Posts from '../../Pages/Posts'
+import {ActivityCardWrapper, ActivityWrapper} from '../StyledComponents'
+import Posts from './Post/Posts'
 
 export default class Main extends Component {
     state = {
@@ -51,27 +47,10 @@ export default class Main extends Component {
     render() {
         return (
           <>
-            <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-                <CardWrapper>
-                        <Searchbar
-                        query={this.state.query}
-                        handleInput={this.handleInput}
-                        handleSubmit={this.handleSubmit}/>
-                        { this.state.submitted ? <Suggestion data={this.state.suggestions} selected={this.state.selected} handleResult={this.handleResult} /> : null}
-                        {/* { this.state.submitted && !this.state.selected ? <Suggestion data={this.state.suggestions} handleResult={this.handleResult} /> : null}
-                        { this.state.submitted && this.state.selected ? <h1>HI</h1>: null} */}
-                </CardWrapper>
-            </Card>
-
-            {/* { this.state.selected ? <Results data={this.state.result} /> : null} */}
-
-
-            <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-              <CardWrapper>
-                    <h1>Friends Activity</h1>
-              </CardWrapper>
-            </Card>
-            <Posts />
+              <ActivityCardWrapper>
+                    <h1>Activity Feed</h1>
+              </ActivityCardWrapper>
+                <Posts />
           </>
         )
     }

@@ -20,11 +20,22 @@ export const BlackContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #181D2F;
     color: #F5F5F1;
     height: 100%;
     width: 100%;
     // position: fixed;
+`
+export const SideBarContainer = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: #181D2F;
+    flex-direction: column;
+    color: #F5F5F1;
+    height: 100%;
+    width: 100%;
+    padding: 5%
+    position: fixed;
 `
 
 //Landing
@@ -86,24 +97,37 @@ export const HomeContainer = styled.div`
     display: flex;
     text-align: center;
     flex-direction: row;
-    margin: 5%;
+    // margin: 5%;
 `
-export const HomeWrapper = styled.div`
+export const HomeLeftWrapper = styled.div`
     height: 100%;
     flex: 1;
     text-align: center;
     flex-direction: column;
     justify-content: flex-start
-    margin-right: 5%;
-    padding: 0 3% 0 0;
+    color: #F5F5F1;
+    // margin-right: 5%;
+    // padding: 0 3% 0 0;
 `
 
 export const PostWrapper = styled.div`
     height: 100%;
+    display: flex;
     flex: 3;
     text-align: center;
     flex-direction: column;
 
+`
+
+export const HomeRightWrapper = styled.div`
+    height: 100%;
+    flex: 1;
+    text-align: center;
+    flex-direction: column;
+    justify-content: flex-start
+    color: #F5F5F1;
+    // margin-left: 5%;
+    // padding: 0 0 0 3%;
 `
 
 export const CardWrapper = styled.div`
@@ -115,6 +139,36 @@ export const CardWrapper = styled.div`
     padding: 5%
 `
 
+export const ActivityWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+`
+
+export const ActivityCardWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    background-color: #1A1D20;
+    padding: 5%;
+    border-radius: 8%
+`
+
+export const ActivityCardUserWrapper = styled.div`
+    display: flex;
+    text-align: left;
+    background-color: #1A1D20;
+    padding: 5%;
+    border-radius: 8%
+`
+
+export const ActivityMovieCardWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 3%
+`
 
 export const MovieCardWrapper = styled.div`
     display: flex;
@@ -122,6 +176,7 @@ export const MovieCardWrapper = styled.div`
     flex-direction: row;
     padding: 3%
 `
+
 
 
 // Auth Pages
@@ -212,6 +267,16 @@ export const Text = styled.span`
 export const CommentDiv = styled.div`
     background-color: rgba(0, 0, 0, 0.03);
     padding: 0 0 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const CommentWrapper = styled.div`
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    padding: 3%
 `
 
 export const CommentForm = styled.form`
