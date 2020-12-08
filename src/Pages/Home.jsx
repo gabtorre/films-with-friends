@@ -1,9 +1,7 @@
 import React from "react";
 import '../App.css';
-import Menu from '../Components/Menu'
-import {BlackContainer, HomeContainer, HomeLeftWrapper, HomeRightWrapper, PostWrapper} from '../Components/StyledComponents'
+import {BlackContainer, HomeContainer, HomeLeftWrapper, HomeRightWrapper, ActivityWrapper} from '../Components/StyledComponents'
 import Main from '../Components/Home/Main'
-import {WatchList, WatchedList} from '../Components/Home/Watchlist'
 import ProfileBar from '../Components/Home/ProfileBar'
 import MovieBar from '../Components/Home/MovieBar'
 import firebase from 'firebase/app';
@@ -33,11 +31,10 @@ class Home extends React.Component {
     render(){
         return (
             <>
-            {/* <Menu/> */}
             <BlackContainer>
                 <HomeContainer>
                     { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
-                    <PostWrapper><Main/></PostWrapper>
+                    <ActivityWrapper><Main/></ActivityWrapper>
                     <MovieBar/>
                 </HomeContainer>
             </BlackContainer>

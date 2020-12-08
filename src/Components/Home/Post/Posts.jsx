@@ -1,6 +1,6 @@
-import {firestore} from '../firebase.js'
+import {firestore} from '../../../firebase'
 import { useState, useEffect } from 'react';
-import Post from '../Components/Home/Post/Post'
+import Post from './Post'
 
 const Posts = () => {
 

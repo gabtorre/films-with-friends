@@ -118,6 +118,13 @@ export const PostWrapper = styled.div`
 
 `
 
+export const ActivityWrapper = styled.div`
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+
+`
+
 export const HomeRightWrapper = styled.div`
     height: 100%;
     flex: 1;
@@ -130,6 +137,15 @@ export const HomeRightWrapper = styled.div`
 `
 
 export const CardWrapper = styled.div`
+    height: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color: #1A1D20;
+    padding: 5%
+`
+
+export const ActivityCardWrapper = styled.div`
     height: 100%;
     display: flex;
     text-align: center;

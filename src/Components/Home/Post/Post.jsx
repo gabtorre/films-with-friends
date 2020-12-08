@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { firestore } from '../firebase.js';
-import Comment from '../Components/Comment';
-import AddComment from '../Components/AddComment';
-import Follow from '../Components/Follow/Follow';
-import {CardWrapper, MovieCardWrapper} from '../Components/StyledComponents'
+import { firestore } from '../../../firebase';
+import Comment from './Comment';
+import AddComment from './AddComment';
+import Follow from '../../Follow/Follow';
+import {CardWrapper, MovieCardWrapper} from '../../StyledComponents'
 import {Card} from 'react-bootstrap'
 
 const Post = (props) => {

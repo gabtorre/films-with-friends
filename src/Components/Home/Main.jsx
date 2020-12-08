@@ -4,8 +4,8 @@ import Searchbar from './Searchbar/Searchbar'
 import Results from './Searchbar/Results'
 import Suggestion from './Searchbar/Suggestion'
 import Card from 'react-bootstrap/Card'
-import {CardWrapper} from '../StyledComponents'
-import Posts from '../../Pages/Posts'
+import {ActivityCardWrapper} from '../StyledComponents'
+import Posts from './Post/Posts'
 
 export default class Main extends Component {
     state = {
@@ -51,10 +51,10 @@ export default class Main extends Component {
     render() {
         return (
           <>
-            <Card style={{ width: '100%', marginBottom: '5%'}} id="admin-card">
-              <CardWrapper>
-                    <h1>Activity Feed </h1>
-              </CardWrapper>
+            <Card style={{ width: "auto", marginBottom: '5%'}} id="admin-card">
+              <ActivityCardWrapper>
+                    <h1>Activity Feed</h1>
+              </ActivityCardWrapper>
             </Card>
             <Posts />
           </>

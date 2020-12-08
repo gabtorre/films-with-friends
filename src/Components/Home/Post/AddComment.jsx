@@ -1,6 +1,6 @@
-import { firestore } from '../firebase.js';
+import { firestore } from '../../../firebase.js';
 import { useState } from 'react';
-import { CommentDiv, CommentForm, CommentInput } from '../Components/StyledComponents';
+import { CommentDiv, CommentForm, CommentInput } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
 
 const AddComment = (props) => {
@@ -26,7 +26,7 @@ const AddComment = (props) => {
         addComment()
     }
 
-    return (  
+    return (
         <CommentDiv>
         <CommentForm onSubmit={handleCommentSubmission}>
             <CommentInput
@@ -41,5 +41,5 @@ const AddComment = (props) => {
         </CommentDiv>
     );
 }
- 
+
 export default AddComment;
