@@ -7,6 +7,7 @@ import MovieBar from '../Components/Home/MovieBar'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import '../App.css'
 
 const auth = firebase.auth();
 

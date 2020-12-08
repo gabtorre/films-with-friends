@@ -1,7 +1,7 @@
-import { Button } from 'react-bootstrap';
+import {MovieSideBarShareBtn} from '../StyledComponents'
 import firebase from 'firebase/app';
 import { firestore } from '../../firebase.js';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import Avatar from 'react-avatar';
 
 const Follow = (props) => {
 
@@ -27,9 +27,12 @@ const Follow = (props) => {
     }
 
     return (
-        <form onSubmit={handleFollow}>
-            <Button type="submit">Follow</Button>
-        </form>
+        <div style={{marginRight:"5%"}}>
+
+            <Avatar size="50" round={true} onClick={handleFollow} />
+
+        </div>
+
     );
 }
 

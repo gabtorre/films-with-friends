@@ -21,10 +21,10 @@ const Posts = () => {
 
     return (
 
-  <Row>
-    <Col>{posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
-        uid={post.uid} />)}</Col>
-  </Row>
+    <>
+        {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
+            uid={post.uid} />)}
+    </>
 
     );
 }

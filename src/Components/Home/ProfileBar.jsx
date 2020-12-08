@@ -12,6 +12,7 @@ import {
 import "react-pro-sidebar/dist/css/styles.css";
 import { FaHeart, FaUserCircle, FaBars, FaHome } from "react-icons/fa";
 import { VscLibrary } from "react-icons/vsc";
+
 const auth = firebase.auth();
 
 function ProfileBar() {
@@ -19,7 +20,7 @@ function ProfileBar() {
 
   return (
     <ProSidebar toggled="true" onToggle="false" collapsed={sideBarClosed}>
-      <Menu iconShape="square">
+      <Menu >
         { sideBarClosed ? <MenuItem icon={<FaBars onClick={() => setsideBarClosed(false)} />}>Movie.</MenuItem> : <MenuItem icon={<FaBars onClick={() => setsideBarClosed(true)} />}>Movie.</MenuItem> }
         <MenuItem icon={<FaHome />}>Home</MenuItem>
         <MenuItem icon={<FaHeart />}>Watch List</MenuItem>
@@ -35,8 +36,8 @@ function ProfileBar() {
                 size="30"
                 round={true}
               />{" "}
-              <span>username</span>
-              <MenuItem><Button className="signoutbtn">Sign Out</Button></MenuItem>
+              <span>{auth.currentUser.displayName}</span>
+              <MenuItem><Button style={{padding: "5%"}} className="signoutbtn" onClick={() => auth.signOut()}>Sign Out</Button></MenuItem>
             </div>
           ) : null}
         </MenuItem>

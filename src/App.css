@@ -4,3 +4,7 @@
     font-weight: bold;
     color: white;
   }
+
+.off-canvas-sidebar:after, .sidebar:after{
+  background: linear-gradient(#0F121D, #0F121D) !important;
+}

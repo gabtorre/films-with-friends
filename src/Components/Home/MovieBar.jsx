@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Searchbar from "./Searchbar/Searchbar";
 import Suggestion from "./Searchbar/Suggestion";
+import SidebarSuggestion from "./Searchbar/SidebarSuggestion"
 import { CardWrapper } from "../StyledComponents";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -74,7 +75,7 @@ export default class ProfileBar extends Component {
 
   render() {
     return (
-      <ProSidebar toggled="true" onToggle="false" rtl="true" collapsed={this.state.navStatus} >
+      <ProSidebar rtl="true" collapsed={this.state.navStatus} >
 
             { this.state.navStatus ?
                 <Menu><MenuItem icon={<FaSearch/>} onClick={this.navOpen}> </MenuItem></Menu>:
@@ -86,7 +87,7 @@ export default class ProfileBar extends Component {
                 handleSubmit={this.handleSubmit}
                 />
                 {this.state.submitted ? (
-                <Suggestion
+                <SidebarSuggestion
                     data={this.state.suggestions}
                     selected={this.state.selected}
                     handleResult={this.handleResult}

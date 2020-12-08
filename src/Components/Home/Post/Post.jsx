@@ -5,7 +5,11 @@ import AddComment from './AddComment';
 import Follow from '../../Follow/Follow';
 import {ActivityCardWrapper, ActivityMovieCardWrapper, ActivityCardUserWrapper, MovieCardWrapper} from '../../StyledComponents'
 import {Card} from 'react-bootstrap'
-import Avatar from "react-avatar";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+
+const auth = firebase.auth();
 
 const Post = (props) => {
 
@@ -43,9 +47,11 @@ const Post = (props) => {
                 </ActivityCardUserWrapper>
                 <Card.Text><p>{props.text}</p></Card.Text>
                 <MovieCardWrapper>
-                    <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{height: '200px', width: '200px', objectFit: 'cover'}}/>
+                    <div style={{marginRight:"5%"}}>
+                        <img src={`https://image.tmdb.org/t/p/w500/${props.image}`} style={{width: '150px', objectFit: 'cover'}}/>
+                    </div>
                     <div>
-                        <h5>{props.title}</h5>
+                        <h6>{props.title}</h6>
                         <small>{props.synopsis}</small>
                     </div>
                 </MovieCardWrapper>
