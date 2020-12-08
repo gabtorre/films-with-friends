@@ -26,6 +26,17 @@ export const BlackContainer = styled.div`
     width: 100%;
     // position: fixed;
 `
+export const SideBarContainer = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: #181D2F;
+    flex-direction: column;
+    color: #F5F5F1;
+    height: 100%;
+    width: 100%;
+    padding: 5%
+    position: fixed;
+`
 
 //Landing
 export const HeaderContainer = styled.div`

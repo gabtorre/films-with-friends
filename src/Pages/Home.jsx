@@ -36,7 +36,7 @@ class Home extends React.Component {
             {/* <Menu/> */}
             <BlackContainer>
                 <HomeContainer>
-                    { this.state.uid ? <HomeLeftWrapper><ProfileBar/></HomeLeftWrapper> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
+                    { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
                     <PostWrapper><Main/></PostWrapper>
                     <HomeRightWrapper><MovieBar/></HomeRightWrapper>
                 </HomeContainer>
