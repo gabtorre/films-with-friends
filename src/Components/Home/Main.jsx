@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { ActivityCardWrapper, ActivityPostsWrapper } from "../StyledComponents";
 import Posts from "./Post/Posts";
+import { Container } from 'react-bootstrap';
 
 export default class Main extends Component {
   state = {
@@ -51,9 +52,9 @@ export default class Main extends Component {
   render() {
     return (
       <>
-        <ActivityPostsWrapper>
-          <Posts />
-        </ActivityPostsWrapper>
+        <Container>
+            <Posts />
+        </Container>
       </>
     );
   }

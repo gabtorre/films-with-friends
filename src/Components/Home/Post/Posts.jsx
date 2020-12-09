@@ -23,14 +23,14 @@ const Posts = () => {
     return (
     <>
     <Row>
-        <Col xl={6}>
-            {posts && posts.map(post =>
+        {posts && posts.map(post =>
+            <Col xl={6}>
                 <Card>
                     <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
                     uid={post.uid} />
                 </Card>
-            )}
-        </Col>
+            </Col>
+        )}
     </Row>
     </>
     );

@@ -8,4 +8,62 @@ $card-border-radius: 5%;
     border-radius: 12%;
 }
 
+.card {
+    padding: 1.5em;
+}
+
+.post__caption {
+    font-size: 22px;
+}
+
+.post__owner {
+    display: flex;
+    flex-direction: row;
+}
+
+.post__owner-img {
+    margin-right: 15px;
+}  
+
+.post__owner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.post__owner-text__name {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.post__owner-text__label {
+    font-weight: 300;
+    font-size: 12px;
+    color: #8D8D8D;
+}
+
+.post__movie {
+    text-align: left;
+}
+
+.post__movie-title {
+    font-weight: 700;
+}
+
+.post__movie-title-date {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.post__movie-text {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 180%;
+}
+
+
+
 @import "../node_modules/bootstrap/scss/bootstrap";

@@ -8,7 +8,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import '../App.css'
-import { Container } from 'react-bootstrap';
 
 const auth = firebase.auth();
 
