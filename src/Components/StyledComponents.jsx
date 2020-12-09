@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// Containers
+
 export const MainContainer = styled.div`
     background-color: #1A1D20;
     color: #F5F5F1;
@@ -91,7 +93,7 @@ export const HeaderTitleP = styled.p`
 `
 
 
-// Home
+// Home Page
 export const HomeContainer = styled.div`
     height: 100%;
     display: flex;
@@ -288,6 +290,11 @@ export const CommentInput = styled.input `
     padding: 0.75rem 1.25rem;
     width: 75%;
 `
+
+
+
+
+
 // Movie Sidebar
 
 export const MovieSideBarSuggestion = styled.div`
@@ -346,4 +353,19 @@ export const MovieSideBarShareBtn = styled.button`
     padding: 2%;
     border: none;
     font-size: 12px
+`
+
+
+// Profile Sidebar
+
+export const LogOutBtn = styled.button`
+    background-color: white;
+    color: red;
+    margin: 5%;
+    border-radius: 15px;
+    width: 50%;
+    padding: 2%;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
 `

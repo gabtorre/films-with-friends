@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CardWrapper } from "../StyledComponents";
+import { LogOutBtn } from "../StyledComponents";
 import Avatar from "react-avatar";
 import firebase from "firebase/app";
 import "../Components.css";
@@ -83,13 +83,13 @@ function ProfileBar() {
                     round={true}
                   />{" "}
                   <span>{auth.currentUser.displayName}</span>
-                  <Button
+                  <LogOutBtn
                     style={{ padding: "5%" }}
                     className="signoutbtn"
                     onClick={() => auth.signOut()}
                   >
                     Sign Out
-                  </Button>
+                  </LogOutBtn>
                 </div>
               </div>
             </SidebarFooter>
