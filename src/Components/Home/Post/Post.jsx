@@ -45,7 +45,10 @@ const Post = (props) => {
         <>
             {/* <Follow style={{marginRight: "5%", padding: "5%"}} owner={props.uid}/> */}
             <div className="post__owner">
-                <Avatar className="post__owner-img" name="Demo" round={true} size="45"/>
+                <Avatar className="post__owner-img" src={
+                      auth.currentUser.photoURL ||
+                      "https://i.ibb.co/cJ6G9Vc/image.png"
+                    } name={props.username} round={true} size="45"/>
                 <div className="post__owner-text">
                     <div className="post__owner-text__name">{props.username}</div>
                     <div className="post__owner-text__label">recommended</div>
@@ -67,7 +70,7 @@ const Post = (props) => {
             </MovieCardWrapper>
             <>
                 {comments && comments.map(comment =>
-                <Comment key={comment.id} id={comment.id} content={comment.content} />
+                <Comment key={comment.id} id={comment.id} content={comment.content} photoURL={comment.photoURL} data={comment} />
                 )}
             </>
             <div className="mt-4">
