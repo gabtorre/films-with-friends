@@ -4,7 +4,6 @@ import Post from './Post'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Card } from 'react-bootstrap';
-import {ActivityCardWrapper, ActivityWrapper} from '../../StyledComponents'
 
 const Posts = () => {
 
@@ -15,7 +14,7 @@ const Posts = () => {
             const snapshot = await firestore.collection('post').get()
             const post = snapshot.docs.map(doc => Object.assign(doc.data(), { id: doc.id }))
             getPost(post)
-            console.log(post, 'posts')
+            // console.log(post, 'posts')
         }
         fetchData();
     }, [])

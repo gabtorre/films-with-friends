@@ -39,7 +39,7 @@ const Post = (props) => {
         fetchData();
     }, [])
 
-    console.log(props)
+    // console.log(props)
 
     return (
         <>
