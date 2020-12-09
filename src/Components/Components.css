@@ -16,7 +16,10 @@
   margin: 5%;
   background-color: white;
   color: red;
-  width: 50%
+  width: 50%;
+  font-size: 12px;
+  border-radius: 25px;
+  font-weight: bold;
 }
 
 .inBlock{
