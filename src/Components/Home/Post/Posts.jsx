@@ -28,7 +28,7 @@ const Posts = () => {
             <Col xl={6}>
                 <Card className="mb-5">
                     <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
-                    uid={post.uid} />
+                    uid={post.uid} username={post.username}/>
                 </Card>
             </Col>
         )}

@@ -37,19 +37,30 @@ export default class ProfileBar extends Component {
     });
   }
 
+  search = () =>{
+    if(this.state.query){
+        axios(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&language=en-US&query=${this.state.query}&page=1&include_adult=false`)
+        .then(result =>
+            {
+                this.setState({
+                  suggestions: result.data.results
+                })
+            }
+        ).catch(error => { console.error(error); return Promise.reject(error); });
+    }
+}
+
   handleInput = (e) => {
-    console.log(e.target.value);
     this.setState(
       {
         query: e.target.value,
-        searched: false,
+        searched: true,
       }
-      // , () => this.search()
+      , () => this.search()
     );
   };
 
   handleResult = (e) => {
-    console.log("hi");
     this.setState({
       selected: true,
       result: "",
@@ -96,7 +107,7 @@ export default class ProfileBar extends Component {
                     handleInput={this.handleInput}
                     handleSubmit={this.handleSubmit}
                   />
-                  {this.state.submitted ? (
+                  {this.state.suggestions ? (
                     <SidebarSuggestion
                       data={this.state.suggestions}
                       selected={this.state.selected}

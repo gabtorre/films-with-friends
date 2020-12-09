@@ -283,12 +283,19 @@ export const CommentForm = styled.form`
     border: 0;
     display: flex;
     align-items: center;
+    height: 100px;
 `
 
 export const CommentInput = styled.input `
     border: 0;
     padding: 0.75rem 1.25rem;
-    width: 75%;
+    width: 100%;
+    height: 100%;
+    background-color: #171C2E;
+    text-align: left;
+    border-radius: 5px;
+    font-size: 14px
+    font-color: white;
 `
 
 
@@ -316,7 +323,7 @@ export const MovieSideBarSuggestionCard = styled.div`
     margin: 5%;
     border-radius: 5%;
     width: 100%
-    flex-wrap: wrap;
+    align-content: center
 `
 export const MovieSideBarSuggestionRight = styled.div`
     display: flex;
@@ -324,7 +331,6 @@ export const MovieSideBarSuggestionRight = styled.div`
     flex: 7;
     flex-direction: column;
     color: #F5F5F1;
-    flex-wrap: wrap;
 
 `
 export const MovieSideBarSuggestionImg = styled.div`
@@ -332,6 +338,7 @@ export const MovieSideBarSuggestionImg = styled.div`
     background-color: #181D2F;
     flex: 3;
     border-radius: 5%;
+    text-align: left;
 `
 export const MovieSideBarRedBtn = styled.button`
     background-color: red;
@@ -353,6 +360,30 @@ export const MovieSideBarShareBtn = styled.button`
     padding: 2%;
     border: none;
     font-size: 12px
+`
+
+export const MovieSuggestionTitle = styled.small`
+    width: 80%;
+    height: auto;
+    word-break: break-all;
+    white-space: pre-wrap;
+    font-size: 12px;
+`
+export const MovieSuggestionDate = styled.small`
+    width: 80%;
+    height: auto;
+    word-break: break-all;
+    white-space: pre-wrap;
+    font-size: 10px
+`
+
+export const MovieResultText = styled.p`
+    width: 200px;
+    height: auto;
+    word-break: break-word;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap
 `
 
 

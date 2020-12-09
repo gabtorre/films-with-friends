@@ -23,8 +23,7 @@ class Home extends React.Component {
               const uid = user.uid;
               this.setState({uid: uid})
             } else {
-              // User is signed out
-              // ...
+              console.log("signed out successfully")
             }
           });
         }
