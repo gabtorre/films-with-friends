@@ -20,6 +20,9 @@ const AddComment = (props) => {
                 content: comment,
                 post: props.id,
                 timestamp: Date.now(),
+                username: auth.currentUser.displayName,
+                photoURL: auth.currentUser.photoURL,
+                uid: auth.currentUser.uid
             }
             await firestore.collection('comments')
             .add(newComment)
@@ -33,7 +36,10 @@ const AddComment = (props) => {
 
     return (
         <CommentForm onSubmit={handleCommentSubmission}>
-            <Avatar className="mr-3" src={auth.currentUser.photoURL} round={true} size="45"/>
+            <Avatar className="mr-3" src={
+                      auth.currentUser.photoURL ||
+                      "https://i.ibb.co/cJ6G9Vc/image.png"
+                    } round={true} size="45"/>
             <input
                 type="text"
                 id="comment"
@@ -43,6 +49,7 @@ const AddComment = (props) => {
                 name="name"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
+                required="true"
             />
             <button className="post__comment-button" type="submit">Post</button>
         </CommentForm>

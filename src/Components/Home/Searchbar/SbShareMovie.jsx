@@ -22,6 +22,7 @@ const SbShareMovie = (props) => {
                 release: props.release,
                 synopsis: props.synopsis,
                 username: auth.currentUser.displayName,
+                photoURL: auth.currentUser.photoURL,
                 uid,
             }
             await firestore.collection('post')

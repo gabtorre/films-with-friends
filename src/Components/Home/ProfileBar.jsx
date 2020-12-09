@@ -84,7 +84,7 @@ function ProfileBar() {
                     size="30"
                     round={true}
                   />{" "}
-                  <span>{auth.currentUser.displayName}</span>
+                  <b>{auth.currentUser.displayName}</b>
                   <LogOutBtn
                     style={{ padding: "5%" }}
                     className="signoutbtn"
