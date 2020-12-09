@@ -3,7 +3,6 @@ import { LogOutBtn } from "../StyledComponents";
 import Avatar from "react-avatar";
 import firebase from "firebase/app";
 import "../Components.css";
-import Button from "react-bootstrap/Button";
 import {
   ProSidebar,
   SidebarHeader,
@@ -18,11 +17,10 @@ import { VscLibrary } from "react-icons/vsc";
 const auth = firebase.auth();
 
 function ProfileBar() {
-  const [sideBarClosed, setsideBarClosed] = React.useState(true);
+  const [sideBarClosed, setsideBarClosed] = useState(true);
   const viewHeight = window.outerHeight;
 
-  console.log(auth.currentUser)
-
+  console.log(auth.currentUser.displayName)
   return (
     <div style={{ height: viewHeight, backgroundColor: "#0F121D" }}>
       <ProSidebar toggled="true" onToggle="false" collapsed={sideBarClosed}>
