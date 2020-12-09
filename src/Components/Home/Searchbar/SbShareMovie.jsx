@@ -1,10 +1,10 @@
-import { firestore } from '../../firebase.js';
+import { firestore } from '../../../firebase';
 import { useState } from 'react';
-import { CommentForm, CommentInput } from '../../Components/StyledComponents';
+import { CommentForm, CommentInput } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 
-const ShareMovie = (props) => {
+const SbShareMovie = (props) => {
 
     const [text, setContent] = useState('');
 
@@ -51,4 +51,4 @@ const ShareMovie = (props) => {
     );
 }
 
-export default ShareMovie;
+export default SbShareMovie;

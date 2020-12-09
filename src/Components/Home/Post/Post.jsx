@@ -47,7 +47,7 @@ const Post = (props) => {
             <div className="post__owner">
                 <Avatar className="post__owner-img" name="Demo" round={true} size="45"/>
                 <div className="post__owner-text">
-                    <div className="post__owner-text__name">{props.uid}</div>
+                    <div className="post__owner-text__name">{props.username}</div>
                     <div className="post__owner-text__label">recommended</div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ const Post = (props) => {
                 </div>
                 <div className="post__movie">
                     <h4 className="post__movie-title">
-                        {props.title} 
+                        {props.title}
                         <span className="post__movie-title-date">
                              ({props.release})</span></h4>
                     <div className="post__movie-text">{props.synopsis}</div>

@@ -13,13 +13,27 @@ export default class Search extends Component {
         autofill: null,
     }
 
+
+    search = () =>{
+        if(this.state.query){
+            axios(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API}&language=en-US&query=${this.state.query}&page=1&include_adult=false`)
+            .then(result =>
+                {
+                    this.setState({
+                        autofill: result.data.results
+                    })
+                }
+            ).catch(error => { console.error(error); return Promise.reject(error); });
+        }
+    }
+
+
     handleInput = (e) => {
-        console.log(e.target.value)
         this.setState({
             query: e.target.value,
-            searched: false,
+            searched: true,
         }
-        // , () => this.search()
+        , () => this.search()
         )
     }
 
@@ -34,6 +48,7 @@ export default class Search extends Component {
                 })
             }
         ).catch(error => { console.error(error); return Promise.reject(error); });
+
     }
 
 
@@ -45,6 +60,7 @@ export default class Search extends Component {
                         query={this.state.query}
                         handleInput={this.handleInput}
                         handleSubmit={this.handleSubmit}/>
+                        { this.state.searched ? <Results data={this.state.autofill} /> : null}
                         { this.state.submitted ? <Results data={this.state.result} /> : null}
                 </CardWrapper>
             </Card>
