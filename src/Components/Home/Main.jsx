@@ -51,11 +51,11 @@ export default class Main extends Component {
 
   render() {
     return (
-      <>
-        <Container>
+      <ActivityPostsWrapper>
+        <div style={{padding: "5%"}}>
             <Posts />
-        </Container>
-      </>
+        </div>
+      </ActivityPostsWrapper>
     );
   }
 }
