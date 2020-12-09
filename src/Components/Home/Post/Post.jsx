@@ -3,13 +3,17 @@ import { firestore } from '../../../firebase';
 import Comment from './Comment';
 import AddComment from './AddComment';
 import Follow from '../../Follow/Follow';
-import {ActivityCardWrapper, ActivityMovieCardWrapper, ActivityCardUserWrapper, MovieCardWrapper} from '../../StyledComponents'
+import {ActivityCardWrapper, ActivityMovieCardWrapper, ActivityCardUserWrapper, MovieCardWrapper, CommentDiv} from '../../StyledComponents'
 import {Card} from 'react-bootstrap'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import '../../../../src/custom.scss';
 import Avatar from "react-avatar";
+import React from 'react'
+import {ReactComponent as AddIcon} from '../../../Icons/Add.svg';
+import {ReactComponent as ChatIcon} from '../../../Icons/Chat.svg';
+import {ReactComponent as FavoriteIcon} from '../../../Icons/Favorite.svg';
 
 const auth = firebase.auth();
 
@@ -58,12 +62,15 @@ const Post = (props) => {
                         <span className="post__movie-title-date">
                              ({props.release})</span></h4>
                     <div className="post__movie-text">{props.synopsis}</div>
+                    <AddIcon className="post__icons"/><ChatIcon className="post__icons"/><FavoriteIcon className="post__icons"/>
                 </div>
             </MovieCardWrapper>
-            <div style={{padding: '2%', width: '100%', marginLeft: '2%'}}>
+            <>
                 {comments && comments.map(comment =>
                 <Comment key={comment.id} id={comment.id} content={comment.content} />
                 )}
+            </>
+            <div className="mt-4">
                 <AddComment id={props.id} />
             </div>
         </>

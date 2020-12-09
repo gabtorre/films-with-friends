@@ -22,10 +22,11 @@ const Posts = () => {
 
     return (
     <>
+    <h1 className="mt-5 mb-4 bold">Activity Feed</h1>
     <Row>
         {posts && posts.map(post =>
             <Col xl={6}>
-                <Card>
+                <Card className="mb-5">
                     <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
                     uid={post.uid} />
                 </Card>
