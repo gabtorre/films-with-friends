@@ -1,0 +1,11 @@
+$dark-blue: #0E111D;
+$light-blue: #171C2E;
+$card-border-width:  0px;
+$card-bg: $dark-blue !default;
+$card-border-radius: 5%;
+
+.round-border {
+    border-radius: 12%;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
