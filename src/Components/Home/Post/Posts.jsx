@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Post from './Post'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Card } from 'react-bootstrap';
 import {ActivityCardWrapper, ActivityWrapper} from '../../StyledComponents'
 
 const Posts = () => {
@@ -20,12 +21,18 @@ const Posts = () => {
     }, [])
 
     return (
-
     <>
-        {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
-            uid={post.uid} />)}
+    <Row>
+        {posts && posts.map(post =>
+            <Col xl={6}>
+                <Card>
+                    <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
+                    uid={post.uid} />
+                </Card>
+            </Col>
+        )}
+    </Row>
     </>
-
     );
 }
 
