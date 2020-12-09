@@ -266,11 +266,7 @@ export const Text = styled.span`
 `
 
 export const CommentDiv = styled.div`
-    background-color: rgba(0, 0, 0, 0.03);
-    padding: 0 0 0.75rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
 `
 
 export const CommentWrapper = styled.div`
@@ -278,18 +274,19 @@ export const CommentWrapper = styled.div`
     text-align: center;
     flex-direction: row;
     padding: 3%
+    width: 100%;
 `
 
 export const CommentForm = styled.form`
-    display: flex;
     border: 0;
+    display: flex;
+    align-items: center;
 `
 
 export const CommentInput = styled.input `
     border: 0;
     padding: 0.75rem 1.25rem;
-    flex-basis: 100%;
-    background-color: #E7EAF1;
+    width: 75%;
 `
 // Movie Sidebar
 

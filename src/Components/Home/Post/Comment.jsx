@@ -4,13 +4,11 @@ import Avatar from "react-avatar";
 
 const Comment = (props) => {
     return (
-        <CommentDiv>
-            <CommentWrapper>
-            <div style={{marginRight:"5%"}}>
-                <Avatar name="Demo" round={true} size="30"/>
-            </div>
-                <p>{props.content}</p>
-            </CommentWrapper>
+        <CommentDiv className="mt-4">
+            {/* <CommentWrapper> */}
+            <Avatar className="mr-3" name="Demo" round={true} size="45"/>
+            <div className="post__comment-text-container">{props.content}</div>
+            {/* </CommentWrapper> */}
         </CommentDiv>
 
     );

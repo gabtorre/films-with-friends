@@ -1,9 +1,10 @@
 import { firestore } from '../../../firebase.js';
 import { useState } from 'react';
 import { CommentDiv, CommentForm, CommentInput, CommentWrapper } from '../../StyledComponents';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Avatar from "react-avatar";
 import firebase from "firebase/app";
+import './Post.css'
 
 const AddComment = (props) => {
 
@@ -31,23 +32,20 @@ const AddComment = (props) => {
     }
 
     return (
-        <CommentDiv>
-            <CommentWrapper>
-                <div style={{marginRight:"5%"}}>
-                    <Avatar src={auth.currentUser.photoURL} round={true} size="30"/>
-                </div>
-                <CommentForm onSubmit={handleCommentSubmission}>
-                    <CommentInput
-                        id="comment"
-                        label="Add Comment"
-                        name="name"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    />
-                    <Button variant="danger" type="submit">Post</Button>
-                </CommentForm>
-            </CommentWrapper>
-        </CommentDiv>
+        <CommentForm onSubmit={handleCommentSubmission}>
+            <Avatar className="mr-3" src={auth.currentUser.photoURL} round={true} size="45"/>
+            <input
+                type="text"
+                id="comment"
+                className="comment-input"
+                placeholder='Add a comment...'
+                label="Add Comment"
+                name="name"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+            />
+            <button className="post__comment-button" type="submit">Post</button>
+        </CommentForm>
     );
 }
 
