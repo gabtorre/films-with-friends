@@ -36,8 +36,9 @@ const Post = (props) => {
     // console.log(props)
 
     return (
-        <ActivityCardWrapper>
-            <ActivityMovieCardWrapper>
+        // <ActivityCardWrapper>
+            // <ActivityMovieCardWrapper>
+            <>
                 <ActivityCardUserWrapper>
                 <Follow style={{marginRight: "5%", padding: "5%"}} owner={props.uid}/>
                 <div>
@@ -61,8 +62,9 @@ const Post = (props) => {
                     )}
                     <AddComment id={props.id} />
                 </div>
-            </ActivityMovieCardWrapper>
-        </ActivityCardWrapper>
+            </>
+            // </ActivityMovieCardWrapper>
+        // </ActivityCardWrapper>
     );
 }
 

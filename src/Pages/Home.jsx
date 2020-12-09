@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import '../App.css'
+import { Container } from 'react-bootstrap';
 
 const auth = firebase.auth();
 
@@ -35,7 +36,9 @@ class Home extends React.Component {
             <BlackContainer>
                 <HomeContainer>
                     { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
-                    <Main/>
+                    <Container>
+                        <Main/>
+                    </Container>
                     <MovieBar/>
                 </HomeContainer>
             </BlackContainer>
