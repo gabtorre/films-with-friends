@@ -39,14 +39,14 @@ const Post = (props) => {
         fetchData();
     }, [])
 
-    // console.log(props)
+    console.log(props)
 
     return (
         <>
             {/* <Follow style={{marginRight: "5%", padding: "5%"}} owner={props.uid}/> */}
             <div className="post__owner">
                 <Avatar className="post__owner-img" src={
-                      auth.currentUser.photoURL ||
+                      props.photoURL ||
                       "https://i.ibb.co/cJ6G9Vc/image.png"
                     } name={props.username} round={true} size="45"/>
                 <div className="post__owner-text">

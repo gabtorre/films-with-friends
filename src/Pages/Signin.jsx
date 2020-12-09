@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { AuthContainer, FormWrap, FormContent, FormLeft, Form, FormInput, FormButton, Text, TitleWrapper } from '../Components/StyledComponents'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 if(!firebase.apps.length){
     firebase.initializeApp({
@@ -45,34 +46,35 @@ const Signin = () => {
             });
     }
 
-    const handleChange = text => e => {
-        setFormData({...formData, [text]: e.target.value})
-    }
 
     const [formData, setFormData] = useState({
-        username: '',
         email: '',
         password: '',
     });
 
+    const handleChange = text => e => {
+        setFormData({...formData, [text]: e.target.value})
+    }
+
     const { email, password} = formData
 
-    const handleSubmit = () => {
-        firebase.auth().signInWithEmailAndPassword(email, password)
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             toast.success(`Signin Sucessfully! Welcome back!`);
-            history.push('/')
+            history.push('./home')
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            toast.error(errorCode + errorMessage)
+            toast.error(errorCode + ": " + errorMessage)
         });
     }
 
     return (
         <>
-            {user ? <Redirect to='/' /> : null }
+            {user ? <Redirect to='/' /> :
             <AuthContainer>
                 <ToastContainer />
                 <FormWrap>
@@ -83,11 +85,11 @@ const Signin = () => {
                         </FormLeft>
                     </FormContent> */}
                     <FormContent>
-                        <Form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit} id="signin">
                             <TitleWrapper>Welcome Back!</TitleWrapper>
                             <FormInput type='email' name='email' placeholder='Email Address' onChange={handleChange('email')} required/>
                             <FormInput type='password' name='password' placeholder='Password' onChange={handleChange('password')} required />
-                            <FormButton type='submit' style={{backgroundColor: '#E50914'}}>Sign In</FormButton>
+                            <FormButton type='submit' form="signin" style={{backgroundColor: '#E50914'}}>Sign In</FormButton>
                             <Text> Or Sign in / Sign up with Google </Text>
                             <FormButton onClick={signInWithGoogle} style={{backgroundColor: '#B81D24'}}>Google</FormButton>
                             <small>By signing up, you agree to our <NavLink to='#'> Terms and Conditions</NavLink>.</small>
@@ -95,6 +97,7 @@ const Signin = () => {
                     </FormContent>
                 </FormWrap>
             </AuthContainer>
+            }
         </>
     )
 

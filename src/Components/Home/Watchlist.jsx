@@ -10,7 +10,7 @@ export const WatchList = (props) => {
 
   const firestore = firebase.firestore();
   const list = firestore.collection('watchlist').where('uid', '==', props.uid)
-  const [ userwatchlist ] = useCollectionData(list, {idField: 'uid'});
+  const [ userwatchlist ] = useCollectionData(list, {id: 'id'});
 
   // const query = list.orderBy('createdAt', 'desc');
 
