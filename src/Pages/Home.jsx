@@ -34,9 +34,9 @@ class Home extends React.Component {
             <>
             <BlackContainer>
                 <HomeContainer>
-                    { this.state.uid ? <ProfileBar/> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
+                    { this.state.uid ? <div style={{ backgroundColor: "#0F121D" }}><ProfileBar/></div> : <HomeRightWrapper><h3>loading...</h3></HomeRightWrapper>}
                     <Main/>
-                    <MovieBar/>
+                    <div style={{ backgroundColor: "#0F121D" }}><MovieBar/></div>
                 </HomeContainer>
             </BlackContainer>
             </>
