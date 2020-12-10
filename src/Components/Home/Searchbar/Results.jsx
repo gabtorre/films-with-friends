@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -23,6 +23,8 @@ function Results(props) {
     const auth = firebase.auth();
     const [user] = useAuthState(auth);
     const uid = auth.currentUser.uid
+
+    const [rating, setRating] = useState(0);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -49,6 +51,7 @@ function Results(props) {
     }
 
     const ratingChanged = (newRating) => {
+            setRating(newRating)
             userratings.add({
             movieid: props.data.id,
             title: props.data.original_title,
@@ -86,6 +89,8 @@ function Results(props) {
                     title={props.data.original_title}
                     release={props.data.release_date}
                     synopsis={props.data.overview}
+                    id={props.data.id}
+                    rating={rating}
                 />
             </div>
         </MovieCardWrapper>

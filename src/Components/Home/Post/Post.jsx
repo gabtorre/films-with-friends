@@ -51,7 +51,8 @@ const Post = (props) => {
                     } name={props.username} round={true} size="45"/>
                 <div className="post__owner-text">
                     <div className="post__owner-text__name">{props.username}</div>
-                    <div className="post__owner-text__label">recommended</div>
+                    <div className="post__owner-text__label">Rated {props.rating} stars</div>
+                    { props.rating > 3 ? <div className="post__owner-text__label">recommended</div> : <div className="post__owner-text__label">not recommended</div>}
                 </div>
             </div>
             <p className="post__caption mt-3">{props.text}</p>
