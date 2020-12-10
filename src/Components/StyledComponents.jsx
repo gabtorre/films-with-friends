@@ -295,9 +295,20 @@ export const CommentInput = styled.input `
     text-align: left;
     border-radius: 5px;
     font-size: 14px
-    font-color: white;
+    color: #FFF;
 `
 
+export const CommentTextArea = styled.textarea `
+    border: 0;
+    padding: 0.75rem 1.25rem;
+    width: 100%;
+    height: 100%;
+    background-color: #171C2E;
+    text-align: left;
+    border-radius: 5px;
+    font-size: 14px
+    color: #FFF;
+`
 
 
 

@@ -1,6 +1,6 @@
 import { firestore } from '../../../firebase';
 import { useState } from 'react';
-import { CommentForm, CommentInput } from '../../StyledComponents';
+import { CommentForm, CommentTextArea } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 
@@ -10,7 +10,6 @@ const SbShareMovie = (props) => {
 
     const auth = firebase.auth();
     const uid = auth.currentUser.uid
-
 
     const handleCommentSubmission = async (e) => {
         e.preventDefault();
@@ -40,7 +39,8 @@ const SbShareMovie = (props) => {
         async function shareMovie() {
             await usersRef.update(
                 {
-                  ratings: firebase.firestore.FieldValue.arrayUnion(newRating)
+                  ratings: firebase.firestore.FieldValue.arrayUnion(newRating),
+                  photoURL: auth.currentUser.photoURL,
                 }
             );
             await firestore.collection('post')
@@ -56,11 +56,12 @@ const SbShareMovie = (props) => {
     return (
         <>
         <CommentForm id="sharePostForm" onSubmit={handleCommentSubmission}>
-            <CommentInput
+            <CommentTextArea
                 id="text"
                 label="Share"
                 name="text"
                 value={text}
+                style={{color: "#FFF"}}
                 placeholder="?What do you think"
                 onChange={(e) => setContent(e.target.value)}
             />
