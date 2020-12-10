@@ -1,58 +1,52 @@
-import {CardWrapper} from '../StyledComponents'
-import Card from 'react-bootstrap/Card'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import styled from 'styled-components';
+import HorizontalScroll from 'react-scroll-horizontal';
 
 export const WatchList = (props) => {
 
-    console.log(props.user, "hello")
+    const MoviePoster = styled.img`
+    width: 150px;
+    border-radius: 10%;
+    `
+    const MovieTitle = styled.p`
+    text-align: center;
+    font-weight: 700;
+    line-height: 1em;
+    padding: 10px 0;
+    `
+    const ListContainer = styled.div`
+    height: 22.7em;
+    `
+    const ParentDiv = styled.div`
+    width: 50em;
+    height: 100%;
+    `
+    const ChildDiv = styled.div`
+    width: 150px;
+    height: 100%;
+    margin: 10px;
+    `
+    
+    const firestore = firebase.firestore();
+    const list = firestore.collection('watchlist').where('uid', '==', props.user)
+    const [ userwatchlist ] = useCollectionData(list, {id: 'id'});
 
-  const firestore = firebase.firestore();
-  const list = firestore.collection('watchlist').where('uid', '==', props.user)
-  const [ userwatchlist ] = useCollectionData(list, {id: 'id'});
-
-  return (
-    <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
-        <CardWrapper>
-            <Card.Title>Watchlist</Card.Title>
-            {userwatchlist && userwatchlist.map(movie =>
-             <>
-                <Card.Img variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover'}}/>
-                <Card.Text key={movie.id}>{movie.title}</Card.Text>
-              </>
-
-            )}
-        </CardWrapper>
-    </Card>
-  );
-
+    return (
+        <ListContainer>
+            <h1 className="mt-5 mb-4 bold">Watch List</h1>
+            <ParentDiv>
+                <HorizontalScroll>
+                    {userwatchlist && userwatchlist.map(movie =>
+                    <ChildDiv>
+                        <MoviePoster variant="top" src={movie.poster} />
+                        <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+                    </ChildDiv>
+                    )}
+                </HorizontalScroll>
+            </ParentDiv>
+        </ListContainer>
+    );
 }
-
-// export const WatchedList = (props) => {
-
-//   const firestore = firebase.firestore();
-//   const list = firestore.collection('watched').where('uid', '==', props.uid)
-//   const [ userwatchedlist ] = useCollectionData(list, {idField: 'uid'});
-
-//   // const query = list.orderBy('createdAt', 'desc');
-
-//   return (
-//     <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
-//         <CardWrapper>
-//             <Card.Title>Watched</Card.Title>
-//             {userwatchedlist && userwatchedlist.map(movie =>
-//              <>
-//                 <Card.Img variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover'}}/>
-//                 <Card.Text key={movie.id}>{movie.title}</Card.Text>
-//               </>
-
-//             )}
-//         </CardWrapper>
-//     </Card>
-//   );
-
-// }
-

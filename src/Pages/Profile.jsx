@@ -1,7 +1,5 @@
-import firebase from 'firebase/app';
 import { WatchList } from '../Components/Profile/Watchlist';
 import { WatchedList } from '../Components/Profile/WatchedList';
-
 
 const Profile = (props) => {
 
