@@ -71,7 +71,7 @@ function ProfileBar(props) {
                   padding: "20px 24px",
                 }}
               >
-                <div className="inBlock">
+                <div className="inBlock" >
                   <Avatar
                     src={
                       auth.currentUser.photoURL ||
@@ -79,8 +79,9 @@ function ProfileBar(props) {
                     }
                     size="30"
                     round={true}
+                    onClick={() => props.pageSwitcher("edit")}
                   />{" "}
-                  <b>{auth.currentUser.displayName}</b>
+                  <b onClick={() => props.pageSwitcher("edit")}>{auth.currentUser.displayName}</b>
                   <LogOutBtn
                     style={{ padding: "5%" }}
                     className="signoutbtn"
