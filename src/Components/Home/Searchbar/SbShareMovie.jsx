@@ -11,24 +11,40 @@ const SbShareMovie = (props) => {
     const auth = firebase.auth();
     const uid = auth.currentUser.uid
 
+
     const handleCommentSubmission = async (e) => {
         e.preventDefault();
-
-        async function shareMovie() {
-            let newComment = {
+            const newPost = {
                 text: text,
+                movieid: props.id,
                 title: props.title,
                 poster: props.poster,
                 release: props.release,
                 synopsis: props.synopsis,
                 username: auth.currentUser.displayName,
                 photoURL: auth.currentUser.photoURL,
+                rating: props.rating,
                 uid,
             }
+            const newRating = {
+                title: props.title,
+                rating: props.rating,
+                movieid: props.id,
+                poster: props.poster,
+                release: props.release,
+            }
+        const usersRef = await firestore.collection('users').doc(uid);
+
+        async function shareMovie() {
+            await usersRef.update(
+                {
+                  ratings: firebase.firestore.FieldValue.arrayUnion(newRating)
+                }
+            );
             await firestore.collection('post')
-            .add(newComment)
+            .add(newPost)
             .catch(err => {
-                console.error('error adding comment: ', err)
+                console.error('error adding post: ', err)
             })
             setContent("")
         }
