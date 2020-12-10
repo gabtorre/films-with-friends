@@ -10,6 +10,7 @@
 .post__icons {
     margin: 10px 10px 0 0;
     background-color: #DC3545;
+    cursor: pointer;
 }
 
 .post__icons g {
