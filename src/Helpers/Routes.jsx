@@ -5,6 +5,7 @@ import Signup from '../Pages/Signup'
 import Landing from '../Pages/Landing'
 import Home from '../Pages/Home'
 import Posts from '../Pages/Posts'
+import Profile from '../Pages/Profile'
 
 const Routes = (props) => {
 
@@ -14,6 +15,7 @@ const Routes = (props) => {
                 <Route path='/home' component={Home} exact />
                 <Route path='/signin' component={Signin} exact />
                 <Route path='/posts' component={Posts} exact />
+                <Route path='/profile/:id' component={Profile} exact />
                 <Route path='/signup' component={Signup} exact />
         </Switch>
     );

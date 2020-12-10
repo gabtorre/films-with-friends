@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import { WatchList } from '../Components/Profile/Watchlist';
+import { WatchedList } from '../Components/Profile/WatchedList';
 
-export default class Profile extends Component {
-    render() {
-        return (
-            <div>
+const Profile = (props) => {
 
-            </div>
-        )
-    }
+    return ( 
+        <> 
+        <WatchList user={props.match.params.id}/>
+        <WatchedList user={props.match.params.id}/>
+        </>
+    );
 }
+ 
+export default Profile;
