@@ -20,7 +20,6 @@ function ProfileBar() {
   const [sideBarClosed, setsideBarClosed] = useState(true);
   const viewHeight = window.outerHeight;
 
-  console.log(auth.currentUser.displayName)
   return (
     <div style={{ height: viewHeight, backgroundColor: "#0F121D" }}>
       <ProSidebar toggled="true" onToggle="false" collapsed={sideBarClosed}>

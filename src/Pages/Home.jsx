@@ -8,6 +8,7 @@ import {
 import Main from "../Components/Home/Main";
 import ProfileBar from "../Components/Home/ProfileBar";
 import MovieBar from "../Components/Home/MovieBar";
+import EditProfile from '../Components/Home/Profile/EditProfile'
 import { Redirect, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -44,15 +45,18 @@ class Home extends React.Component {
               <ToastContainer />
             <HomeContainer>
               {this.state.uid ? (
+                <>
                 <div style={{ backgroundColor: "#0F121D" }}>
                   <ProfileBar />
                 </div>
+                {/* <EditProfile /> */}
+                </>
               ) : (
                 <HomeRightWrapper>
                   <h3>loading...</h3>
                 </HomeRightWrapper>
               )}
-              <Main />
+              <Main/>
               <div style={{ backgroundColor: "#0F121D" }}>
                 <MovieBar />
               </div>

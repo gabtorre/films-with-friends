@@ -64,7 +64,6 @@ function SuggestionCard(props) {
       title: props.data.original_title,
       date: props.data.release_date,
       poster: imgurl,
-      uid,
   }
     await usersRef.update(
       {

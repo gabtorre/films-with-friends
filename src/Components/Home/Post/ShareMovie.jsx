@@ -1,6 +1,6 @@
-import { firestore } from '../../firebase.js';
+import { firestore } from '../../../firebase.js';
 import { useState } from 'react';
-import { CommentForm, CommentInput } from '../../Components/StyledComponents';
+import { CommentForm, CommentInput } from '../../StyledComponents';
 import { Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 
