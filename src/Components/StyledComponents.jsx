@@ -95,6 +95,7 @@ export const HeaderTitleP = styled.p`
 
 // Home Page
 export const HomeContainer = styled.div`
+    width: 100%;
     height: 100%;
     display: flex;
 `
@@ -410,4 +411,10 @@ export const LogOutBtn = styled.button`
     border: none;
     font-size: 12px;
     font-weight: bold;
+`
+export const EditProfileContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto
 `
