@@ -19,7 +19,7 @@ const AddComment = (props) => {
             let newComment = {
                 content: comment,
                 post: props.id,
-                timestamp: Date.now(),
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 username: auth.currentUser.displayName,
                 photoURL: auth.currentUser.photoURL,
                 uid: auth.currentUser.uid

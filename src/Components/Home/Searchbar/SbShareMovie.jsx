@@ -31,6 +31,7 @@ const SbShareMovie = (props) => {
                 title: props.title,
                 rating: props.rating,
                 movieid: props.id,
+                createdAt: Date.now(),
                 poster: props.poster,
                 release: props.release,
             }
