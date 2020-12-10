@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import Avatar from "react-avatar";
+import 'firebase/firestore';
 import {
   MovieSuggestionTitle,
   MovieSuggestionDate,
@@ -16,9 +16,8 @@ import {
 import ReactStars from "react-rating-stars-component";
 import Results from "./Results";
 import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
-import { isCompositeType } from "graphql";
 
-export default function Suggestion(props) {
+export const Suggestion = (props) => {
   const [finalResult, setFinalResult] = useState("");
 
   return (
@@ -41,7 +40,7 @@ export default function Suggestion(props) {
       )}
     </>
   );
-}
+
 
 function SuggestionCard(props) {
   const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`;
@@ -119,6 +118,59 @@ function SuggestionCard(props) {
         <MovieSideBarRedBtn onClick={addtoWatchList}>
           watch-list <RiAddLine />
         </MovieSideBarRedBtn>
+      </MovieSideBarSuggestionCard>
+    </MovieSideBarSuggestion>
+  );
+}
+
+}
+
+export const UserSuggestion = (props) => {
+  const [finalResult, setFinalResult] = useState("");
+  console.log(props)
+  return (
+    <>
+      {!finalResult ? (
+        <div>
+          {props.data &&
+            props.data.map((result) => (
+              <UserSuggestionCard
+                key={result.displayName}
+                data={result}
+                // setFinalResult={setFinalResult}
+                // handleResult={props.handleResult}
+                // search={props.searched}
+              />
+            ))}
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+function UserSuggestionCard(props) {
+  console.log(props)
+
+  const handleFollow = (e) => {
+    e.preventDefault();
+    // props.setFinalResult(props.data);
+  };
+
+
+  return (
+    <MovieSideBarSuggestion>
+      <MovieSideBarSuggestionCard>
+      <div className="post__owner-text">
+      <div className="usersearch-text__name">
+           {props.data.displayName}
+          </div>
+          <MovieSideBarRedBtn onClick={handleFollow} width={70}>
+          follow <RiAddLine />
+          </MovieSideBarRedBtn>
+          </div>
+        <div className="post__owner">
+        <Avatar src={props.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>
+        </div>
       </MovieSideBarSuggestionCard>
     </MovieSideBarSuggestion>
   );

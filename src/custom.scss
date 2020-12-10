@@ -23,7 +23,7 @@ $card-border-radius: 5%;
 
 .post__owner-img {
     margin-right: 15px;
-}  
+}
 
 .post__owner-text {
     display: flex;
@@ -35,6 +35,13 @@ $card-border-radius: 5%;
 .post__owner-text__name {
     font-weight: 700;
     font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.usersearch-text__name {
+    font-weight: 700;
+    font-size: 15px;
     padding: 0px;
     margin: 0px;
 }

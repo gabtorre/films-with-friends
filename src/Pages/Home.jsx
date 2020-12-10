@@ -8,15 +8,15 @@ import {
 import Main from "../Components/Home/Main";
 import ProfileBar from "../Components/Home/ProfileBar";
 import MovieBar from "../Components/Home/MovieBar";
-import EditProfile from '../Components/Home/Profile/EditProfile'
-import Profile from '../Components/Home/Profile/Profile'
+import EditProfile from "../Components/Home/Profile/EditProfile";
+import Profile from "../Components/Home/Profile/Profile";
 import { Redirect, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "../App.css";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Home extends React.Component {
   state = {
@@ -39,31 +39,39 @@ class Home extends React.Component {
   }
 
   pageSwitcher = (now) => {
-    this.setState(
-      {
-        page: now
-      }
-    );
-  }
+    this.setState({
+      page: now,
+    });
+  };
+
+  findProfile = (id) => {
+    this.setState({
+      profileuid: id,
+    });
+  };
 
   render() {
     return (
       <>
         {this.state.signedin ? (
           <BlackContainer>
-              <ToastContainer />
+            <ToastContainer />
             <HomeContainer>
               {this.state.uid ? (
                 <>
-                <div style={{ backgroundColor: "#0F121D" }}>
-                  <ProfileBar pageSwitcher={this.pageSwitcher}/>
-                </div>
-              {this.state.page == "home" && <Main/> }
-              {this.state.page == "edit" && <EditProfile uid={this.state.uid} /> }
-              {this.state.page == "profile" && <Profile uid={this.state.uid} /> }
-              <div style={{ backgroundColor: "#0F121D" }}>
-                <MovieBar />
-              </div>
+                  <div style={{ backgroundColor: "#0F121D" }}>
+                    <ProfileBar pageSwitcher={this.pageSwitcher} />
+                  </div>
+                  {this.state.page == "home" && <Main />}
+                  {this.state.page == "edit" && (
+                    <EditProfile uid={this.state.uid} />
+                  )}
+                  {this.state.page == "profile" && (
+                    <Profile uid={this.state.uid} />
+                  )}
+                  <div style={{ backgroundColor: "#0F121D" }}>
+                    <MovieBar findProfile={this.findProfile} />
+                  </div>
                 </>
               ) : (
                 <HomeRightWrapper>
@@ -73,7 +81,7 @@ class Home extends React.Component {
             </HomeContainer>
           </BlackContainer>
         ) : (
-          <Redirect to="./signin"/>
+          <Redirect to="./signin" />
         )}
       </>
     );
