@@ -24,6 +24,7 @@ const SbShareMovie = (props) => {
                 username: auth.currentUser.displayName,
                 photoURL: auth.currentUser.photoURL,
                 rating: props.rating,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 uid,
             }
             const newRating = {
