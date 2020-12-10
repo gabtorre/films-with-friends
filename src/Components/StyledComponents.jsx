@@ -423,3 +423,22 @@ export const EditProfileContainer = styled.div`
     justify-content: center;
     margin: 0 auto
 `
+
+//MOVIE LIST PAGE 
+
+export const MoviePoster = styled.img`
+width: 100%;
+border-radius: 10%;
+`
+export const MovieTitle = styled.p`
+text-align: center;
+font-weight: 700;
+line-height: 1em;
+padding: 10px 0;
+`
+export const ChildDiv = styled.div`
+width: 100%;
+min-width: 150px;
+height: 100%;
+margin: 10px;
+`
