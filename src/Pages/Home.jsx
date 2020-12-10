@@ -9,6 +9,7 @@ import Main from "../Components/Home/Main";
 import ProfileBar from "../Components/Home/ProfileBar";
 import MovieBar from "../Components/Home/MovieBar";
 import EditProfile from '../Components/Home/Profile/EditProfile'
+import Profile from '../Components/Home/Profile/Profile'
 import { Redirect, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -17,13 +18,13 @@ import "../App.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const auth = firebase.auth();
-
 class Home extends React.Component {
   state = {
     loaded: false,
     uid: null,
     signedin: true,
+    page: "home",
+    profileuid: null,
   };
 
   componentDidMount() {
@@ -37,6 +38,14 @@ class Home extends React.Component {
     });
   }
 
+  pageSwitcher = (now) => {
+    this.setState(
+      {
+        page: now
+      }
+    );
+  }
+
   render() {
     return (
       <>
@@ -47,19 +56,20 @@ class Home extends React.Component {
               {this.state.uid ? (
                 <>
                 <div style={{ backgroundColor: "#0F121D" }}>
-                  <ProfileBar />
+                  <ProfileBar pageSwitcher={this.pageSwitcher}/>
                 </div>
-                {/* <EditProfile /> */}
+              {this.state.page == "home" && <Main/> }
+              {this.state.page == "edit" && <EditProfile uid={this.state.uid} /> }
+              {this.state.page == "profile" && <Profile uid={this.state.uid} /> }
+              <div style={{ backgroundColor: "#0F121D" }}>
+                <MovieBar />
+              </div>
                 </>
               ) : (
                 <HomeRightWrapper>
                   <h3>loading...</h3>
                 </HomeRightWrapper>
               )}
-              <Main/>
-              <div style={{ backgroundColor: "#0F121D" }}>
-                <MovieBar />
-              </div>
             </HomeContainer>
           </BlackContainer>
         ) : (

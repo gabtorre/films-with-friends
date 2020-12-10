@@ -11,12 +11,12 @@ import {
   MenuItem,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import { FaHeart, FaUserCircle, FaBars, FaHome } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaHome } from "react-icons/fa";
 import { VscLibrary } from "react-icons/vsc";
 
 const auth = firebase.auth();
 
-function ProfileBar() {
+function ProfileBar(props) {
   const [sideBarClosed, setsideBarClosed] = useState(true);
   const viewHeight = window.outerHeight;
 
@@ -59,10 +59,9 @@ function ProfileBar() {
             </SidebarHeader>
           )}
           <Menu>
-            {/* { sideBarClosed ? <MenuItem icon={<FaBars onClick={() => setsideBarClosed(false)} />}>Movie.</MenuItem> : <MenuItem icon={<FaBars onClick={() => setsideBarClosed(true)} />}>Movie.</MenuItem> } */}
-            <MenuItem icon={<FaHome />}>Home</MenuItem>
-            <MenuItem icon={<FaHeart />}>Watch List</MenuItem>
-            <MenuItem icon={<VscLibrary />}>Library</MenuItem>
+            <MenuItem icon={<FaHome />} onClick={() => props.pageSwitcher("home")}>Home</MenuItem>
+            <MenuItem icon={<VscLibrary />} onClick={() => props.pageSwitcher("profile")}>Library</MenuItem>
+            <MenuItem icon={<FaUserCircle />} onClick={() => props.pageSwitcher("edit")}>Profile</MenuItem>
           </Menu>
           {auth.currentUser && !sideBarClosed ? (
             <SidebarFooter style={{ textAlign: "center", marginTop: "80%"}}>

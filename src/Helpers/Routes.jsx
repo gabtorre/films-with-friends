@@ -32,14 +32,14 @@ class Routes extends React.Component {
         <Route path="/" component={Landing} exact />
         <Route path="/signin" component={Signin} exact />
         <Route path="/signup" component={Signup} exact />
-        {this.state.signed && (
+        { this.state.uid && (
           <Switch>
             <Route path="/home" component={Home} exact />
             <Route path="/posts" component={Posts} exact />
             <Route path="/profile/:id" component={Profile} exact />
           </Switch>
         )}
-        <Route path="*" render={() => <h1>404 Not Found</h1>} />
+        {/* <Route path="*" render={() => <h1>404 Not Found</h1>} /> */}
       </Switch>
     );
   }
