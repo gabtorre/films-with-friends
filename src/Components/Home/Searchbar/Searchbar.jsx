@@ -4,6 +4,11 @@ import { FaSearch } from "react-icons/fa";
 import "../Post/Post.css";
 
 export const SearchBar = (props) => {
+
+  const handleSearchInputs = (e) => {
+    props.handleInput(e)
+    props.handleUserSearchInput(e)
+  }
   return (
     <Form onSubmit={props.handleSubmit}>
       <button className="post__comment-button" type="submit">
@@ -19,7 +24,7 @@ export const SearchBar = (props) => {
           borderRadius: "10px 0 0 0",
         }}
         value={props.query}
-        onInput={props.handleInput}
+        onInput={handleSearchInputs}
         name="query"
       />
     </Form>

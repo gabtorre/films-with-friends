@@ -69,8 +69,9 @@ export default class ProfileBar extends Component {
       .get()
       .then(snaps => {
         snaps.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          docs.push(doc.data());
+          let pid = doc.id
+          let pdata = doc.data()
+          docs.push({data: pdata, uid: pid});
         })
           this.setState({userSuggestions: docs})
       })
@@ -135,11 +136,7 @@ export default class ProfileBar extends Component {
                   <SearchBar
                     query={this.state.query}
                     handleInput={this.handleInput}
-                    handleSubmit={this.handleSubmit}
-                  />
-                  <UserSearchBar
-                    query={this.state.userQuery}
-                    handleInput={this.handleUserSearchInput}
+                    handleUserSearchInput={this.handleUserSearchInput}
                     handleSubmit={this.handleSubmit}
                   />
                     {this.state.userSuggestions ? (
