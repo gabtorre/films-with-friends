@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const WatchList = (props) => {

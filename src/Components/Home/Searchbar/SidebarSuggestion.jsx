@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+import Avatar from "react-avatar";
 import {
   MovieSuggestionTitle,
   MovieSuggestionDate,
@@ -16,9 +16,10 @@ import {
 import ReactStars from "react-rating-stars-component";
 import Results from "./Results";
 import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
-import { isCompositeType } from "graphql";
 
-export default function Suggestion(props) {
+
+
+export const Suggestion = (props) => {
   const [finalResult, setFinalResult] = useState("");
 
   return (
@@ -41,16 +42,14 @@ export default function Suggestion(props) {
       )}
     </>
   );
-}
+
 
 function SuggestionCard(props) {
+  const firestore = firebase.firestore();
+  const auth = firebase.auth();
   const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`;
   const noimg =
     "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
-  const firestore = firebase.firestore();
-  const auth = firebase.auth();
-  const uid = auth.currentUser.uid
-  const usersRef = firestore.collection('users').doc(uid);
 
   const handleSharePost = (e) => {
     e.preventDefault();
@@ -58,6 +57,8 @@ function SuggestionCard(props) {
   };
 
   const addtoWatchList = async(e) => {
+  const uid = auth.currentUser.uid
+  const usersRef = firestore.collection('users').doc(uid);
     e.preventDefault();
     const toWatchMovieDetail = {
       movieid: props.data.id,
@@ -119,6 +120,58 @@ function SuggestionCard(props) {
         <MovieSideBarRedBtn onClick={addtoWatchList}>
           watch-list <RiAddLine />
         </MovieSideBarRedBtn>
+      </MovieSideBarSuggestionCard>
+    </MovieSideBarSuggestion>
+  );
+}
+
+}
+
+export const UserSuggestion = (props) => {
+  return (
+    <>
+        <div>
+          {props.data &&
+            props.data.map((result) => (
+              <UserSuggestionCard
+                key={result.data.uid}
+                data={result}
+              />
+            ))}
+        </div>
+    </>
+  );
+}
+
+function UserSuggestionCard(props) {
+  console.log(props.data.uid)
+  const auth = firebase.auth();
+  const uid = auth.currentUser.uid
+  const handleFollow = async(e) => {
+    const usersRef = await firebase.firestore().collection('users').doc(uid);
+    e.preventDefault();
+    await usersRef.update(
+      {
+        friendlist: firebase.firestore.FieldValue.arrayUnion(props.data.uid)
+      }
+    );
+}
+
+
+  return (
+    <MovieSideBarSuggestion>
+      <MovieSideBarSuggestionCard>
+      <div className="post__owner-text">
+      <div className="usersearch-text__name">
+           {props.data.data.displayName}
+          </div>
+          <MovieSideBarRedBtn onClick={handleFollow} width={70}>
+          follow <RiAddLine />
+          </MovieSideBarRedBtn>
+          </div>
+        <div className="post__owner">
+        <Avatar src={props.data.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>
+        </div>
       </MovieSideBarSuggestionCard>
     </MovieSideBarSuggestion>
   );

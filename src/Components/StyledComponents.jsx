@@ -353,13 +353,13 @@ export const MovieSideBarSuggestionImg = styled.div`
     text-align: left;
 `
 export const MovieSideBarRedBtn = styled.button`
-    background-color: red;
+    background-color: #DC3545;
     color: white;
     margin: 2%;
     border-radius: 20px;
     padding: 2%;
     border: none;
-    width: 100px;
+    width: ${({width}) => (width ? `${width}px` : '100px')};
     font-size: 12px
 `
 
@@ -396,6 +396,11 @@ export const MovieResultText = styled.p`
     word-break: break-all;
     word-wrap: break-word;
     white-space: pre-wrap
+`
+
+export const UserSearchCard = styled.p`
+    display: flex;
+    flex-direction: row;
 `
 
 

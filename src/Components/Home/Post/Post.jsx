@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import { firestore } from "../../../firebase";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
 import Follow from "../../Follow/Follow";
 import {
-  ActivityCardWrapper,
-  ActivityMovieCardWrapper,
-  ActivityCardUserWrapper,
   MovieCardWrapper,
-  CommentDiv,
 } from "../../StyledComponents";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";

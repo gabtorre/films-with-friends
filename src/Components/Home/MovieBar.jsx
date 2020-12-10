@@ -1,24 +1,26 @@
 import axios from "axios";
 import React, { Component } from "react";
-import Searchbar from "./Searchbar/Searchbar";
-import Suggestion from "./Searchbar/Suggestion";
-import SidebarSuggestion from "./Searchbar/SidebarSuggestion";
-import { CardWrapper } from "../StyledComponents";
+import {SearchBar, UserSearchBar} from "./Searchbar/Searchbar";
+import {Suggestion, UserSuggestion} from "./Searchbar/SidebarSuggestion";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import { FaHeart, FaSearch, FaBars, FaHome } from "react-icons/fa";
-const viewHeight = window.outerHeight;
+import { FaSearch } from "react-icons/fa";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 export default class ProfileBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: "",
+      userQuery: "",
       submitted: false,
       selected: false,
       result: null,
       suggestions: null,
       navStatus: true,
+      userSuggestions: null
     };
     this.navClose = this.navClose.bind(this);
     this.navOpen = this.navOpen.bind(this);
@@ -57,6 +59,35 @@ export default class ProfileBar extends Component {
         searched: true,
       }
       , () => this.search()
+    );
+  };
+
+  userSearch = () =>{
+    if(this.state.userQuery){
+      const docs = []
+      firebase.firestore().collection('users').where("displayName", "==", this.state.userQuery)
+      .get()
+      .then(snaps => {
+        snaps.forEach(function(doc) {
+          let pid = doc.id
+          let pdata = doc.data()
+          docs.push({data: pdata, uid: pid});
+        })
+          this.setState({userSuggestions: docs})
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      });
+    }
+}
+
+  handleUserSearchInput = (e) => {
+    this.setState(
+      {
+        userQuery: e.target.value,
+        searched: true,
+      }
+      , () => this.userSearch()
     );
   };
 
@@ -102,13 +133,21 @@ export default class ProfileBar extends Component {
                   onClick={this.navClose}
                 ></MenuItem>
                 <MenuItem>
-                  <Searchbar
+                  <SearchBar
                     query={this.state.query}
                     handleInput={this.handleInput}
+                    handleUserSearchInput={this.handleUserSearchInput}
                     handleSubmit={this.handleSubmit}
                   />
+                    {this.state.userSuggestions ? (
+                      <UserSuggestion
+                        data={this.state.userSuggestions}
+                        selected={this.state.selected}
+                        handleResult={this.handleResult}
+                      />
+                    ) : null}
                   {this.state.suggestions ? (
-                    <SidebarSuggestion
+                    <Suggestion
                       data={this.state.suggestions}
                       selected={this.state.selected}
                       handleResult={this.handleResult}

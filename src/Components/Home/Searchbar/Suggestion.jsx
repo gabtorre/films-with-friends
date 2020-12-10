@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import ReactStars from "react-rating-stars-component";
 import Results from "./Results"
 
 export default function Suggestion(props) {
