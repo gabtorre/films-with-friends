@@ -426,6 +426,7 @@ export const EditProfileContainer = styled.div`
 
 export const MoviePoster = styled.img`
 width: 100%;
+height: auto;
 border-radius: 10%;
 `
 export const MovieTitle = styled.p`
