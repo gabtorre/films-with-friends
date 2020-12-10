@@ -1,6 +1,5 @@
 import { WatchList } from '../Profile/Watchlist';
 import { WatchedList } from '../Profile/WatchedList';
-import { ActivityPostsWrapper }  from '../../StyledComponents'
 import styled from 'styled-components';
 import {Container} from 'react-bootstrap';
 

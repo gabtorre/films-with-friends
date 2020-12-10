@@ -56,7 +56,7 @@ function SuggestionCard(props) {
     props.setFinalResult(props.data);
   };
 
-  const addtoWatchList = async(e) => {
+  const addWatchList = async(e) => {
   const uid = auth.currentUser.uid
   const usersRef = firestore.collection('users').doc(uid);
     e.preventDefault();
@@ -117,7 +117,7 @@ function SuggestionCard(props) {
           share
           <RiShareForwardFill />
         </MovieSideBarShareBtn>
-        <MovieSideBarRedBtn onClick={addtoWatchList}>
+        <MovieSideBarRedBtn onClick={addWatchList}>
           watch-list <RiAddLine />
         </MovieSideBarRedBtn>
       </MovieSideBarSuggestionCard>
@@ -144,7 +144,6 @@ export const UserSuggestion = (props) => {
 }
 
 function UserSuggestionCard(props) {
-  console.log(props.data.uid)
   const auth = firebase.auth();
   const uid = auth.currentUser.uid
   const handleFollow = async(e) => {
