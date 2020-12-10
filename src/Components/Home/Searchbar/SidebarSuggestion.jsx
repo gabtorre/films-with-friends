@@ -16,6 +16,7 @@ import {
 import ReactStars from "react-rating-stars-component";
 import Results from "./Results";
 import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
+import { isCompositeType } from "graphql";
 
 export default function Suggestion(props) {
   const [finalResult, setFinalResult] = useState("");
@@ -48,15 +49,33 @@ function SuggestionCard(props) {
     "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
   const firestore = firebase.firestore();
   const auth = firebase.auth();
+  const uid = auth.currentUser.uid
+  const usersRef = firestore.collection('users').doc(uid);
 
-  const handleClick = (e) => {
+  const handleSharePost = (e) => {
     e.preventDefault();
     props.setFinalResult(props.data);
   };
 
+  const addtoWatchList = async(e) => {
+    e.preventDefault();
+    const toWatchMovieDetail = {
+      movieid: props.data.id,
+      title: props.data.original_title,
+      date: props.data.release_date,
+      poster: imgurl,
+      uid,
+  }
+    await usersRef.update(
+      {
+        watchlist: firebase.firestore.FieldValue.arrayUnion(toWatchMovieDetail)
+      }
+    );
+}
+
   return (
     <MovieSideBarSuggestion>
-      <MovieSideBarSuggestionCard onClick={handleClick}>
+      <MovieSideBarSuggestionCard>
         <MovieSideBarSuggestionRight>
           <MovieSuggestionTitle>
             {props.data.original_title}
@@ -94,12 +113,12 @@ function SuggestionCard(props) {
         </MovieSideBarSuggestionImg>
       </MovieSideBarSuggestionCard>
       <MovieSideBarSuggestionCard>
-        <MovieSideBarShareBtn>
+        <MovieSideBarShareBtn onClick={handleSharePost}>
           share
           <RiShareForwardFill />
         </MovieSideBarShareBtn>
-        <MovieSideBarRedBtn>
-          Add to List <RiAddLine />
+        <MovieSideBarRedBtn onClick={addtoWatchList}>
+          watch-list <RiAddLine />
         </MovieSideBarRedBtn>
       </MovieSideBarSuggestionCard>
     </MovieSideBarSuggestion>
