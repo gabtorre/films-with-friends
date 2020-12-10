@@ -44,14 +44,20 @@ const SbShareMovie = (props) => {
     await usersRef.update({
       watched: firebase.firestore.FieldValue.arrayUnion(addtoWatchedList),
     });
-    await usersRef.update({
-      ratings: firebase.firestore.FieldValue.arrayUnion(newRating),
-      photoURL: auth.currentUser.photoURL,
-      posts: newPost,
-    });
+    // await usersRef.update({
+    //   ratings: firebase.firestore.FieldValue.arrayUnion(newRating),
+    //   photoURL: auth.currentUser.photoURL,
+    //   posts: newPost,
+    // });
     await firestore
       .collection("post")
       .add(newPost)
+      .then(async(docRef) =>{
+        await usersRef.update({
+          ratings: firebase.firestore.FieldValue.arrayUnion(newRating),
+          posts: firebase.firestore.FieldValue.arrayUnion(docRef.id),
+        });
+      })
       .catch((err) => {
         console.error("error adding post: ", err);
       });

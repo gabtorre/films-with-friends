@@ -20,7 +20,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Post = (props) => {
-  const imgurl = `https://image.tmdb.org/t/p/w500/${props.image}`;
+  const imgurl = `https://image.tmdb.org/t/p/w500/${props.poster}`;
   const noimg =
     "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
   const firestore = firebase.firestore();
@@ -48,9 +48,9 @@ const Post = (props) => {
   const addWatchList = async (e) => {
     e.preventDefault();
     const toWatchMovieDetail = {
-      movieid: props.data.id,
-      title: props.data.original_title,
-      date: props.data.release_date,
+      movieid: props.id,
+      title: props.title,
+      date: props.release,
       poster: imgurl,
     };
     await usersRef

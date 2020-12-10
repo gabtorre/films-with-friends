@@ -33,12 +33,12 @@ class Home extends React.Component {
       if (user) {
         const uid = user.uid;
         this.setState({ uid: uid });
-        const usersRef = await firebase.firestore().collection('users').doc(uid);
-        await usersRef.update(
+        const usersRef = await firebase.firestore().collection('users').doc(uid)
+        await usersRef.set(
           {
             displayName: firebase.firestore.FieldValue.arrayUnion(user.displayName),
             photoURL: firebase.firestore.FieldValue.arrayUnion(user.photoURL)
-          }
+          }, { merge: true }
         );
       } else {
         this.setState({ uid: null, signedin: false });

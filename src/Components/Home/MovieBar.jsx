@@ -68,12 +68,12 @@ export default class ProfileBar extends Component {
       firebase.firestore().collection('users').where("displayName", "==", this.state.userQuery)
       .get()
       .then(snaps => {
-        snaps.forEach(function(doc) {
+        snaps.forEach( async (doc) => {
           let pid = doc.id
           let pdata = doc.data()
-          docs.push({data: pdata, uid: pid});
+          docs.push({data: pdata.displayName, uid: pid});
         })
-          this.setState({userSuggestions: docs})
+         this.setState({userSuggestions: docs})
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
