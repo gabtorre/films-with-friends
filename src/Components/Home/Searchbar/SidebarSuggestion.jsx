@@ -56,7 +56,7 @@ function SuggestionCard(props) {
     props.setFinalResult(props.data);
   };
 
-  const addtoWatchList = async(e) => {
+  const addWatchList = async(e) => {
   const uid = auth.currentUser.uid
   const usersRef = firestore.collection('users').doc(uid);
     e.preventDefault();
@@ -117,7 +117,7 @@ function SuggestionCard(props) {
           share
           <RiShareForwardFill />
         </MovieSideBarShareBtn>
-        <MovieSideBarRedBtn onClick={addtoWatchList}>
+        <MovieSideBarRedBtn onClick={addWatchList}>
           watch-list <RiAddLine />
         </MovieSideBarRedBtn>
       </MovieSideBarSuggestionCard>
@@ -128,6 +128,7 @@ function SuggestionCard(props) {
 }
 
 export const UserSuggestion = (props) => {
+  console.log(props)
   return (
     <>
         <div>
@@ -143,10 +144,11 @@ export const UserSuggestion = (props) => {
   );
 }
 
-function UserSuggestionCard(props) {
-  console.log(props.data.uid)
+const UserSuggestionCard = async (props) => {
+  console.log(props)
   const auth = firebase.auth();
   const uid = auth.currentUser.uid
+  const notFollowed = await firebase.firestore().collection('friends').where('uid', '==', props.data.uid)
   const handleFollow = async(e) => {
     const usersRef = await firebase.firestore().collection('users').doc(uid);
     e.preventDefault();
@@ -165,9 +167,11 @@ function UserSuggestionCard(props) {
       <div className="usersearch-text__name">
            {props.data.data.displayName}
           </div>
-          <MovieSideBarRedBtn onClick={handleFollow} width={70}>
+          { notFollowed ? <MovieSideBarRedBtn onClick={handleFollow} width={70}>
           follow <RiAddLine />
-          </MovieSideBarRedBtn>
+          </MovieSideBarRedBtn> : <MovieSideBarRedBtn width={70}>
+          followed <RiAddLine />
+          </MovieSideBarRedBtn>}
           </div>
         <div className="post__owner">
         <Avatar src={props.data.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>

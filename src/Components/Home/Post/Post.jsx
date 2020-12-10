@@ -19,10 +19,8 @@ import { ReactComponent as FavoriteIcon } from "../../../Icons/Favorite.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const auth = firebase.auth();
-
 const Post = (props) => {
-  const imgurl = `https://image.tmdb.org/t/p/w500/${props.image}`;
+  const imgurl = `https://image.tmdb.org/t/p/w500/${props.poster}`;
   const noimg =
     "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
   const firestore = firebase.firestore();
@@ -47,7 +45,7 @@ const Post = (props) => {
     fetchData();
   }, []);
 
-  const addtoWatchList = async (e) => {
+  const addWatchList = async (e) => {
     e.preventDefault();
     const toWatchMovieDetail = {
       movieid: props.id,
@@ -109,18 +107,31 @@ const Post = (props) => {
           </h4>
           <div className="post__movie-text">{props.synopsis}</div>
           <OverlayTrigger
-            key="top"
+            key={props.key+"icon1"}
             placement="top"
             overlay={<Tooltip id={`tooltip-top`}>Add to watchlist</Tooltip>}
           >
             <AddIcon
               className="post__icons"
               alt="add to watchlist"
-              onClick={addtoWatchList}
+              onClick={addWatchList}
             />
           </OverlayTrigger>
-          <ChatIcon className="post__icons" />
-          <FavoriteIcon className="post__icons" />
+          { comments &&
+          <OverlayTrigger
+          key={props.key+"icon2"}
+            placement="top"
+            overlay={<Tooltip id={`tooltip-top`}>{comments.length} Comments</Tooltip>}
+          >
+            <ChatIcon className="post__icons" />
+          </OverlayTrigger>}
+          <OverlayTrigger
+            key={props.key+"icon3"}
+            placement="top"
+            overlay={<Tooltip id={`tooltip-top`}>Like</Tooltip>}
+          >
+            <FavoriteIcon className="post__icons" />
+          </OverlayTrigger>
         </div>
       </MovieCardWrapper>
       <>

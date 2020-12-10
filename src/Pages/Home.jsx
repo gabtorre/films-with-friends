@@ -14,6 +14,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,10 +29,17 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async(user) => {
       if (user) {
         const uid = user.uid;
         this.setState({ uid: uid });
+        const usersRef = await firebase.firestore().collection('users').doc(uid)
+        await usersRef.set(
+          {
+            displayName: firebase.firestore.FieldValue.arrayUnion(user.displayName),
+            photoURL: firebase.firestore.FieldValue.arrayUnion(user.photoURL)
+          }, { merge: true }
+        );
       } else {
         this.setState({ uid: null, signedin: false });
       }

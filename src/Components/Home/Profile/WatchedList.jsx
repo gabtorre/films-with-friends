@@ -6,7 +6,7 @@ import ScrollHorizontal from 'react-scroll-horizontal';
 import {MoviePoster, MovieTitle, ChildDiv} from '../../../Components/StyledComponents';
 
 export const WatchedList = (props) => {
-    
+
     const firestore = firebase.firestore();
 
     const [userdata, loading, error] = useDocumentData(
@@ -14,7 +14,7 @@ export const WatchedList = (props) => {
     );
 
     return (
-        <> 
+        <>
             <h1 className="mt-5 mb-4 bold">Watched List</h1>
             <div style={{ height: `22.7em` }}>
                 <ScrollHorizontal>

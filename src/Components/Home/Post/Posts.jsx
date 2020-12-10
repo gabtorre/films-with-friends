@@ -14,7 +14,7 @@ const Posts = () => {
     const postRef = firestore.collection('post');
     const sortedPostsRef = postRef.orderBy('createdAt', 'desc');;
     const [ sortedposts ] = useCollectionData(sortedPostsRef, {idField: 'id'});
-    console.log(postRef)
+
     return (
         <>
         <h1 className="mt-5 mb-4 bold">Activity Feed</h1>

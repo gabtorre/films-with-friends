@@ -20,13 +20,10 @@ export const LandingContainer = styled.div`
 
 export const BlackContainer = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #181D2F;
     color: #F5F5F1;
     height: 100%;
     width: 100%;
-    // position: fixed;
 `
 export const SideBarContainer = styled.div`
     display: flex;
@@ -419,12 +416,13 @@ export const LogOutBtn = styled.button`
 `
 export const EditProfileContainer = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    margin: 0 auto
+    margin-top: 100px
 `
 
-//MOVIE LIST PAGE 
+//MOVIE LIST PAGE
 
 export const MoviePoster = styled.img`
 width: 100%;
