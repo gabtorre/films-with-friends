@@ -21,35 +21,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const Post = (props) => {
-  const imgurl = `https://image.tmdb.org/t/p/w500/${props.poster}`;
-  const noimg =
-    "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
   const firestore = firebase.firestore();
   const auth = firebase.auth();
   const uid = auth.currentUser.uid;
   const usersRef = firestore.collection("users").doc(uid);
-  // const [comments, getComments] = useState(null);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await firestore
-  //       .collection("comments")
-  //       .where("post", "==", props.id)
-  //       .orderBy("timestamp")
-  //       .onSnapshot((snapshot) => {
-  //         const posts = snapshot.docs.map((doc) => {
-  //           return { id: doc.id, ...doc.data() };
-  //         });
-  //         getComments(posts);
-  //       });
-  //   }
-  //   fetchData();
-  // }, []);
-  console.log(props.id)
-
-    const commentRef = firestore.collection('comments').where("post", "==", props.id)
-    const [ comments ] = useCollectionData(commentRef, {idField: 'id'});
-
+  const commentRef = firestore.collection('comments').where("post", "==", props.id)
+  const [ comments ] = useCollectionData(commentRef, {idField: 'id'});
 
 
   const addWatchList = async (e) => {
@@ -124,11 +101,17 @@ const Post = (props) => {
               onClick={addWatchList}
             />
           </OverlayTrigger>
-          { comments &&
+          { comments ?
           <OverlayTrigger
           key={props.key+"icon2"}
             placement="top"
             overlay={<Tooltip id={`tooltip-top`}>{comments.length} Comments</Tooltip>}
+          >
+            <ChatIcon className="post__icons" />
+          </OverlayTrigger> : <OverlayTrigger
+          key={props.key+"icon2"}
+            placement="top"
+            overlay={<Tooltip id={`tooltip-top`}>0 Comments</Tooltip>}
           >
             <ChatIcon className="post__icons" />
           </OverlayTrigger>}
@@ -150,6 +133,7 @@ const Post = (props) => {
               content={comment.content}
               photoURL={comment.photoURL}
               data={comment}
+              username={comment.username}
             />
           ))}
       </>
