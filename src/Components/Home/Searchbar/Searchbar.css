@@ -1,0 +1,25 @@
+.pro-sidebar.rtl {
+    text-align: left!important;
+    direction: rtl;
+}
+
+.sidebar__img {
+    width: 70px;
+    border-radius: 15%; 
+    margin-right: 10px;
+}
+
+.sidebar__movie-info {
+    flex-direction: row-reverse;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.sidebar__movie-info__text {
+    text-align: left;
+}
+
+.sidebar__movie-info__stars {
+    width: 75px;
+    display: inline-flex;
+}

@@ -121,7 +121,7 @@ const Post = (props) => {
             placement="top"
             overlay={<Tooltip id={`tooltip-top`}>Like</Tooltip>}
           > */}
-            <LikeButton id={props.id} uid={uid} key={props.key} />
+            <LikeButton id={props.id} uid={uid} key={props.id} />
             {/* <FavoriteIcon className="post__icons" /> */}
           {/* </OverlayTrigger> */}
         </div>

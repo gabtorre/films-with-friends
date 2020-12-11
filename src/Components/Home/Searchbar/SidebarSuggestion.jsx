@@ -17,8 +17,8 @@ import ReactStars from "react-rating-stars-component";
 import Results from "./Results";
 import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
 import { isCompositeType } from "graphql";
-
-
+import './Searchbar.css';
+import {Card} from 'react-bootstrap';
 
 export const Suggestion = (props) => {
   const [finalResult, setFinalResult] = useState("");
@@ -77,8 +77,21 @@ function SuggestionCard(props) {
 
   return (
     <MovieSideBarSuggestion>
-      <MovieSideBarSuggestionCard>
-        <MovieSideBarSuggestionRight>
+      <div className="sidebar__movie-info">
+        <div>
+          {props.data.poster_path ? (
+            <img
+            src={imgurl}
+            className="sidebar__img"
+            />
+            ) : (
+              <img
+              src={noimg}
+              className="sidebar__img"
+              />
+              )}
+        </div>
+        <div className="sidebar__movie-info__text">
           <MovieSuggestionTitle>
             {props.data.original_title}
           </MovieSuggestionTitle>{" "}
@@ -87,6 +100,7 @@ function SuggestionCard(props) {
               {props.data.release_date}
             </MovieSuggestionDate>
           ) : null}
+          <div className="sidebar__movie-info__stars">
           <ReactStars
             count={5}
             size={15}
@@ -94,35 +108,18 @@ function SuggestionCard(props) {
             isHalf={true}
             activeColor="#F67553"
           />
-        </MovieSideBarSuggestionRight>
-        <MovieSideBarSuggestionImg>
-          {props.data.poster_path ? (
-            <img
-              src={imgurl}
-              style={{ width: "50px", padding: "1%", objectFit: "cover" }}
-            />
-          ) : (
-            <img
-              src={noimg}
-              style={{
-                width: "50px",
-                padding: "1%",
-                height: "70px",
-                objectFit: "cover",
-              }}
-            />
-          )}
-        </MovieSideBarSuggestionImg>
-      </MovieSideBarSuggestionCard>
-      <MovieSideBarSuggestionCard>
+          </div>
+        </div>
+      </div>
+      <div>
         <MovieSideBarShareBtn onClick={handleSharePost}>
           share
           <RiShareForwardFill />
         </MovieSideBarShareBtn>
-        <MovieSideBarRedBtn onClick={addWatchList}>
+        <MovieSideBarRedBtn onClick={addWatchList} className="mr-2">
           watch-list <RiAddLine />
         </MovieSideBarRedBtn>
-      </MovieSideBarSuggestionCard>
+      </div>
     </MovieSideBarSuggestion>
   );
 }
