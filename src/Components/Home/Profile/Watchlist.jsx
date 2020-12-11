@@ -38,7 +38,7 @@ export const WatchList = (props) => {
          )}
         </ScrollHorizontal>
         :
-          'Loading...'
+          'Add some movies to your list.'
         }
         </div>
         </>
