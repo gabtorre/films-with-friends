@@ -18,6 +18,7 @@ import { ReactComponent as ChatIcon } from "../../../Icons/Chat.svg";
 import { ReactComponent as FavoriteIcon } from "../../../Icons/Favorite.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const Post = (props) => {
   const imgurl = `https://image.tmdb.org/t/p/w500/${props.poster}`;
@@ -27,23 +28,29 @@ const Post = (props) => {
   const auth = firebase.auth();
   const uid = auth.currentUser.uid;
   const usersRef = firestore.collection("users").doc(uid);
-  const [comments, getComments] = useState(null);
+  // const [comments, getComments] = useState(null);
 
-  useEffect(() => {
-    async function fetchData() {
-      await firestore
-        .collection("comments")
-        .where("post", "==", props.id)
-        .orderBy("timestamp")
-        .onSnapshot((snapshot) => {
-          const posts = snapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          });
-          getComments(posts);
-        });
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     await firestore
+  //       .collection("comments")
+  //       .where("post", "==", props.id)
+  //       .orderBy("timestamp")
+  //       .onSnapshot((snapshot) => {
+  //         const posts = snapshot.docs.map((doc) => {
+  //           return { id: doc.id, ...doc.data() };
+  //         });
+  //         getComments(posts);
+  //       });
+  //   }
+  //   fetchData();
+  // }, []);
+  console.log(props.id)
+
+    const commentRef = firestore.collection('comments').where("post", "==", props.id)
+    const [ comments ] = useCollectionData(commentRef, {idField: 'id'});
+
+
 
   const addWatchList = async (e) => {
     e.preventDefault();

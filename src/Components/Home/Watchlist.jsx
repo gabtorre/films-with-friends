@@ -11,8 +11,6 @@ export const WatchList = (props) => {
   const list = firestore.collection('watchlist').where('uid', '==', props.uid)
   const [ userwatchlist ] = useCollectionData(list, {id: 'id'});
 
-  // const query = list.orderBy('createdAt', 'desc');
-
   return (
     <Card style={{ width: '100%', marginBottom: '5%' }} id="admin-card">
         <CardWrapper>
