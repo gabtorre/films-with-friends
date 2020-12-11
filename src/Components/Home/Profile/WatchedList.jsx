@@ -20,7 +20,7 @@ export const WatchedList = (props) => {
                 <ScrollHorizontal>
                     {userdata && userdata.watched.map(movie =>
                     <ChildDiv>
-                        <MoviePoster variant="top" src={movie.poster} />
+                        {movie.poster? <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} /> : <MoviePoster variant="top" src="https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg" />}
                         <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
                     </ChildDiv>
                     )}

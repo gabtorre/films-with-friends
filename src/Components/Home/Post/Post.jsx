@@ -51,7 +51,7 @@ const Post = (props) => {
       movieid: props.id,
       title: props.title,
       date: props.release,
-      poster: imgurl,
+      poster: props.poster,
     };
     await usersRef
       .update({

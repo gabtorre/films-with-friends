@@ -6,7 +6,6 @@ import firebase from "firebase/app";
 
 const SbShareMovie = (props) => {
   const [text, setContent] = useState("");
-  const imgurl = props.imgurl;
   const auth = firebase.auth();
   const uid = auth.currentUser.uid;
 
@@ -38,7 +37,7 @@ const SbShareMovie = (props) => {
       movieid: props.id,
       title: props.title,
       date: props.release,
-      poster: imgurl,
+      poster: props.poster,
       rating: props.rating,
     };
     await usersRef.update({

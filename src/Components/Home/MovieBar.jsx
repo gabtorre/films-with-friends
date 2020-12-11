@@ -20,7 +20,8 @@ export default class ProfileBar extends Component {
       result: null,
       suggestions: null,
       navStatus: true,
-      userSuggestions: null
+      userSuggestions: null,
+      userFound: false
     };
     this.navClose = this.navClose.bind(this);
     this.navOpen = this.navOpen.bind(this);
@@ -62,18 +63,23 @@ export default class ProfileBar extends Component {
     );
   };
 
+
   userSearch = () =>{
     if(this.state.userQuery){
       const docs = []
+      const updateUserSearch = ()=>{
+        this.setState({userSuggestions: docs, userFound: true})
+      }
       firebase.firestore().collection('users').where("displayName", "==", this.state.userQuery)
       .get()
       .then(snaps => {
-        snaps.forEach( async (doc) => {
-          let pid = doc.id
-          let pdata = doc.data()
-          docs.push({data: pdata.displayName, uid: pid});
+        snaps.forEach(async(doc) => {
+          const pid = await doc.id
+          const pdata = await doc.data()
+          let followedStatus = await firebase.firestore().collection('users').where(firebase.firestore.FieldPath.documentId(), '==', this.props.uid).where('friendlist', 'array-contains', pid).get()
+          docs.push({displayName: pdata.displayName, uid: pid, photoURL: pdata.photoURL, followed: followedStatus.empty});
+          updateUserSearch()
         })
-         this.setState({userSuggestions: docs})
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
@@ -139,7 +145,7 @@ export default class ProfileBar extends Component {
                     handleUserSearchInput={this.handleUserSearchInput}
                     handleSubmit={this.handleSubmit}
                   />
-                    {this.state.userSuggestions ? (
+                    {this.state.userSuggestions && this.state.userFound ? (
                       <UserSuggestion
                         data={this.state.userSuggestions}
                         selected={this.state.selected}
