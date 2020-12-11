@@ -16,6 +16,7 @@ import {
 import ReactStars from "react-rating-stars-component";
 import Results from "./Results";
 import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
+import { isCompositeType } from "graphql";
 
 
 
@@ -129,14 +130,19 @@ function SuggestionCard(props) {
 }
 
 export const UserSuggestion = (props) => {
+  const [notClicked, setnotClicked] = useState(true);
+
   return (
     <>
         <div>
           {props.data &&
             props.data.map((result) => (
+              // console.log(result)
               <UserSuggestionCard
                 key={result.uid}
                 data={result}
+                findProfile={props.findProfile}
+                setnotClicked={setnotClicked}
               />
             ))}
         </div>
@@ -148,23 +154,23 @@ export const UserSuggestion = (props) => {
   const uid = auth.currentUser.uid
 
   const handleFollow = async(e) => {
+    props.setnotClicked(false);
     const usersRef = await firebase.firestore().collection('users').doc(uid);
-    e.preventDefault();
     await usersRef.update(
       {
         friendlist: firebase.firestore.FieldValue.arrayUnion(props.data.uid)
       }
-      );
-    }
+      )
+  }
 
   return (
     <MovieSideBarSuggestion>
-      <MovieSideBarSuggestionCard>
+      <MovieSideBarSuggestionCard onClick={() => props.findProfile(props.data.uid)}>
       <div className="post__owner-text">
       <div className="usersearch-text__name">
-           {props.data.displayName}
+           {props.data.displayName}@
           </div>
-          { props.data.followed ? <MovieSideBarRedBtn onClick={handleFollow} width={70}>follow <RiAddLine /></MovieSideBarRedBtn> : <MovieSideBarRedBtn width={70}>followed</MovieSideBarRedBtn> }
+          { notClicked && props.data.followed ? <MovieSideBarRedBtn onClick={handleFollow} width={70}>follow <RiAddLine /></MovieSideBarRedBtn> : <MovieSideBarRedBtn width={70}>followed</MovieSideBarRedBtn> }
           </div>
         <div className="post__owner">
         <Avatar src={props.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>

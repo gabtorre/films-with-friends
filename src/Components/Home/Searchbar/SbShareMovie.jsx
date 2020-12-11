@@ -73,6 +73,7 @@ const SbShareMovie = (props) => {
           style={{ color: "#FFF" }}
           placeholder="?What do you think"
           onChange={(e) => setContent(e.target.value)}
+          required
         />
       </CommentForm>
       <Button

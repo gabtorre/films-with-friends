@@ -37,7 +37,9 @@ class Home extends React.Component {
         await usersRef.set(
           {
             displayName: user.displayName,
-            photoURL: user.photoURL
+            photoURL: user.photoURL,
+            watchlist: firebase.firestore.FieldValue.arrayUnion(),
+            watched: firebase.firestore.FieldValue.arrayUnion(),
           }, { merge: true }
         );
       } else {
@@ -46,19 +48,24 @@ class Home extends React.Component {
     });
   }
 
-  pageSwitcher = (now) => {
+  pageSwitcher = (page, uid) => {
+
     this.setState({
-      page: now,
+      page: page,
+      profileuid: uid
     });
+
   };
 
   findProfile = (id) => {
     this.setState({
       profileuid: id,
+      page: "profile",
     });
   };
 
   render() {
+    console.log(this.state.profileuid)
     return (
       <>
         {this.state.signedin ? (
@@ -68,15 +75,13 @@ class Home extends React.Component {
               {this.state.uid ? (
                 <>
                   <div style={{ backgroundColor: "#0F121D" }}>
-                    <ProfileBar pageSwitcher={this.pageSwitcher} />
+                    <ProfileBar pageSwitcher={this.pageSwitcher} uid={this.state.uid} />
                   </div>
                   {this.state.page == "home" && <Main />}
                   {this.state.page == "edit" && (
                     <EditProfile uid={this.state.uid} />
                   )}
-                  {this.state.page == "profile" && (
-                    <Profile uid={this.state.uid} />
-                  )}
+                  {this.state.page == "profile" && this.state.profileuid && (<Profile uid={this.state.profileuid} />)}
                   <div style={{ backgroundColor: "#0F121D" }}>
                     <MovieBar uid={this.state.uid} findProfile={this.findProfile} />
                   </div>
