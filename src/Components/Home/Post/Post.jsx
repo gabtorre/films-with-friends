@@ -19,6 +19,7 @@ import { ReactComponent as FavoriteIcon } from "../../../Icons/Favorite.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import LikeButton from "./LikeButton";
 
 const Post = (props) => {
   const firestore = firebase.firestore();
@@ -115,13 +116,14 @@ const Post = (props) => {
           >
             <ChatIcon className="post__icons" />
           </OverlayTrigger>}
-          <OverlayTrigger
+          {/* <OverlayTrigger
             key={props.key+"icon3"}
             placement="top"
             overlay={<Tooltip id={`tooltip-top`}>Like</Tooltip>}
-          >
-            <FavoriteIcon className="post__icons" />
-          </OverlayTrigger>
+          > */}
+            <LikeButton id={props.id} uid={uid} key={props.key} />
+            {/* <FavoriteIcon className="post__icons" /> */}
+          {/* </OverlayTrigger> */}
         </div>
       </MovieCardWrapper>
       <>
@@ -138,7 +140,7 @@ const Post = (props) => {
           ))}
       </>
       <div className="mt-4">
-        <AddComment id={props.id} />
+        <AddComment id={props.id}/>
       </div>
     </>
   );
