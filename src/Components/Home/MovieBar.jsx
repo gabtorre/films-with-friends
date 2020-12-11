@@ -149,7 +149,7 @@ export default class ProfileBar extends Component {
                       <UserSuggestion
                         data={this.state.userSuggestions}
                         selected={this.state.selected}
-                        handleResult={this.handleResult}
+                        findProfile={this.props.findProfile}
                       />
                     ) : null}
                   {this.state.suggestions ? (
