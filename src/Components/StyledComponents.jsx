@@ -441,3 +441,9 @@ min-width: 150px;
 height: 100%;
 margin: 10px;
 `
+export const Placeholder = styled.div`
+width: 150px;
+min-width: 150px;
+height: 200px;
+margin: 10px;
+`
