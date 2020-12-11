@@ -22,17 +22,17 @@ export const WatchedList = (props) => {
             <ScrollHorizontal>
             {userdata && userdata.watched.map(movie =>
             <ChildDiv>
-                <MoviePoster variant="top" src={movie.poster} />
+                <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
             </ChildDiv>
             )}
-            </ScrollHorizontal> 
+            </ScrollHorizontal>
 
             : userdata && userdata.watched.length > 0 ?
             <ScrollHorizontal config= {{ stiffness: 0, damping: 0 }}>
             {userdata.watched.map(movie =>
             <Placeholder>
-                <MoviePoster variant="top" src={movie.poster} />
+                <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
             </Placeholder>
             )}

@@ -13,7 +13,6 @@ import ReactStars from "react-rating-stars-component";
 
 
 function Results(props) {
-    console.log(props)
     const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`
 
     const firestore = firebase.firestore();
@@ -31,7 +30,7 @@ function Results(props) {
             movieid: props.data.id,
             title: props.data.original_title,
             date: props.data.release_date,
-            poster: imgurl,
+            poster: props.data.poster_path,
         }
           await usersRef.update(
             {
@@ -48,7 +47,7 @@ function Results(props) {
             movieid: props.data.id,
             title: props.data.original_title,
             date: props.data.release_date,
-            poster: imgurl,
+            poster: props.data.poster_path,
             rating: rating,
         }
           await usersRef.update(

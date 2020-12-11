@@ -36,8 +36,8 @@ class Home extends React.Component {
         const usersRef = await firebase.firestore().collection('users').doc(uid)
         await usersRef.set(
           {
-            displayName: firebase.firestore.FieldValue.arrayUnion(user.displayName),
-            photoURL: firebase.firestore.FieldValue.arrayUnion(user.photoURL)
+            displayName: user.displayName,
+            photoURL: user.photoURL
           }, { merge: true }
         );
       } else {
@@ -78,7 +78,7 @@ class Home extends React.Component {
                     <Profile uid={this.state.uid} />
                   )}
                   <div style={{ backgroundColor: "#0F121D" }}>
-                    <MovieBar findProfile={this.findProfile} />
+                    <MovieBar uid={this.state.uid} findProfile={this.findProfile} />
                   </div>
                 </>
               ) : (

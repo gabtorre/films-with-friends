@@ -47,7 +47,7 @@ export const Suggestion = (props) => {
 function SuggestionCard(props) {
   const firestore = firebase.firestore();
   const auth = firebase.auth();
-  const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`;
+  const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`
   const noimg =
     "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
 
@@ -59,12 +59,13 @@ function SuggestionCard(props) {
   const addWatchList = async(e) => {
   const uid = auth.currentUser.uid
   const usersRef = firestore.collection('users').doc(uid);
+  const img = props.data.poster_path
     e.preventDefault();
     const toWatchMovieDetail = {
       movieid: props.data.id,
       title: props.data.original_title,
       date: props.data.release_date,
-      poster: imgurl,
+      poster: props.data.poster_path
   }
     await usersRef.update(
       {
@@ -128,27 +129,24 @@ function SuggestionCard(props) {
 }
 
 export const UserSuggestion = (props) => {
-  console.log(props)
   return (
     <>
         <div>
           {props.data &&
             props.data.map((result) => (
               <UserSuggestionCard
-                key={result.data.uid}
+                key={result.uid}
                 data={result}
               />
             ))}
         </div>
     </>
   );
-}
 
-const UserSuggestionCard = async (props) => {
-  console.log(props)
+  function UserSuggestionCard(props) {
   const auth = firebase.auth();
   const uid = auth.currentUser.uid
-  const notFollowed = await firebase.firestore().collection('friends').where('uid', '==', props.data.uid)
+
   const handleFollow = async(e) => {
     const usersRef = await firebase.firestore().collection('users').doc(uid);
     e.preventDefault();
@@ -156,27 +154,23 @@ const UserSuggestionCard = async (props) => {
       {
         friendlist: firebase.firestore.FieldValue.arrayUnion(props.data.uid)
       }
-    );
-}
-
+      );
+    }
 
   return (
     <MovieSideBarSuggestion>
       <MovieSideBarSuggestionCard>
       <div className="post__owner-text">
       <div className="usersearch-text__name">
-           {props.data.data.displayName}
+           {props.data.displayName}
           </div>
-          { notFollowed ? <MovieSideBarRedBtn onClick={handleFollow} width={70}>
-          follow <RiAddLine />
-          </MovieSideBarRedBtn> : <MovieSideBarRedBtn width={70}>
-          followed <RiAddLine />
-          </MovieSideBarRedBtn>}
+          { props.data.followed ? <MovieSideBarRedBtn onClick={handleFollow} width={70}>follow <RiAddLine /></MovieSideBarRedBtn> : <MovieSideBarRedBtn width={70}>followed</MovieSideBarRedBtn> }
           </div>
         <div className="post__owner">
-        <Avatar src={props.data.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>
+        <Avatar src={props.data.photoURL} size={60} round={true} style={{marginRight: "15px"}}/>
         </div>
       </MovieSideBarSuggestionCard>
     </MovieSideBarSuggestion>
   );
+}
 }
