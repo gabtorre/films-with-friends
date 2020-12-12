@@ -1,3 +1,5 @@
+//NOT USED
+
 import {firestore} from '../firebase.js'
 import { useState, useEffect } from 'react';
 import Post from '../Components/Home/Post/Post'
@@ -18,6 +20,7 @@ const Posts = () => {
 
     return (
         <>
+        <h1>Hello</h1>
         {posts && posts.map(post => <Post key={post.id} id={post.id} text={post.text} image={post.poster} title={post.title} synopsis={post.synopsis} release={post.release}
         uid={post.uid} />)}
         </>

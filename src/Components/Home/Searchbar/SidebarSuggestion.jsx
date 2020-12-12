@@ -19,6 +19,7 @@ import { RiShareForwardFill, RiAddLine } from "react-icons/ri";
 import { isCompositeType } from "graphql";
 import './Searchbar.css';
 import {Card} from 'react-bootstrap';
+import WatchButton from '../Post/WatchButton';
 
 export const Suggestion = (props) => {
   const [finalResult, setFinalResult] = useState("");
@@ -56,24 +57,6 @@ function SuggestionCard(props) {
     e.preventDefault();
     props.setFinalResult(props.data);
   };
-
-  const addWatchList = async(e) => {
-  const uid = auth.currentUser.uid
-  const usersRef = firestore.collection('users').doc(uid);
-  const img = props.data.poster_path
-    e.preventDefault();
-    const toWatchMovieDetail = {
-      movieid: props.data.id,
-      title: props.data.original_title,
-      date: props.data.release_date,
-      poster: props.data.poster_path
-  }
-    await usersRef.update(
-      {
-        watchlist: firebase.firestore.FieldValue.arrayUnion(toWatchMovieDetail)
-      }
-    );
-}
 
   return (
     <MovieSideBarSuggestion>
@@ -116,9 +99,9 @@ function SuggestionCard(props) {
           share
           <RiShareForwardFill />
         </MovieSideBarShareBtn>
-        <MovieSideBarRedBtn onClick={addWatchList} className="mr-2">
-          watch-list <RiAddLine />
-        </MovieSideBarRedBtn>
+        <WatchButton key={props.data.id} id={props.data.id}
+        title={props.data.original_title}
+        release={props.data.release_date} poster={props.data.poster_path} />
       </div>
     </MovieSideBarSuggestion>
   );

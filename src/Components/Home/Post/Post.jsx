@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
-import Follow from "../../Follow/Follow";
 import {
   MovieCardWrapper,
 } from "../../StyledComponents";
@@ -13,49 +11,23 @@ import "firebase/firestore";
 import "../../../../src/custom.scss";
 import Avatar from "react-avatar";
 import React from "react";
-import { ReactComponent as AddIcon } from "../../../Icons/Add.svg";
 import { ReactComponent as ChatIcon } from "../../../Icons/Chat.svg";
-import { ReactComponent as FavoriteIcon } from "../../../Icons/Favorite.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import LikeButton from "./LikeButton";
+import LikeButton from './LikeButton';
+import WatchButton from './WatchButton';
 
 const Post = (props) => {
   const firestore = firebase.firestore();
   const auth = firebase.auth();
   const uid = auth.currentUser.uid;
-  const usersRef = firestore.collection("users").doc(uid);
   const commentRef = firestore.collection('comments').where("post", "==", props.id)
   const [ comments ] = useCollectionData(commentRef, {idField: 'id'});
-
-
-  const addWatchList = async (e) => {
-    e.preventDefault();
-    const toWatchMovieDetail = {
-      movieid: props.id,
-      title: props.title,
-      date: props.release,
-      poster: props.poster,
-    };
-    await usersRef
-      .update({
-        watchlist: firebase.firestore.FieldValue.arrayUnion(toWatchMovieDetail),
-      })
-      .then(async () => {
-        toast.success(`${props.title} is added to your watch list!`);
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        toast.error(errorCode + errorMessage);
-      });
-  };
 
   return (
     <>
       <ToastContainer />
-      {/* <Follow style={{marginRight: "5%", padding: "5%"}} owner={props.uid}/> */}
       <div className="post__owner">
         <Avatar
           className="post__owner-img"
@@ -91,17 +63,10 @@ const Post = (props) => {
             <span className="post__movie-title-date">({props.release})</span>
           </h4>
           <div className="post__movie-text">{props.synopsis}</div>
-          <OverlayTrigger
-            key={props.key+"icon1"}
-            placement="top"
-            overlay={<Tooltip id={`tooltip-top`}>Add to watchlist</Tooltip>}
-          >
-            <AddIcon
-              className="post__icons"
-              alt="add to watchlist"
-              onClick={addWatchList}
-            />
-          </OverlayTrigger>
+          <WatchButton 
+            key={props.id} id={props.id} title={props.title}
+            release={props.release} poster={props.image} 
+          />
           { comments ?
           <OverlayTrigger
           key={props.key+"icon2"}
@@ -116,14 +81,7 @@ const Post = (props) => {
           >
             <ChatIcon className="post__icons" />
           </OverlayTrigger>}
-          {/* <OverlayTrigger
-            key={props.key+"icon3"}
-            placement="top"
-            overlay={<Tooltip id={`tooltip-top`}>Like</Tooltip>}
-          > */}
-            <LikeButton id={props.id} uid={uid} key={props.id} />
-            {/* <FavoriteIcon className="post__icons" /> */}
-          {/* </OverlayTrigger> */}
+          <LikeButton id={props.id} uid={uid} key={props.key} />
         </div>
       </MovieCardWrapper>
       <>
@@ -140,7 +98,7 @@ const Post = (props) => {
           ))}
       </>
       <div className="mt-4">
-        <AddComment id={props.id}/>
+        <AddComment id={props.id} key={props.key} />
       </div>
     </>
   );

@@ -281,7 +281,6 @@ export const CommentForm = styled.form`
     border: 0;
     display: flex;
     align-items: center;
-    height: 100px;
 `
 
 export const CommentInput = styled.input `

@@ -19,14 +19,13 @@ const LikeButton = (props) => {
         await post.update({
             likes: firebase.firestore.FieldValue.arrayUnion(props.uid)
             })
-        console.log('query')
     }
 
     return (
         <>
         { postData && postData.likes.length > 0 ?
             <OverlayTrigger
-            key={props.id}
+            key={props.key+"icon3"}
             placement="top"
             overlay={<Tooltip id={`tooltip-top`}>{postData.likes.length} Like</Tooltip>}
           >
@@ -37,7 +36,7 @@ const LikeButton = (props) => {
           placement="top"
           overlay={<Tooltip id={`tooltip-top`}>0 Likes</Tooltip>}
         >
-            <FavoriteIcon className="post__icons" onClick={handleLike} key={props.id}/>
+            <FavoriteIcon className="post__icons" onClick={handleLike} key={props.key}/>
         </OverlayTrigger>
     }
     </>

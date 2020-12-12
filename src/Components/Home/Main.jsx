@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { ActivityPostsWrapper } from "../StyledComponents";
 import Posts from "./Post/Posts";
