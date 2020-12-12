@@ -3,7 +3,7 @@ import {
   EditProfileContainer,
   FormWrap,
   FormContent,
-  Form,
+  EditProfileForm,
   FormInput,
   FormButton,
   TitleWrapper,
@@ -101,9 +101,9 @@ const EditProfile = () => {
   return (
     <EditProfileContainer>
       <ToastContainer />
-      <FormWrap>
-        <FormContent>
-          <Form onSubmit={handleSubmit} id="editprofile">
+      <FormWrap >
+        <FormContent >
+          <EditProfileForm onSubmit={handleSubmit} id="editprofile">
             <div style={{ textAlign: "center", marginBottom: "5%" }}>
               <Avatar src={photoURL} size="100" round={true} />
             </div>
@@ -129,12 +129,12 @@ const EditProfile = () => {
             />
             <FormButton
               type="submit"
-              style={{ backgroundColor: "#E50914" }}
+              style={{ backgroundColor: "#DC3545" }}
               form="editprofile"
             >
               Submit Changes
             </FormButton>
-          </Form>
+          </EditProfileForm>
         </FormContent>
       </FormWrap>
     </EditProfileContainer>

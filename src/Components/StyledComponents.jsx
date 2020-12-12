@@ -447,3 +447,18 @@ min-width: 150px;
 height: 200px;
 margin: 10px;
 `
+
+// Edit Profile
+export const EditProfileForm = styled.form`
+    background-color: rgb(15, 18, 29);
+    min-width: 400px;
+    min-height: 50%;
+    height: auto;
+    width: 100%;
+    z-index: 1;
+    display: grid;
+    margin: 0 auto;
+    padding: 80px 32px;
+    border-radius: 5px;
+
+`
