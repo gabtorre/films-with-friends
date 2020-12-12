@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import ScrollHorizontal from 'react-scroll-horizontal';
 import {MoviePoster, MovieTitle, ChildDiv, Placeholder} from '../../../Components/StyledComponents';
+import WatchButton from '../Post/WatchButton';
 
 export const WatchList = (props) => {
 
@@ -23,7 +24,9 @@ export const WatchList = (props) => {
          {userdata.watchlist.map(movie =>
          <ChildDiv>
              <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
-             <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+             <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
+            release={movie.date} poster={movie.poster} />
+             <MovieTitle key={movie.id}>{movie.title}</MovieTitle> 
          </ChildDiv>
          )}
         </ScrollHorizontal>
@@ -33,6 +36,8 @@ export const WatchList = (props) => {
          {userdata.watchlist.map(movie =>
          <Placeholder>
              <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+             <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
+            release={movie.date} poster={movie.poster} />
              <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
          </Placeholder>
          )}

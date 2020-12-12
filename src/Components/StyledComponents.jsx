@@ -281,7 +281,6 @@ export const CommentForm = styled.form`
     border: 0;
     display: flex;
     align-items: center;
-    height: 100px;
 `
 
 export const CommentInput = styled.input `
@@ -314,45 +313,51 @@ export const CommentTextArea = styled.textarea `
 // Movie Sidebar
 
 export const MovieSideBarSuggestion = styled.div`
+    // display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    // background-color: #181D2F;
+    // color: #F5F5F1;
+    // margin: 5% 0;
+    // padding: 5%;
+    // border-radius: 5%;
+    // width: 100%
+    // flex-wrap: wrap;
+
+    position: relative;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word!important;
     background-color: #181D2F;
-    color: #F5F5F1;
-    margin: 5%;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125);
     border-radius: 5%;
-    width: 100%
-    flex-wrap: wrap;
+    margin: 5% 0;
+    padding: 5%;
 `
 
 export const MovieSideBarSuggestionCard = styled.div`
     display: flex;
     flex-direction: row;
     color: #F5F5F1;
-    margin: 5%;
+    padding: 5% 0;
     border-radius: 5%;
     width: 100%
     align-content: center
 `
 export const MovieSideBarSuggestionRight = styled.div`
     display: flex;
-    background-color: #181D2F;
-    flex: 7;
     flex-direction: column;
     color: #F5F5F1;
 
 `
 export const MovieSideBarSuggestionImg = styled.div`
     display: flex;
-    background-color: #181D2F;
-    flex: 3;
-    border-radius: 5%;
-    text-align: left;
 `
 export const MovieSideBarRedBtn = styled.button`
     background-color: #DC3545;
     color: white;
-    margin: 2%;
     border-radius: 20px;
     padding: 2%;
     border: none;
@@ -363,7 +368,6 @@ export const MovieSideBarRedBtn = styled.button`
 export const MovieSideBarShareBtn = styled.button`
     background-color: white;
     color: red;
-    margin: 2%;
     border-radius: 20px;
     width: 80px;
     padding: 2%;
@@ -371,18 +375,14 @@ export const MovieSideBarShareBtn = styled.button`
     font-size: 12px
 `
 
-export const MovieSuggestionTitle = styled.small`
-    width: 80%;
-    height: auto;
-    word-break: break-all;
-    white-space: pre-wrap;
+export const MovieSuggestionTitle = styled.div`
+    margin: 0;
     font-size: 12px;
-`
-export const MovieSuggestionDate = styled.small`
-    width: 80%;
-    height: auto;
-    word-break: break-all;
+    font-weight: 700;
     white-space: pre-wrap;
+`
+export const MovieSuggestionDate = styled.div`
+    margin: 0;
     font-size: 10px
 `
 

@@ -17,12 +17,7 @@ export const SearchBar = (props) => {
       <input
         type="text"
         placeholder="Movie Lookup"
-        className="comment-input"
-        style={{
-          backgroundColor: "#181D2F",
-          borderStyle: "none",
-          borderRadius: "10px 0 0 0",
-        }}
+        className="search-input"
         value={props.query}
         onInput={handleSearchInputs}
         name="query"

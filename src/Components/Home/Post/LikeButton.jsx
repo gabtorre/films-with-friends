@@ -36,7 +36,7 @@ const LikeButton = (props) => {
           placement="top"
           overlay={<Tooltip id={`tooltip-top`}>0 Likes</Tooltip>}
         >
-            <FavoriteIcon className="post__icons" onClick={handleLike}/>
+            <FavoriteIcon className="post__icons" onClick={handleLike} key={props.key}/>
         </OverlayTrigger>
     }
     </>

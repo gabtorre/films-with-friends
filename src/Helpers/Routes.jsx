@@ -4,7 +4,7 @@ import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
 import Landing from "../Pages/Landing";
 import Home from "../Pages/Home";
-import Posts from "../Pages/Posts";
+// import Posts from "../Pages/Posts";
 import Profile from "../Pages/Profile";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -35,7 +35,7 @@ class Routes extends React.Component {
         { this.state.uid && (
           <Switch>
             <Route path="/home" component={Home} exact />
-            <Route path="/posts" component={Posts} exact />
+            {/* <Route path="/posts" component={Posts} exact /> */}
             <Route path="/profile/:id" component={Profile} exact />
           </Switch>
         )}
