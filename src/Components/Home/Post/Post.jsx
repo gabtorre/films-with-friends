@@ -54,7 +54,8 @@ const Post = (props) => {
           <img
             className="round-border"
             src={`https://image.tmdb.org/t/p/w500/${props.image}`}
-            style={{ width: "150px", objectFit: "cover" }}
+            style={{ width: "150px", objectFit: "cover", cursor: "pointer" }}
+            onClick={()=> window.open(`https://www.themoviedb.org/movie/${props.movieid}`)}
           />
         </div>
         <div className="post__movie">
@@ -63,9 +64,9 @@ const Post = (props) => {
             <span className="post__movie-title-date">({props.release})</span>
           </h4>
           <div className="post__movie-text">{props.synopsis}</div>
-          <WatchButton 
+          <WatchButton
             key={props.id} id={props.id} title={props.title}
-            release={props.release} poster={props.image} 
+            release={props.release} poster={props.image}
           />
           { comments ?
           <OverlayTrigger

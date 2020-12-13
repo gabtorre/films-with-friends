@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import 'firebase/firestore';
+import "firebase/firestore";
 import Avatar from "react-avatar";
 import {
   MovieSuggestionTitle,
   MovieSuggestionDate,
   MovieSideBarSuggestion,
-  MovieSideBarSuggestionCard,
   MovieSideBarRedBtn,
   MovieSideBarShareBtn,
 } from "../../StyledComponents";
@@ -42,10 +41,9 @@ export const Suggestion = (props) => {
   );
 
   function SuggestionCard(props) {
-
     const firestore = firebase.firestore();
-const auth = firebase.auth();
-const uid = auth.currentUser.uid;
+    const auth = firebase.auth();
+    const uid = auth.currentUser.uid;
 
     const [rating, setRating] = useState(0);
 
@@ -59,21 +57,19 @@ const uid = auth.currentUser.uid;
     };
 
     const submitRating = async (newRating) => {
-      console.log('hi')
-      setRating(newRating)
-      const usersRef = await firestore.collection('users').doc(uid);
+      console.log("hi");
+      setRating(newRating);
+      const usersRef = await firestore.collection("users").doc(uid);
       const addtoWatchedList = {
         movieid: props.data.id,
         title: props.data.original_title,
         date: props.data.release_date,
         poster: props.data.poster_path,
         rating: rating,
-    }
-      await usersRef.update(
-        {
-          watched: firebase.firestore.FieldValue.arrayUnion(addtoWatchedList)
-        }
-      );
+      };
+      await usersRef.update({
+        watched: firebase.firestore.FieldValue.arrayUnion(addtoWatchedList),
+      });
     };
 
     return (
@@ -146,8 +142,8 @@ export const UserSuggestion = (props) => {
 
   function UserSuggestionCard(props) {
     const firestore = firebase.firestore();
-const auth = firebase.auth();
-const uid = auth.currentUser.uid;
+    const auth = firebase.auth();
+    const uid = auth.currentUser.uid;
 
     const handleFollow = async (e) => {
       props.setnotClicked(false);

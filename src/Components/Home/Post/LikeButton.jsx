@@ -11,7 +11,7 @@ const LikeButton = (props) => {
 
     const [postData] = useDocumentData(post)
 
-    console.log(postData, props.id)
+    // console.log(postData, props.id)
 
     const handleLike = async (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const LikeButton = (props) => {
             overlay={<Tooltip id={`tooltip-top`}>{postData.likes.length} Like</Tooltip>}
           >
               <FavoriteIcon className="post__icons" onClick={handleLike}/>
-          </OverlayTrigger> 
+          </OverlayTrigger>
           : <OverlayTrigger
           key={props.key+"icon3"}
           placement="top"
@@ -42,5 +42,5 @@ const LikeButton = (props) => {
     </>
     );
 }
- 
+
 export default LikeButton;

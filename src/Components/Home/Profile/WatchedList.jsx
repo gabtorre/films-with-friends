@@ -22,7 +22,7 @@ export const WatchedList = (props) => {
             <ScrollHorizontal>
             {userdata && userdata.watched.map(movie =>
             <ChildDiv>
-                <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+                <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
             </ChildDiv>
             )}
@@ -32,7 +32,7 @@ export const WatchedList = (props) => {
             <ScrollHorizontal config= {{ stiffness: 0, damping: 0 }}>
             {userdata.watched.map(movie =>
             <Placeholder>
-                <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+                <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
             </Placeholder>
             )}

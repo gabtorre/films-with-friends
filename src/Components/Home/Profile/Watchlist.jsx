@@ -23,10 +23,10 @@ export const WatchList = (props) => {
         <ScrollHorizontal>
          {userdata.watchlist.map(movie =>
          <ChildDiv>
-             <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+             <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)}/>
              <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
             release={movie.date} poster={movie.poster} />
-             <MovieTitle key={movie.id}>{movie.title}</MovieTitle> 
+             <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
          </ChildDiv>
          )}
         </ScrollHorizontal>
@@ -35,7 +35,7 @@ export const WatchList = (props) => {
         <ScrollHorizontal config= {{ stiffness: 0, damping: 0 }}>
          {userdata.watchlist.map(movie =>
          <Placeholder>
-             <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+             <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} />
              <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
             release={movie.date} poster={movie.poster} />
              <MovieTitle key={movie.id}>{movie.title}</MovieTitle>

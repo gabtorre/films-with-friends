@@ -42,7 +42,7 @@ export const WatchedList = (props) => {
             <Card.Title>Watched</Card.Title>
             {userwatchedlist && userwatchedlist.map(movie =>
              <>
-                <Card.Img variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover'}}/>
+                <Card.Img onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} variant="top" src={movie.poster} style={{height: '100px', width: '100%', objectFit: 'cover', cursor: "pointer"}}/>
                 <Card.Text key={movie.id}>{movie.title}</Card.Text>
               </>
 

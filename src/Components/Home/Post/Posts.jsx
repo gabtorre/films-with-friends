@@ -24,7 +24,7 @@ const Posts = () => {
                         image={post.poster} title={post.title}
                         synopsis={post.synopsis} release={post.release}
                         uid={post.uid} username={post.username}
-                        photoURL={post.photoURL} rating={post.rating} />
+                        photoURL={post.photoURL} rating={post.rating} movieid={post.movieid}/>
                     </Card>
                 </Col>
             )}
