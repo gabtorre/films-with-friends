@@ -57,7 +57,6 @@ export const Suggestion = (props) => {
     };
 
     const submitRating = async (newRating) => {
-      console.log(newRating)
       const usersRef = await firestore.collection("users").doc(uid);
       const addtoWatchedList = {
         movieid: props.data.id,

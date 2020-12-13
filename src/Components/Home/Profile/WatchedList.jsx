@@ -14,6 +14,17 @@ export const WatchedList = (props) => {
         firestore.doc('users/' + props.user)
     );
 
+    // const updateRating = async (newRating) => {
+    //     const usersRef = await firestore.collection("users").doc(props.user);
+    //     const addtoWatchedList = {
+    //       movieid: props.data.id,
+    //       rating: newRating,
+    //     };
+    //     await usersRef.set({
+    //       watched: firebase.firestore.FieldValue.arrayUnion(addtoWatchedList)
+    //     }, { merge: true });
+    // }
+
     return (
         <>
             <h1 className="mb-4 bold">Watched List</h1>
@@ -26,6 +37,7 @@ export const WatchedList = (props) => {
                 <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
                 <ReactStars
+                // onChange={updateRating}
                 key={movie.id}
                 count={5}
                 size={15}
