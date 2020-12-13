@@ -18,6 +18,7 @@ import "firebase/storage";
 import "../App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FriendList from "../Components/Home/Profile/FriendList";
 
 class Home extends React.Component {
   state = {
@@ -80,6 +81,9 @@ class Home extends React.Component {
                   {this.state.page == "home" && <Main />}
                   {this.state.page == "edit" && (
                     <EditProfile uid={this.state.uid} />
+                  )}
+                   {this.state.page == "friendlist" && (
+                    <FriendList uid={this.state.uid} findProfile={this.findProfile}/>
                   )}
                   {this.state.page == "profile" && this.state.profileuid && (<Profile uid={this.state.profileuid} />)}
                   <div style={{ backgroundColor: "#0F121D" }}>

@@ -422,12 +422,27 @@ export const EditProfileContainer = styled.div`
     margin-top: 100px
 `
 
+    export const InlineDiv = styled.div`
+    display: inline-flex;
+    width: 300px;
+    align-items: flex-start;
+    height: 80px;
+    align-items: center;
+    `
+
+export const InlineDivRight = styled.div`
+    display: flex;
+    margin: auto 0;
+    cursor: pointer
+    `
+
 //MOVIE LIST PAGE
 
 export const MoviePoster = styled.img`
 width: 100%;
 height: auto;
 border-radius: 10%;
+cursor: pointer;
 `
 export const MovieTitle = styled.p`
 text-align: center;
@@ -446,4 +461,18 @@ width: 150px;
 min-width: 150px;
 height: 200px;
 margin: 10px;
+`
+
+// Edit Profile
+export const EditProfileForm = styled.form`
+    background-color: rgb(15, 18, 29);
+    min-width: 400px;
+    min-height: 50%;
+    height: auto;
+    width: 100%;
+    z-index: 1;
+    display: grid;
+    margin: 0 auto;
+    padding: 80px 32px;
+    border-radius: 5px;
 `

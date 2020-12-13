@@ -23,7 +23,6 @@ function Results(props) {
     const [rating, setRating] = useState(0);
 
     const addWatchList = async(e) => {
-        const uid = auth.currentUser.uid
         const usersRef = firestore.collection('users').doc(uid);
         e.preventDefault();
         const toWatchMovieDetail = {

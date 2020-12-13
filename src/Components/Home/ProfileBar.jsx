@@ -61,7 +61,7 @@ function ProfileBar(props) {
           <Menu>
             <MenuItem icon={<FaHome />} onClick={() => props.pageSwitcher("home")}>Home</MenuItem>
             <MenuItem icon={<VscLibrary />} onClick={() => props.pageSwitcher("profile", props.uid)}>Library</MenuItem>
-            <MenuItem icon={<FaUserCircle />} onClick={() => props.pageSwitcher("edit")}>Profile</MenuItem>
+            <MenuItem icon={<FaUserCircle />} onClick={() => props.pageSwitcher("friendlist")}>Profile</MenuItem>
           </Menu>
           {auth.currentUser && !sideBarClosed ? (
             <SidebarFooter style={{ textAlign: "center", marginTop: "80%"}}>
