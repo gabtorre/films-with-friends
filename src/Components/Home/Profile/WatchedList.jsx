@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import ScrollHorizontal from 'react-scroll-horizontal';
 import {MoviePoster, MovieTitle, ChildDiv, Placeholder} from '../../../Components/StyledComponents';
+import ReactStars from "react-rating-stars-component";
 
 export const WatchedList = (props) => {
 
@@ -24,6 +25,14 @@ export const WatchedList = (props) => {
             <ChildDiv>
                 <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+                <ReactStars
+                key={movie.id}
+                count={5}
+                size={15}
+                value={movie.rating}
+                style={{margin: "auto 0"}}
+                activeColor="#F67553"
+              />
             </ChildDiv>
             )}
             </ScrollHorizontal>
@@ -34,6 +43,13 @@ export const WatchedList = (props) => {
             <Placeholder>
                 <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+                <ReactStars
+                key={movie.id}
+                count={5}
+                size={15}
+                value={movie.rating}
+                activeColor="#F67553"
+              />
             </Placeholder>
             )}
             </ScrollHorizontal>

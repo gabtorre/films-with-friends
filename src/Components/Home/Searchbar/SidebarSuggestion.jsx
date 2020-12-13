@@ -45,7 +45,7 @@ export const Suggestion = (props) => {
     const auth = firebase.auth();
     const uid = auth.currentUser.uid;
 
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(props.data.vote_average / 2);
 
     const imgurl = `https://image.tmdb.org/t/p/w500/${props.data.poster_path}`;
     const noimg =
@@ -57,20 +57,20 @@ export const Suggestion = (props) => {
     };
 
     const submitRating = async (newRating) => {
-      console.log("hi");
-      setRating(newRating);
+      console.log(newRating)
       const usersRef = await firestore.collection("users").doc(uid);
       const addtoWatchedList = {
         movieid: props.data.id,
         title: props.data.original_title,
         date: props.data.release_date,
         poster: props.data.poster_path,
-        rating: rating,
+        rating: newRating,
       };
       await usersRef.update({
         watched: firebase.firestore.FieldValue.arrayUnion(addtoWatchedList),
       });
-    };
+  }
+
 
     return (
       <MovieSideBarSuggestion>

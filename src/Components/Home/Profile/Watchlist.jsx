@@ -16,7 +16,7 @@ export const WatchList = (props) => {
 
     return (
         <>
-        <h1 className="mt-5 mb-4 bold">Watch List</h1>
+        {userdata && (<h1 className="mt-5 mb-4 bold">{userdata.displayName}'s Watch List</h1>)}
         <div style={{ height: `22.7em` }}>
         {userdata && userdata.watchlist.length > 3  ?
 
