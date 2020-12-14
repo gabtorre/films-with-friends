@@ -18,6 +18,8 @@ const Comment = (props) => {
           name={props.data.displayName}
           round={true}
           size="45"
+          style={{cursor: "pointer"}}
+          onClick={() => props.findProfile(props.uid)}
         />
       </OverlayTrigger>
       <div className="post__comment-text-container">{props.content}</div>

@@ -31,6 +31,8 @@ const Post = (props) => {
       <div className="post__owner">
         <Avatar
           className="post__owner-img"
+          style={{cursor: "pointer"}}
+          onClick={() => props.findProfile(props.uid)}
           src={props.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"}
           name={props.username}
           round={true}
@@ -91,6 +93,8 @@ const Post = (props) => {
             <Comment
               key={comment.id}
               id={comment.id}
+              uid={comment.uid}
+              findProfile={props.findProfile}
               content={comment.content}
               photoURL={comment.photoURL}
               data={comment}

@@ -6,8 +6,8 @@ import Col from 'react-bootstrap/Col';
 import { Card } from 'react-bootstrap';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-const Posts = () => {
-
+const Posts = (props) => {
+    // console.log(props)
     const firestore = firebase.firestore();
     const postRef = firestore.collection('post');
     const sortedPostsRef = postRef.orderBy('createdAt', 'desc');
@@ -24,6 +24,7 @@ const Posts = () => {
                         image={post.poster} title={post.title}
                         synopsis={post.synopsis} release={post.release}
                         uid={post.uid} username={post.username}
+                        findProfile={props.findProfile}
                         photoURL={post.photoURL} rating={post.rating} movieid={post.movieid}/>
                     </Card>
                 </Col>
