@@ -9,7 +9,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 const Posts = (props) => {
     // console.log(props)
     const firestore = firebase.firestore();
-    const postRef = firestore.collection('post');
+    const postRef = firestore.collection('posts');
     const sortedPostsRef = postRef.orderBy('createdAt', 'desc');
     const [ sortedposts ] = useCollectionData(sortedPostsRef, {idField: 'id'});
 
@@ -24,7 +24,7 @@ const Posts = (props) => {
                         image={post.poster} title={post.title}
                         synopsis={post.synopsis} release={post.release}
                         uid={post.uid} username={post.username}
-                        findProfile={props.findProfile}
+                        findProfile={props.findProfile} createdAt={post.createdAt}
                         photoURL={post.photoURL} rating={post.rating} movieid={post.movieid}/>
                     </Card>
                 </Col>

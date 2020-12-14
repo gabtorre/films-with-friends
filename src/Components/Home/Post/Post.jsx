@@ -1,20 +1,21 @@
 import Comment from "./Comment";
 import AddComment from "./AddComment";
+import moment from 'moment'
 import {
   MovieCardWrapper,
 } from "../../StyledComponents";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import firebase from "firebase/app";
-import "firebase/auth";
 import "firebase/firestore";
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import "firebase/auth";
 import "../../../../src/custom.scss";
 import Avatar from "react-avatar";
 import React from "react";
 import { ReactComponent as ChatIcon } from "../../../Icons/Chat.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import LikeButton from './LikeButton';
 import WatchButton from './WatchButton';
 
@@ -22,8 +23,10 @@ const Post = (props) => {
   const firestore = firebase.firestore();
   const auth = firebase.auth();
   const uid = auth.currentUser.uid;
-  const commentRef = firestore.collection('comments').where("post", "==", props.id)
-  const [ comments ] = useCollectionData(commentRef, {idField: 'id'});
+  const postRef = firestore.collection("posts").doc(props.id);
+  const [postData, loading, error] = useDocumentData(
+    firestore.doc('posts/' + props.id)
+  );
 
   return (
     <>
@@ -41,7 +44,7 @@ const Post = (props) => {
         <div className="post__owner-text">
           <div className="post__owner-text__name">{props.username}</div>
           <div className="post__owner-text__label">
-            Rated {props.rating} stars
+            Rated {props.rating} stars {moment(props.createdAt.toDate()).fromNow()}
           </div>
           {props.rating > 3 ? (
             <div className="post__owner-text__label">recommended</div>
@@ -70,11 +73,12 @@ const Post = (props) => {
             key={props.id} id={props.id} title={props.title}
             release={props.release} poster={props.image}
           />
-          { comments ?
+          { postData && postData.comments?
           <OverlayTrigger
           key={props.key+"icon2"}
             placement="top"
-            overlay={<Tooltip id={`tooltip-top`}>{comments.length} Comments</Tooltip>}
+            overlay={<Tooltip id={`tooltip-top`}>{postData &&
+              postData.comments.length} Comments</Tooltip>}
           >
             <ChatIcon className="post__icons" />
           </OverlayTrigger> : <OverlayTrigger
@@ -88,17 +92,18 @@ const Post = (props) => {
         </div>
       </MovieCardWrapper>
       <>
-        {comments &&
-          comments.map((comment) => (
+        {postData &&
+          postData.comments.map(comment=> (
             <Comment
-              key={comment.id}
-              id={comment.id}
+              key={comment.createdAt}
+              id={comment.createdAt}
               uid={comment.uid}
               findProfile={props.findProfile}
               content={comment.content}
               photoURL={comment.photoURL}
               data={comment}
               username={comment.username}
+              postRef={postRef}
             />
           ))}
       </>

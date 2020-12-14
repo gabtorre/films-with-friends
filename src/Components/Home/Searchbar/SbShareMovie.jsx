@@ -22,6 +22,7 @@ const SbShareMovie = (props) => {
       username: auth.currentUser.displayName,
       photoURL: auth.currentUser.photoURL,
       rating: props.rating,
+      comments: firebase.firestore.FieldValue.arrayUnion(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
     };
@@ -48,7 +49,7 @@ const SbShareMovie = (props) => {
     //   posts: newPost,
     // });
     await firestore
-      .collection("post")
+      .collection("posts")
       .add(newPost)
       .then(async(docRef) =>{
         await usersRef.update({
