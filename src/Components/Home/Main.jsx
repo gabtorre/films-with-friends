@@ -8,7 +8,7 @@ export default class Main extends Component {
     return (
       <ActivityPostsWrapper>
         <div style={{padding: "5%"}}>
-            <Posts />
+            <Posts findProfile={this.props.findProfile} />
         </div>
       </ActivityPostsWrapper>
     );

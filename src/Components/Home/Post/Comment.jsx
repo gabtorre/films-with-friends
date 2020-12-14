@@ -2,8 +2,16 @@ import { CommentDiv } from "../../StyledComponents";
 import Avatar from "react-avatar";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 
 const Comment = (props) => {
+  // console.log(props)
+
+  const [postData, loading, error] = useDocumentData(
+    firebase.firestore().doc('posts/' + props.id)
+  );
 
   return (
     <CommentDiv className="mt-4">
@@ -18,6 +26,8 @@ const Comment = (props) => {
           name={props.data.displayName}
           round={true}
           size="45"
+          style={{cursor: "pointer"}}
+          onClick={() => props.findProfile(props.uid)}
         />
       </OverlayTrigger>
       <div className="post__comment-text-container">{props.content}</div>

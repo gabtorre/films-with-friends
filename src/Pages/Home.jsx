@@ -78,7 +78,7 @@ class Home extends React.Component {
                   <div style={{ backgroundColor: "#0F121D" }}>
                     <ProfileBar pageSwitcher={this.pageSwitcher} uid={this.state.uid} />
                   </div>
-                  {this.state.page == "home" && <Main />}
+                  {this.state.page == "home" && <Main findProfile={this.findProfile} />}
                   {this.state.page == "edit" && (
                     <EditProfile uid={this.state.uid} />
                   )}
