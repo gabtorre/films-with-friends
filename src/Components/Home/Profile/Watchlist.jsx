@@ -36,7 +36,7 @@ export const WatchList = (props) => {
             release={movie.date} poster={movie.poster} list={'watchlist'}/>
             </div>
             </div>
-             <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+             <MovieTitle className="mt-2" key={movie.id}>{movie.title}</MovieTitle>
          </ChildDiv>
          )}
         </ScrollHorizontal>
@@ -45,18 +45,18 @@ export const WatchList = (props) => {
         <ScrollHorizontal config= {{ stiffness: 0, damping: 0 }}>
          {userdata.watchlist.map(movie =>
          <Placeholder>
-             <MovieContainer>
-             <MoviePoster variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} />
-             </MovieContainer>
-             <MovieOverlay>
+            <div className="movie__container">
+             <img className="movie__poster" variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)}/>
+             <div className="movie__overlay">
              <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
             release={movie.date} poster={movie.poster} />
             <MoveButton key={movie.id} id={movie.movieid} title={movie.title}
             release={movie.date} poster={movie.poster}/>
             <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
             release={movie.date} poster={movie.poster} list={'watchlist'}/>
-            </MovieOverlay>
-             <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
+            </div>
+            </div>
+             <MovieTitle className="mt-2" key={movie.id}>{movie.title}</MovieTitle>
          </Placeholder>
          )}
         </ScrollHorizontal>

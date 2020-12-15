@@ -359,10 +359,10 @@ export const MovieSideBarRedBtn = styled.button`
     background-color: #DC3545;
     color: white;
     border-radius: 5px;
-    padding: 0 5px;
+    padding: 0 5px 2px 5px;
     border: none;
     width: ${({width}) => (width ? `${width}px` : '100px')};
-    font-size: 12px;
+    font-size: 15px;
     margin: ${({margin}) => (margin ? `${margin}px` : '5px')};
 `
 
