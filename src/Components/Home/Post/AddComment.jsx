@@ -13,19 +13,20 @@ const AddComment = (props) => {
     const auth = firebase.auth();
 
     const handleCommentSubmission = async (e) => {
+        console.log(props)
         e.preventDefault();
-
+        const postRef = firestore.collection("posts").doc(props.id);
+        const usersRef = await firestore.collection("users").doc(auth.currentUser.uid);
         async function addComment() {
             let newComment = {
                 content: comment,
-                post: props.id,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                id: Date.now(),
+                createdAt: Date.now(),
                 username: auth.currentUser.displayName,
                 photoURL: auth.currentUser.photoURL,
                 uid: auth.currentUser.uid
             }
-            await firestore.collection('comments')
-            .add(newComment)
+            await postRef.update({comments: firebase.firestore.FieldValue.arrayUnion(newComment)})
             .catch(err => {
                 console.error('error adding comment: ', err)
             })

@@ -1,7 +1,15 @@
-# [movie app]
-a social movie rating app
-- An app for rating and talking about movies that lets members post twitter-style hot takes on movies, share said reviews with friends for comments and discussion, and maintain lists of movies seen and movies yet-to-watch
+<h1 align="center">
+  <a href="https://movie-app-fe361.web.app/">
+    [Movie] - a social movie rating app
+  </a>
+</h1>
+[Movie] is an app for rating and talking about movies that lets members post twitter-style hot takes on movies, share said reviews with friends for comments and discussion, and maintain lists of movies seen and movies yet-to-watch
 
+<div style="margin-top: 5px; margin-bottom: 15px;">
+  <img src="public/moviegif.gif"/>
+</div>
+
+<hr/>
 
 ## alternate app names (brainstorming)
 - cine-stream
@@ -35,7 +43,7 @@ a social movie rating app
 - allow user to create a profile
 - allow user to add movie to watch-list
 - allow user to add movie to already-watched list
-- allow user to comment 
+- allow user to comment
 - allow CRUD of movies, at least on backend
 - user view profile page
 - working db integration with Firebase
@@ -65,55 +73,21 @@ a social movie rating app
 
 
 
-## models and properties
-1. User
-    - username
-    - id
-    - credentials
-2. Post
-    - createdAt
-    - movieid
-    - photoURL
-    - poster
-    - rating
-    - release
-    - synopsis
-    - text
-    - title
-    - uid
-    - username
-3. Comment
-    - content
-    - photoURL
-    - post id
-    - timestamp
-4. Rating
-    - createdAt
-    - date
-    - movieid
-    - rating
-    - title
-    - uid
-5. Watched
-    - createdAt
-    - date
-    - movieid
-    - poster
-    - title
-    - uid
-6. Watchlist
-    - createdAt
-    - date
-    - movieid
-    - poster
-    - title
-    - uid
-7. Friend (join table?)
-    - (userid 1)
-    - (userid 2)
+## Models and Properties
+1. Users
+    - displayName(username)
+    - photoURL(profile picture)
+    - watched(list)
+    - ratings
+    - watchlist
+    - friendlist
+2. Posts
+    - comments
+3. Ratings
+    - movies
 
 
-## technologies included / to include
+## Technologies included & to include
 - React
 - Firebase
 - Bootstrap
@@ -121,6 +95,7 @@ a social movie rating app
 - React Hooks
 - Axios
 - Sass
+- Moment.js
 - Styled Components
 - Toastify
 - React-icons
@@ -137,8 +112,8 @@ a social movie rating app
 - https://www.figma.com/file/PpaAeGlhBMedshMbBAuJ37/Untitled?node-id=0%3A1
 
 ## ERDs
-- see ERDs document
+- see ERDs document [TBC]
 
-## Feasibility
-- does graphQL work with Firebase?
-- is Bootstrap compatible with React-Native?
+## Future Plans
+- Add graphQL with Firebase?
+- Refactor into React-Native

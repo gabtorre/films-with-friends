@@ -16,7 +16,7 @@ export const SearchBar = (props) => {
       </button>
       <input
         type="text"
-        placeholder="Movie Lookup"
+        placeholder="Movie & User Lookup"
         className="search-input"
         value={props.query}
         onInput={handleSearchInputs}

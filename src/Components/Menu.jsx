@@ -28,9 +28,11 @@ export default function Menu() {
 
     return (
         <Navbar className="darknav" variant="dark" expand="lg">
-            <Navbar.Brand href="/home">
+            { user ? <Navbar.Brand href="/home">
             Movies
-            </Navbar.Brand>
+            </Navbar.Brand> : <Navbar.Brand>
+            Movies
+            </Navbar.Brand> }
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
 
@@ -39,11 +41,11 @@ export default function Menu() {
                 </Nav>
                 { user ?
                 <>
-                    <Form inline>
+                    {/* <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    </Form>
+                    </Form> */}
 
-                    <Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} />
+                    <Navbar.Brand href="/home"><Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /></Navbar.Brand>
                     {/* <Avatar onClick={() => auth.signOut()} src={"https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> */}
                     {/* <Button variant="danger" className="menubtns">Post</Button> */}
                 </>
