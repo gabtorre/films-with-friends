@@ -5,6 +5,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import ScrollHorizontal from 'react-scroll-horizontal';
 import {MoviePoster, MovieTitle, ChildDiv, Placeholder} from '../../../Components/StyledComponents';
 import ReactStars from "react-rating-stars-component";
+import DeleteButton from '../Post/DeleteButton';
 
 export const WatchedList = (props) => {
 
@@ -27,14 +28,16 @@ export const WatchedList = (props) => {
 
     return (
         <>
-            <h1 className="mb-4 bold">Watched List</h1>
+            <h1 className="mb-4 bold mt-4">Watched List</h1>
             <div style={{ height: `22.7em` }}>
-            {userdata && userdata.watched.length > 3  ?
+            {userdata && userdata.watched.length > 4  ?
 
             <ScrollHorizontal>
             {userdata && userdata.watched.map(movie =>
             <ChildDiv>
                 <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+                <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
+                release={movie.date} poster={movie.poster} list={'watched'}/>
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
                 <ReactStars
                 // onChange={updateRating}
@@ -54,6 +57,8 @@ export const WatchedList = (props) => {
             {userdata.watched.map(movie =>
             <Placeholder>
                 <MoviePoster variant="top" onClick={()=> window.open(`https://www.themoviedb.org/movie/${movie.movieid}`)} src={`https://image.tmdb.org/t/p/w500/${movie.poster}`} />
+                <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
+                release={movie.date} poster={movie.poster} list={'watched'}/>
                 <MovieTitle key={movie.id}>{movie.title}</MovieTitle>
                 <ReactStars
                 key={movie.id}

@@ -75,4 +75,36 @@ $card-border-radius: 5%;
     font-weight: 700;
 }
 
+.movie__container {
+    position: relative;
+    width: 100%;
+}
+
+.movie__overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.movie__poster {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.movie__container:hover .movie__poster {
+    background-color: black;
+    opacity: 0.2;
+  }
+  
+  .movie__container:hover .movie__overlay {
+    opacity: 1;
+  }
+  
+
 @import "../node_modules/bootstrap/scss/bootstrap";
