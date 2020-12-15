@@ -31,7 +31,7 @@ export const WatchedList = (props) => {
         <>
             <h1 className="mb-4 bold mt-4">Watched List</h1>
             <div style={{ height: `22.7em` }}>
-            {userdata && userdata.watched.length > 4  ?
+            {userdata && userdata.watched.length > 3  ?
 
             <ScrollHorizontal>
             {userdata && userdata.watched.map(movie =>

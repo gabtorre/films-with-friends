@@ -105,6 +105,15 @@ $card-border-radius: 5%;
   .movie__container:hover .movie__overlay {
     opacity: 1;
   }
+
+.scrollable-div {
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.scrollable-div::-webkit-scrollbar {
+    display: none;
+  }
   
 
 @import "../node_modules/bootstrap/scss/bootstrap";
