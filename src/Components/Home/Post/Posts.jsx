@@ -18,7 +18,7 @@ const Posts = (props) => {
         <h1 className="mt-5 mb-4 bold">Activity Feed</h1>
         <Row>
             {sortedposts && sortedposts.map(post =>
-                <Col xl={6}>
+                <Col md={12}>
                     <Card className="mb-5">
                         <Post key={post.id} id={post.id} text={post.text}
                         image={post.poster} title={post.title}

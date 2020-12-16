@@ -5,18 +5,17 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { toast } from "react-toastify";
 import { MovieSideBarRedBtn } from "../../StyledComponents";
-import { RiAddLine } from "react-icons/ri";
+import { BsFillEyeFill } from "react-icons/bs";
 
-const WatchButton = (props) => {
-
+const MoveButton = (props) => {
     const firestore = firebase.firestore();
     const auth = firebase.auth();
     const uid = auth.currentUser.uid;
     const usersRef = firestore.collection("users").doc(uid);
 
-    const addWatchList = async (e) => {
+    const markWatched = async (e) => {
         e.preventDefault();
-        const toWatchMovieDetail = {
+        const movieDetails = {
           movieid: props.id,
           title: props.title,
           date: props.release,
@@ -24,10 +23,11 @@ const WatchButton = (props) => {
         };
         await usersRef
           .update({
-            watchlist: firebase.firestore.FieldValue.arrayUnion(toWatchMovieDetail),
+            watched: firebase.firestore.FieldValue.arrayUnion(movieDetails),
+            watchlist: firebase.firestore.FieldValue.arrayRemove(movieDetails)
           })
           .then(async () => {
-            toast.success(`${props.title} is added to your watch list!`);
+            toast.success(`${props.title} was marked as watched!`);
           })
           .catch((error) => {
             var errorCode = error.code;
@@ -36,24 +36,23 @@ const WatchButton = (props) => {
           });
     };
 
-    return (  
+    return (
         <>
             <OverlayTrigger
                 key={props.key+"icon1"}
                 placement="top"
-                overlay={<Tooltip id={`tooltip-top`}>Add to watchlist</Tooltip>}
+                overlay={<Tooltip id={`tooltip-top`}>Mark as watched</Tooltip>}
             >
                 <MovieSideBarRedBtn
-                    color={props.color}
                     width="auto"
-                    alt="add to watchlist"
-                    onClick={addWatchList}
+                    alt="Mark as watched"
+                    onClick={markWatched}
                     >
-                  <RiAddLine />
+                    <BsFillEyeFill />
                 </MovieSideBarRedBtn>
             </OverlayTrigger>
-        </>
+        </>  
     );
 }
  
-export default WatchButton;
+export default MoveButton;

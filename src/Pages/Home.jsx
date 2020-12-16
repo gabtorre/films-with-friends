@@ -75,10 +75,10 @@ class Home extends React.Component {
             <HomeContainer>
               {this.state.uid ? (
                 <>
-                  <div style={{ backgroundColor: "#0F121D" }}>
+                  <div className="scrollable-div" style={{ backgroundColor: "#0F121D", position: 'absolute' }}>
                     <ProfileBar pageSwitcher={this.pageSwitcher} uid={this.state.uid} />
                   </div>
-                  {this.state.page == "home" && <Main findProfile={this.findProfile} />}
+                  {this.state.page == "home" && <Main className="scrollable-div" findProfile={this.findProfile} />}
                   {this.state.page == "edit" && (
                     <EditProfile uid={this.state.uid} />
                   )}
@@ -86,7 +86,8 @@ class Home extends React.Component {
                     <FriendList uid={this.state.uid} findProfile={this.findProfile}/>
                   )}
                   {this.state.page == "profile" && this.state.profileuid && (<Profile uid={this.state.profileuid} />)}
-                  <div style={{ backgroundColor: "#0F121D" }}>
+                  <div className="scrollable-div"
+                       style={{ backgroundColor: "#0F121D", position: 'absolute', right: 0 }}>
                     <MovieBar uid={this.state.uid} findProfile={this.findProfile} />
                   </div>
                 </>

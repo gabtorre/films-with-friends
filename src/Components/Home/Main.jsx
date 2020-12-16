@@ -6,8 +6,8 @@ export default class Main extends Component {
 
   render() {
     return (
-      <ActivityPostsWrapper>
-        <div style={{padding: "5%"}}>
+      <ActivityPostsWrapper className="scrollable-div">
+        <div style={{maxWidth: '600px', minWidth: '600px' , marginLeft: 'auto', marginRight: 'auto'}} >
             <Posts findProfile={this.props.findProfile} />
         </div>
       </ActivityPostsWrapper>

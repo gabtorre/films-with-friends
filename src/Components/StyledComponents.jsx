@@ -143,7 +143,6 @@ export const ActivityWrapper = styled.div`
 `
 export const ActivityPostsWrapper = styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
 `
@@ -357,20 +356,21 @@ export const MovieSideBarSuggestionImg = styled.div`
 `
 export const MovieSideBarRedBtn = styled.button`
     background-color: #DC3545;
-    color: white;
-    border-radius: 20px;
-    padding: 2%;
+    color: ${({color}) => (color ? `${color}` : 'white')};
+    border-radius: 5px;
+    padding: 0 5px 2px 5px;
     border: none;
     width: ${({width}) => (width ? `${width}px` : '100px')};
-    font-size: 12px
+    font-size: 15px;
+    margin: ${({margin}) => (margin ? `${margin}px` : '5px')};
 `
 
 export const MovieSideBarShareBtn = styled.button`
     background-color: white;
     color: red;
-    border-radius: 20px;
-    width: 80px;
-    padding: 2%;
+    border-radius: 5px;
+    width: 60px;
+    padding: 3%;
     border: none;
     font-size: 12px
 `
@@ -416,10 +416,10 @@ export const LogOutBtn = styled.button`
 `
 export const EditProfileContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow-y: scroll;
     display: flex;
     justify-content: center;
-    margin-top: 100px
 `
 
     export const InlineDiv = styled.div`
@@ -438,17 +438,44 @@ export const InlineDivRight = styled.div`
 
 //MOVIE LIST PAGE
 
+// export const MovieOverlay = styled.img`
+// width: 100%;
+// height: auto;
+// border-radius: 10%;
+// cursor: pointer;
+// `
+
+
+
+export const MovieOverlay = styled.div`
+transition: .5s ease;
+opacity: 0;
+transform: translate(15%,-150%);
+`
+
+export const MovieContainer = styled.div`
+position: relative;
+width: 100%;
+${MovieOverlay}:hover & {
+    opacity: 1;
+}
+`
+
 export const MoviePoster = styled.img`
 width: 100%;
 height: auto;
 border-radius: 10%;
 cursor: pointer;
+${MovieContainer}:hover & {
+    opacity: 0.3;
+}
 `
+
 export const MovieTitle = styled.p`
 text-align: center;
 font-weight: 700;
 line-height: 1em;
-padding: 10px 0;
+margin: 0;
 `
 export const ChildDiv = styled.div`
 width: 100%;
