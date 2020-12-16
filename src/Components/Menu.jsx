@@ -29,10 +29,8 @@ export default function Menu() {
     return (
         <Navbar className="darknav" variant="dark" expand="lg">
             { user ? <Navbar.Brand href="/home">
-            Movies
-            </Navbar.Brand> : <Navbar.Brand>
-            Movies
-            </Navbar.Brand> }
+            Home
+            </Navbar.Brand> : null }
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
 
@@ -41,18 +39,12 @@ export default function Menu() {
                 </Nav>
                 { user ?
                 <>
-                    {/* <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    </Form> */}
-
                     <Navbar.Brand href="/home"><Avatar src={auth.currentUser.photoURL || "https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /></Navbar.Brand>
-                    {/* <Avatar onClick={() => auth.signOut()} src={"https://i.ibb.co/cJ6G9Vc/image.png"} size="50" round={true} /> */}
-                    {/* <Button variant="danger" className="menubtns">Post</Button> */}
                 </>
                 :
                 <>
-                    <Button variant="outline-danger" className="menubtns"  href="/signup" >Signup</Button>
-                    <Button variant="danger" className="menubtns" href="/signin">Signin</Button>
+                <Nav.Link href="/signup"><Button variant="outline-danger" className="menubtns">Signup</Button></Nav.Link>
+                <Nav.Link href="/signin"><Button variant="danger" className="menubtns">Signin</Button></Nav.Link>
                 </>
                 }
 
