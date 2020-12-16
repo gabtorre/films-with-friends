@@ -98,21 +98,24 @@ export const Suggestion = (props) => {
                 value={props.data.vote_average / 2}
                 activeColor="#F67553"
               />
+              
+            </div>
+            <div>
+            <MovieSideBarShareBtn onClick={handleSharePost}>
+            share
+            <RiShareForwardFill />
+            </MovieSideBarShareBtn>
+            <WatchButton
+              key={props.data.id}
+              id={props.data.id}
+              title={props.data.original_title}
+              release={props.data.release_date}
+              poster={props.data.poster_path}
+            />
             </div>
           </div>
         </div>
         <div>
-          <MovieSideBarShareBtn onClick={handleSharePost}>
-            share
-            <RiShareForwardFill />
-          </MovieSideBarShareBtn>
-          <WatchButton
-            key={props.data.id}
-            id={props.data.id}
-            title={props.data.original_title}
-            release={props.data.release_date}
-            poster={props.data.poster_path}
-          />
         </div>
       </MovieSideBarSuggestion>
     );
