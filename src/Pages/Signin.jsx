@@ -63,7 +63,7 @@ const Signin = () => {
         await firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
             toast.success(`Signin Sucessfully! Welcome back!`);
-            history.push('./home')
+            history.push('./')
         })
         .catch((error) => {
             var errorCode = error.code;

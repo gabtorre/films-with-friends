@@ -150,6 +150,7 @@ export const UserSuggestion = (props) => {
       await usersRef.update({
         friendlist: firebase.firestore.FieldValue.arrayUnion(props.data.uid),
       });
+      props.setnotClicked(true);
     };
 
     return (
