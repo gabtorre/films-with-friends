@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { toast } from "react-toastify";
@@ -11,12 +12,14 @@ const DeleteButton = (props) => {
     const firestore = firebase.firestore();
     const auth = firebase.auth();
     const uid = auth.currentUser.uid;
-    const usersRef = firestore.collection("users").doc(uid);    
+    const usersRef = firestore.collection("users").doc(uid);
+
+    const [postData] = useDocumentData(usersRef)
 
     const deleteMovie = async (e) => {
         e.preventDefault();
 
-        const movieDetails = props.rating ?
+        const movieDetails = props.rating >= 0 ?
         {
             movieid: props.id,
             title: props.title,

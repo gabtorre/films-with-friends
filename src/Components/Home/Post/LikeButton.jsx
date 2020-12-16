@@ -7,11 +7,9 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 const LikeButton = (props) => {
     const firestore = firebase.firestore();
-    const post = firestore.collection("post").doc(props.id)
+    const post = firestore.collection("posts").doc(props.id)
 
     const [postData] = useDocumentData(post)
-
-    // console.log(postData, props.id)
 
     const handleLike = async (e) => {
         e.preventDefault();

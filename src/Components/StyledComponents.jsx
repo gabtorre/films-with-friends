@@ -387,10 +387,8 @@ export const MovieSuggestionDate = styled.div`
 `
 
 export const MovieResultText = styled.p`
-    width: 200px;
     height: auto;
     word-break: break-word;
-    word-break: break-all;
     word-wrap: break-word;
     white-space: pre-wrap
 `

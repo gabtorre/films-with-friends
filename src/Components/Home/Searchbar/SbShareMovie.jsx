@@ -25,6 +25,7 @@ const SbShareMovie = (props) => {
       comments: firebase.firestore.FieldValue.arrayUnion(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
+      likes: [],
     };
     const newRating = {
       title: props.title,
