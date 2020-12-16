@@ -11,8 +11,10 @@ import DeleteButton from '../Post/DeleteButton';
 export const WatchedList = (props) => {
 
     const firestore = firebase.firestore();
+    const auth = firebase.auth();
+    const currentUser = auth.currentUser.displayName;
 
-    const [userdata, loading, error] = useDocumentData(
+    const [userdata] = useDocumentData(
         firestore.doc('users/' + props.user)
     );
 
@@ -29,7 +31,7 @@ export const WatchedList = (props) => {
 
     return (
         <>
-            <h1 className="mb-4 bold mt-4">Watched List</h1>
+            <h1 className="mb-4 bold mt-2">Watched List</h1>
             <div style={{ height: `22.7em` }}>
             {userdata && userdata.watched.length > 3  ?
 
@@ -41,8 +43,8 @@ export const WatchedList = (props) => {
                     <div className="movie__overlay">
                     <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
                     release={movie.date} poster={movie.poster} />
-                    <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
-                    release={movie.date} poster={movie.poster} list={'watched'} rating={movie.rating}/>
+                    {userdata.displayName === currentUser && <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
+                    release={movie.date} poster={movie.poster} list={'watched'} rating={movie.rating}/>}
                     </div>
                     <div className="mt-2" style={{textAlign: 'center', width: '100%', marginLeft: '25%'}}>
                     <ReactStars
@@ -70,8 +72,8 @@ export const WatchedList = (props) => {
                     <div className="movie__overlay">
                     <WatchButton key={movie.id} id={movie.movieid} title={movie.title}
                     release={movie.date} poster={movie.poster} />
-                    <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
-                    release={movie.date} poster={movie.poster} list={'watched'} rating={movie.rating}/>
+                    {userdata.displayName === currentUser && <DeleteButton key={movie.id} id={movie.movieid} title={movie.title}
+                    release={movie.date} poster={movie.poster} list={'watched'} rating={movie.rating}/>}
                     </div>
                     <div style={{textAlign: 'center', width: '100%', marginLeft: '25%'}}>
                     <ReactStars
