@@ -8,19 +8,8 @@ Films with Friends is an app for rating and talking about movies that lets membe
 <div style="margin-top: 5px; margin-bottom: 15px;">
   <img src="public/moviegif.gif"/>
 </div>
-
+Demo Login: demo@gmail.com | Password: Demo2020
 <hr/>
-
-## alternate app names (brainstorming)
-- cine-stream
-- film rater
-- films with friends
-- take two (a pun on "hot takes" vs a filming "take")
-- hot takes
-- insta-critic
-- twitic
-- film voire
-- movie feed
 
 
 ## how to set up on your local machine

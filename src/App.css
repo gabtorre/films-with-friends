@@ -12,3 +12,22 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+.footer {
+  width: 100%;
+  height: 15%;
+  position: absolute;
+  bottom: 0;
+  padding-top: 1rem;
+  text-align: center;
+  background-color: black;
+  color: #F5F5F1;
+}
+
+.footer a {
+  color:#a1a199;
+}
+
+.footer-icon {
+  font-size: 2rem;
+}

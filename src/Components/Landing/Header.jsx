@@ -9,7 +9,7 @@ const Header = () => {
             <HeaderContainer>
                 <HeaderBG/>
                 <HeaderTitleContent>
-                        <HeaderTitleH1>Movie Box</HeaderTitleH1>
+                        <HeaderTitleH1>Films with Friends</HeaderTitleH1>
                         <HeaderTitleP>Make sharing movies with your friends fun.</HeaderTitleP>
                 </HeaderTitleContent>
             </HeaderContainer>
