@@ -1,9 +1,9 @@
 <h1 align="center">
   <a href="https://movie-app-fe361.web.app/">
-    [Movie] - a social movie rating app
+    Films with Friends - a social movie rating app
   </a>
 </h1>
-[Movie] is an app for rating and talking about movies that lets members post twitter-style hot takes on movies, share said reviews with friends for comments and discussion, and maintain lists of movies seen and movies yet-to-watch
+Films with Friends is an app for rating and talking about movies that lets members post twitter-style hot takes on movies, share said reviews with friends for comments and discussion, and maintain lists of movies seen and movies yet-to-watch
 
 <div style="margin-top: 5px; margin-bottom: 15px;">
   <img src="public/moviegif.gif"/>

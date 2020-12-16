@@ -416,10 +416,10 @@ export const LogOutBtn = styled.button`
 `
 export const EditProfileContainer = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow-y: scroll;
     display: flex;
     justify-content: center;
-    margin-top: 100px
 `
 
     export const InlineDiv = styled.div`

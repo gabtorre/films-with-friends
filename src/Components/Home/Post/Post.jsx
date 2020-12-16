@@ -66,7 +66,7 @@ const Post = (props) => {
         <div className="post__movie">
           <h4 className="post__movie-title">
             {props.title}
-            <span className="post__movie-title-date">({props.release})</span>
+            <span className="post__movie-title-date"> ({props.release})</span>
           </h4>
           <div className="post__movie-text">{props.synopsis}</div>
           <WatchButton

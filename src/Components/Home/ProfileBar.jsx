@@ -37,7 +37,7 @@ function ProfileBar(props) {
                   whiteSpace: "nowrap",
                 }}
               >
-                Movies.
+                Films with Friends
               </div>
             </SidebarHeader>
           ) : (
@@ -54,7 +54,7 @@ function ProfileBar(props) {
                   whiteSpace: "nowrap",
                 }}
               >
-                Movies.
+                Films with Friends
               </div>
             </SidebarHeader>
           )}
