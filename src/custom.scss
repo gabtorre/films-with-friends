@@ -36,7 +36,7 @@ $card-border-radius: 5%;
     font-weight: 700;
     font-size: 18px;
     padding: 0px;
-    margin: 0px;
+    margin-top: -10px;
 }
 
 .usersearch-text__name {
@@ -69,6 +69,17 @@ $card-border-radius: 5%;
     font-weight: 300;
     font-size: 12px;
     line-height: 180%;
+}
+
+.post__icons {
+    background-color: #DC3545;
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px 2px 5px;
+    border: none;
+    // width: 100px;
+    font-size: 15px;
+    margin: 5px;
 }
 
 .bold {

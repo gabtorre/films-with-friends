@@ -44,6 +44,7 @@ const WatchButton = (props) => {
                 overlay={<Tooltip id={`tooltip-top`}>Add to watchlist</Tooltip>}
             >
                 <MovieSideBarRedBtn
+                    color={props.color}
                     width="auto"
                     alt="add to watchlist"
                     onClick={addWatchList}

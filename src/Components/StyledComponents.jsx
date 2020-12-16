@@ -356,7 +356,7 @@ export const MovieSideBarSuggestionImg = styled.div`
 `
 export const MovieSideBarRedBtn = styled.button`
     background-color: #DC3545;
-    color: white;
+    color: ${({color}) => (color ? `${color}` : 'white')};
     border-radius: 5px;
     padding: 0 5px 2px 5px;
     border: none;
@@ -368,9 +368,9 @@ export const MovieSideBarRedBtn = styled.button`
 export const MovieSideBarShareBtn = styled.button`
     background-color: white;
     color: red;
-    border-radius: 20px;
-    width: 80px;
-    padding: 2%;
+    border-radius: 5px;
+    width: 60px;
+    padding: 3%;
     border: none;
     font-size: 12px
 `
